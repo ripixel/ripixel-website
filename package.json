@@ -1,0 +1,25 @@
+{
+  "name": "ripixel",
+  "version": "1.0.0",
+  "description": "I'm James King, and I make things for the web",
+  "main": "index.js",
+  "scripts": {
+    "build": "mkdir -p public && ts-node ./scripts/generatePages && cp -r ./assets/. ./public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ripixelcodes/ripixel-website.git"
+  },
+  "author": "James King <ripixel@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ripixelcodes/ripixel-website/issues"
+  },
+  "homepage": "https://github.com/ripixelcodes/ripixel-website#readme",
+  "devDependencies": {
+    "@types/node": "^13.13.5",
+    "firebase-tools": "^8.2.0",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.8.3"
+  }
+}

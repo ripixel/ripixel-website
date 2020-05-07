@@ -1,0 +1,69 @@
+version: 2.1 # use CircleCI 2.1
+
+executors:
+  node-project:
+    working_directory: ~/tmp
+    docker:
+      - image: circleci/node:12.12.0
+
+jobs: # a collection of steps
+  install_deps: # install npm deps
+    executor: node-project
+    steps:
+      - checkout
+      - restore_cache: # special step to restore the dependency cache
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: Install NPM Dependencies
+          command: npm i
+      - save_cache: # special step to save the dependency cache
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - ~/tmp/node_modules
+
+  build: # build the project - requires dependencies to have been installed
+    executor: node-project
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run: # run build
+          name: Build
+          command: |
+            npm run build
+      - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
+          path: public
+          prefix: public
+      - save_cache: # special step to save the public cache and deploy files
+          key: deploy-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+          paths:
+            - ~/tmp/public
+            - ~/tmp/.firebaserc
+            - ~/tmp/firebase.json
+            - ~/tmp/package-lock.json
+
+  deploy_to_firebase: # deploy the project to prod - SHOULD ONLY BE RUN ON MASTER BRANCH
+    executor: node-project
+    steps:
+      - restore_cache: # restore the /public folder and associated deploy files
+          key: deploy-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+      - restore_cache: # special step to restore the dependency cache
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: Deploy to Firebase Hosting
+          command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - install_deps
+      - build:
+          requires:
+            - install_deps
+      - deploy_to_firebase:
+          filters:
+            branches:
+              only: master
+          requires:
+            - build
