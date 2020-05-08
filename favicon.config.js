@@ -1,5 +1,5 @@
 module.exports = {
-  input: "./assets/ripixel.png", // Required. override cli options.
+  input: "./assets/images/favicon.png", // Required. override cli options.
   output: "./public", // Required. override cli options.
   template: "./templates/meta.html", // Default is the same as output, default name is meta.html.
   config: {

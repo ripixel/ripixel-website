@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon",
-    "build": "npm run build:prepare && npm run build:css && npm run build:favicons && npm run build:pages",
-    "build:prepare": "mkdir -p public",
-    "build:pages": "npm run build:prepare && ts-node ./scripts/generatePages",
-    "build:css": "npm run build:prepare && cleancss -o ./public/styles.min.css ./assets/*.css",
-    "build:favicons": "npm run build:prepare && favicons-generate"
+    "build": "mkdir -p ./public && npm run build:css && npm run build:favicons && npm run build:pages && npm run build:images",
+    "build:dev": "mkdir -p ./public && npm run build:css && npm run build:pages && npm run build:images",
+    "build:pages": "ts-node ./scripts/generatePages",
+    "build:css": "cleancss -o ./public/styles.min.css ./assets/styles/*.css",
+    "build:favicons": "favicons-generate",
+    "build:images": "cp -R ./assets/images/. ./public/"
   },
   "repository": {
     "type": "git",
