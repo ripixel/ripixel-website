@@ -37,6 +37,89 @@ p:last-child {
   padding-bottom: 0;
 }
 
+nav {
+  padding: 40px;
+  background: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 600px) {
+  nav {
+    text-align: center;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  nav {
+    padding: 30px 10px;
+  }
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s transform ease-in-out;
+}
+
+nav ul {
+  font-family: "Fredoka One", cursive;
+  letter-spacing: 0.1em;
+  margin-top: 20px;
+}
+
+nav ul li {
+  display: inline-block;
+  padding-right: 20px;
+  padding-bottom: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  nav ul li {
+    padding-right: 10px;
+  }
+}
+
+nav a:hover {
+  transform: translateX(20px);
+}
+
+nav h2 {
+  margin-top: 30px;
+  font-size: 2.5em;
+}
+
+nav.coding {
+  background: rgb(105, 0, 97);
+}
+
+nav.coding a.coding {
+  padding-left: 5px;
+  border-left: 2px solid #fff;
+}
+
+nav.thoughts {
+  background: rgb(0, 105, 79);
+}
+
+nav.thoughts a.thoughts {
+  padding-left: 5px;
+  border-left: 2px solid #fff;
+}
+
+nav.profile {
+  background: rgb(30, 77, 207);
+}
+
+nav.profile a.profile {
+  padding-left: 5px;
+  border-left: 2px solid #fff;
+}
+
 main {
   background: #333;
   padding: 40px;
@@ -68,6 +151,10 @@ main a {
 
 main a:hover {
   transform: translateX(20px);
+}
+
+main.error {
+  min-height: 30vh;
 }
 
 main.hello {

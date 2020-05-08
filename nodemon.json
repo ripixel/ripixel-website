@@ -1,0 +1,9 @@
+{
+  "watch": [
+    "pages",
+    "assets",
+    "templates"
+  ],
+  "ext": "html,css",
+  "exec": "npm run build"
+}
