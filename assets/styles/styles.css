@@ -1,6 +1,8 @@
 body {
   font-family: "Lato", sans-serif;
   font-weight: 200;
+  background: #111;
+  color: #fff;
 }
 
 * {
