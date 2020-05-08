@@ -17,6 +17,10 @@ h2 {
   font-size: 1.5em;
 }
 
+h3 {
+  font-size: 1.4em;
+}
+
 h1,
 h2,
 h3,
@@ -35,6 +39,15 @@ p {
 
 p:last-child {
   padding-bottom: 0;
+}
+
+a.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border-left: 2px solid #fff;
+  margin-right: 20px;
+  margin-top: 10px;
 }
 
 nav {
@@ -82,10 +95,6 @@ nav ul li {
   nav ul li {
     padding-right: 10px;
   }
-}
-
-nav a:hover {
-  transform: translateX(20px);
 }
 
 nav h2 {
@@ -148,6 +157,11 @@ main {
   }
 }
 
+main > p {
+  text-align: center;
+  padding: 20px;
+}
+
 main a {
   color: #fff;
   text-decoration: none;
@@ -155,7 +169,7 @@ main a {
 }
 
 main a:hover {
-  transform: translateX(20px);
+  transform: translateX(10px);
 }
 
 main.error {
@@ -168,6 +182,10 @@ main.hello {
 
 main.area {
   min-height: 30vh;
+}
+
+main.coding {
+  background: rgb(78, 0, 72);
 }
 
 main.area.coding {
@@ -312,7 +330,8 @@ section.area {
   }
 }
 
-section.area h2 {
+section.area h2,
+h3 {
   padding-bottom: 1em;
   text-transform: lowercase;
 }

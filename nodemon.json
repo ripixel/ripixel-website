@@ -5,5 +5,5 @@
     "templates"
   ],
   "ext": "html,css",
-  "exec": "npm run build"
+  "exec": "npm run build:pages && npm run build:css"
 }
