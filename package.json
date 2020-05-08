@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon",
-    "build": "mkdir -p public && ts-node ./scripts/generatePages && cp -r ./assets/. ./public"
+    "build": "npm run build:prepare && npm run build:css && npm run build:favicons && npm run build:pages",
+    "build:prepare": "mkdir -p public",
+    "build:pages": "npm run build:prepare && ts-node ./scripts/generatePages",
+    "build:css": "npm run build:prepare && cleancss -o ./public/styles.min.css ./assets/*.css",
+    "build:favicons": "npm run build:prepare && favicons-generate"
   },
   "repository": {
     "type": "git",
@@ -19,6 +23,8 @@
   "homepage": "https://github.com/ripixelcodes/ripixel-website#readme",
   "devDependencies": {
     "@types/node": "^13.13.5",
+    "clean-css-cli": "^4.3.0",
+    "favicons-generate": "0.0.15",
     "firebase-tools": "^8.2.0",
     "nodemon": "^2.0.3",
     "ts-node": "^8.10.1",
