@@ -93,6 +93,11 @@ nav h2 {
   font-size: 2.5em;
 }
 
+/* This translate into nav.404 h2 - https://medium.com/front-end-weekly/css-selector-for-element-which-have-numbers-as-class-name-b6a089989199*/
+nav.\34 04 h2 {
+  display: none;
+}
+
 nav.coding {
   background: rgb(105, 0, 97);
 }
@@ -154,7 +159,7 @@ main a:hover {
 }
 
 main.error {
-  min-height: 30vh;
+  min-height: 90vh;
 }
 
 main.hello {
