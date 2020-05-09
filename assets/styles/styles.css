@@ -43,6 +43,15 @@ p:last-child {
   padding-bottom: 0;
 }
 
+p a {
+  border-bottom: 1px solid #fff;
+}
+
+p a:hover {
+  color: #ccc;
+  border-color: #ccc;
+}
+
 a.button {
   display: inline-block;
   padding: 10px 20px;
@@ -160,6 +169,9 @@ main {
 }
 
 main > p {
+  font-family: "Fredoka One", cursive;
+  letter-spacing: 0.1em;
+  font-size: 1.2em;
   text-align: center;
   padding: 20px;
 }
