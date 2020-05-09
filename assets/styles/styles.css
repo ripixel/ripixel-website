@@ -90,6 +90,10 @@ nav a {
   transition: 0.3s transform ease-in-out;
 }
 
+nav a:hover {
+  color: #ccc;
+}
+
 nav ul {
   font-family: "Fredoka One", cursive;
   letter-spacing: 0.1em;
@@ -198,7 +202,55 @@ main.area {
   min-height: 30vh;
 }
 
+.details {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 40px 120px 30px;
+  font-size: 0.7em;
+  max-width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .details {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 20px 40px 10px;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .details {
+    padding: 20px 30px 10px;
+  }
+}
+
+.area .details {
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.details .item {
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+.details .item h4 {
+  text-transform: uppercase;
+  font-family: "Lato", sans-serif;
+  padding-bottom: 2px;
+}
+
+.details .item p {
+  font-size: 1.5em;
+  white-space: nowrap;
+}
+
 main.coding {
+  min-height: 0;
   background: rgb(78, 0, 72);
 }
 
@@ -207,9 +259,45 @@ main.area.coding {
   background: rgb(105, 0, 97);
 }
 
+main.thoughts {
+  min-height: 0;
+  background: rgb(0, 87, 65);
+}
+
 main.area.thoughts {
   color: #fff;
   background: rgb(0, 105, 79);
+}
+
+main.profile {
+  min-height: 0;
+  background: rgb(17, 50, 143);
+}
+
+main.profile.details {
+  background: rgb(12, 36, 102);
+}
+
+main.profile.employment .employment-details h3 {
+  text-transform: none;
+  display: inline-block;
+  padding-right: 10px;
+  padding-bottom: 15px;
+}
+
+main.profile.employment .employment-details h4 {
+  padding-bottom: 10px;
+}
+
+main.profile.employment .employment-details p {
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+  main.profile.employment .employment-details h3 {
+    display: block;
+  }
 }
 
 main.area.profile {
@@ -226,6 +314,8 @@ footer {
 
 footer a {
   color: #777;
+  text-decoration: none;
+  border-color: #777;
 }
 
 footer .copy {
@@ -357,4 +447,10 @@ h3 {
 .em2 {
   padding-right: 0.1em;
   font-style: italic;
+}
+
+.tag {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 5px 10px;
+  font-size: 0.8em;
 }
