@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon",
-    "build": "mkdir -p ./public && npm run build:css && npm run build:favicons && npm run build:pages && npm run build:images",
+    "build": "mkdir -p ./public && npm run build:css && npm run build:favicons && npm run build:pages && npm run build:images && npm run build:sitemap",
     "build:dev": "mkdir -p ./public && npm run build:css && npm run build:pages && npm run build:images",
     "build:pages": "ts-node ./scripts/generatePages",
     "build:css": "cleancss -o ./public/styles.min.css ./assets/styles/*.css",
     "build:favicons": "favicons-generate",
-    "build:images": "cp -R ./assets/images/. ./public/"
+    "build:images": "cp -R ./assets/images/. ./public/",
+    "build:sitemap": "ts-node ./scripts/generateSitemap"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
     "firebase-tools": "^8.2.0",
     "nodemon": "^2.0.3",
     "ts-node": "^8.10.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "xml-js": "^1.6.11"
   }
 }
