@@ -5,13 +5,14 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon",
-    "build": "mkdir -p ./public && npm run build:css && npm run build:favicons && npm run build:pages && npm run build:images && npm run build:sitemap",
-    "build:dev": "mkdir -p ./public && npm run build:css && npm run build:pages && npm run build:images",
+    "build": "mkdir -p ./public && npm run build:css && npm run build:favicons && npm run build:pages && npm run build:images && npm run build:sitemap && npm run build:thoughts",
+    "build:dev": "mkdir -p ./public && npm run build:css && npm run build:pages && npm run build:images && npm run build:thoughts",
     "build:pages": "ts-node ./scripts/generatePages",
     "build:css": "cleancss -o ./public/styles.min.css ./assets/styles/*.css",
     "build:favicons": "favicons-generate",
     "build:images": "cp -R ./assets/images/. ./public/",
-    "build:sitemap": "ts-node ./scripts/generateSitemap"
+    "build:sitemap": "ts-node ./scripts/generateSitemap",
+    "build:thoughts": "mkdir -p ./public/thoughts && ts-node ./scripts/generateThoughts"
   },
   "repository": {
     "type": "git",
@@ -25,10 +26,13 @@
   "homepage": "https://github.com/ripixelcodes/ripixel-website#readme",
   "devDependencies": {
     "@types/node": "^13.13.5",
+    "@types/showdown": "^1.9.3",
     "clean-css-cli": "^4.3.0",
+    "date-fns": "^2.13.0",
     "favicons-generate": "0.0.15",
     "firebase-tools": "^8.2.0",
     "nodemon": "^2.0.3",
+    "showdown": "^1.9.1",
     "ts-node": "^8.10.1",
     "typescript": "^3.8.3",
     "xml-js": "^1.6.11"

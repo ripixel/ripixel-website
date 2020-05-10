@@ -20,11 +20,12 @@ pages.forEach((page) => {
       .readFileSync(template, "utf8")
       .replace(new RegExp(`{page}`, "g"), pageName);
 
-    templateContents;
-    pageContents = pageContents.replace(
-      new RegExp(`{${template.replace("templates/", "")}}`, "g"),
-      templateContents
-    );
+    pageContents = pageContents
+      .replace(
+        new RegExp(`{${template.replace("templates/", "")}}`, "g"),
+        templateContents
+      )
+      .replace("{subpage}", "");
   });
 
   fs.writeFileSync(page.replace("pages/", "public/"), pageContents, "utf8");

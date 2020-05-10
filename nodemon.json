@@ -2,8 +2,9 @@
   "watch": [
     "pages",
     "assets",
-    "templates"
+    "templates",
+    "thoughts"
   ],
-  "ext": "html,css",
+  "ext": "html,css,md",
   "exec": "npm run build:dev"
 }
