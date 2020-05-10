@@ -312,13 +312,16 @@ footer {
   text-align: center;
 }
 
-footer a {
-  color: #777;
-  text-decoration: none;
-  border-color: #777;
+footer a path {
+  fill: #777;
+}
+
+footer a:hover path {
+  fill: #ccc;
 }
 
 footer .copy {
+  padding-top: 10px;
   font-size: 0.8em;
 }
 
