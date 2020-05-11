@@ -7,15 +7,50 @@ const SITE_ROOT = "https://www.ripixel.co.uk/";
 
 console.log("/// Beginning sitemap generation");
 
-const generatedPages = findInDir("./public", ".html")
+const generatedPagesLocations = findInDir("./public", ".html");
+const generatedPages = generatedPagesLocations
   .filter((page) => page !== "public/404.html" && page !== "public/index.html")
   .map((page) => page.replace("public/", "").replace(".html", ""));
+
+const pagesModifiedDates: {
+  [key: string]: Date;
+} = {};
+
+const templatePagesLocations = findInDir("./pages", ".html");
+const thoughtsPagesLocations = findInDir("./thoughts/articles", ".md");
+
+templatePagesLocations.forEach((pageLocation) => {
+  pagesModifiedDates[
+    SITE_ROOT +
+      pageLocation
+        .replace("pages/", "")
+        .replace(".html", "")
+        .replace("index", "")
+  ] = fs.statSync(pageLocation).mtime;
+});
+
+thoughtsPagesLocations.forEach((pageLocation) => {
+  pagesModifiedDates[
+    SITE_ROOT + pageLocation.replace("articles/", "").replace(".md", "")
+  ] = fs.statSync(pageLocation).mtime;
+});
 
 console.log(
   `Found ${generatedPages.length} public pages (not including index or 404)`
 );
 
 const generateUrlElement = (loc: string) => {
+  let changefreq = loc === SITE_ROOT ? "monthly" : "weekly";
+  let prio = loc === SITE_ROOT ? "1.0" : "0.8";
+
+  if (loc.indexOf("thoughts/") > -1) {
+    // is an article/subpage
+    prio = "0.5";
+    changefreq = "yearly";
+  }
+
+  console.log(loc, prio, changefreq);
+
   return {
     type: "element",
     name: "url",
@@ -36,7 +71,7 @@ const generateUrlElement = (loc: string) => {
         elements: [
           {
             type: "text",
-            text: new Date().toISOString().split("T")[0],
+            text: pagesModifiedDates[loc].toISOString().split("T")[0],
           },
         ],
       },
@@ -46,7 +81,7 @@ const generateUrlElement = (loc: string) => {
         elements: [
           {
             type: "text",
-            text: loc === SITE_ROOT ? "monthly" : "weekly",
+            text: changefreq,
           },
         ],
       },
@@ -56,7 +91,7 @@ const generateUrlElement = (loc: string) => {
         elements: [
           {
             type: "text",
-            text: loc === SITE_ROOT ? "1.0" : "0.5",
+            text: prio,
           },
         ],
       },
