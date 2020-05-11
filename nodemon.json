@@ -6,5 +6,5 @@
     "thoughts"
   ],
   "ext": "html,css,md",
-  "exec": "npm run build:dev"
+  "exec": "rm -rf public/ && npm run build:dev"
 }

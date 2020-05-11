@@ -29,13 +29,14 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Fredoka One", cursive;
+  font-family: "Fredoka One", sans-serif;
   letter-spacing: 0.1em;
 }
 
 p,
 ol,
-ul {
+ul,
+blockquote {
   line-height: 1.5em;
   padding-bottom: 1em;
   /* letter-spacing: 0.05em; */
@@ -99,7 +100,7 @@ nav a:hover {
 }
 
 nav ul {
-  font-family: "Fredoka One", cursive;
+  font-family: "Fredoka One", sans-serif;
   letter-spacing: 0.1em;
   margin-top: 20px;
 }
@@ -177,7 +178,7 @@ main {
 }
 
 main > p {
-  font-family: "Fredoka One", cursive;
+  font-family: "Fredoka One", sans-serif;
   letter-spacing: 0.1em;
   font-size: 1.2em;
   text-align: center;
@@ -214,6 +215,22 @@ main.area {
   padding: 40px 120px 30px;
   font-size: 0.7em;
   max-width: 100%;
+}
+
+.thoughts.details {
+  font-size: 1em;
+  align-items: center;
+}
+
+.thoughts.details p {
+  padding-top: 0;
+  margin-right: 10px;
+  padding-bottom: 10px;
+}
+
+.thoughts.details .button {
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -511,6 +528,27 @@ em {
   text-transform: none;
 }
 
+.article section.area h3,
+.article section.area h4,
+.article section.area h5,
+.article section.area h6 {
+  font-family: "Lato", sans-serif;
+  font-weight: normal;
+}
+
+.article section.area h3 {
+  font-size: 1.2em;
+}
+.article section.area h4 {
+  font-size: 1.1em;
+}
+.article section.area h5 {
+  font-size: 1.05em;
+}
+.article section.area h6 {
+  font-size: 1em;
+}
+
 .article section.area p {
   text-align: justify;
 }
@@ -518,7 +556,8 @@ em {
 .article section.area p,
 .article section.area img,
 .article section.area ol,
-.article section.area ul {
+.article section.area ul,
+.article section.area blockquote {
   margin-left: 10px;
 }
 

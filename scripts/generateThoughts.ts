@@ -35,6 +35,7 @@ const articlesGenerated: Array<{
   link: string;
   body: string;
   date: string;
+  dateNum: number;
 }> = [];
 
 articles.forEach((article) => {
@@ -44,7 +45,8 @@ articles.forEach((article) => {
   let [datestring, titleWithDash] = articleWithoutFolder
     .replace(".html", "")
     .split("_");
-  const date = dateFormat(new Date(datestring), "do LLL, u");
+  const dateObj = new Date(datestring);
+  const date = dateFormat(dateObj, "do LLL, u");
   const title = titleWithDash.replace(/-/g, " ");
   const body = mdConverter.makeHtml(fs.readFileSync(article, "utf8"));
 
@@ -73,6 +75,7 @@ articles.forEach((article) => {
     link: `${datestring}_${titleWithDash}`,
     title,
     date,
+    dateNum: dateObj.valueOf(),
     body: `${splitBody[0]}</p>${splitBody[1]}</p>`,
   });
 });
@@ -82,13 +85,35 @@ console.log(`Generated ${articlesGenerated.length} articles`);
 console.log("Updating thoughts page proper");
 let thoughtsPageContents = fs.readFileSync("./public/thoughts.html", "utf8");
 
+const startRepPos = thoughtsPageContents.indexOf("<!--START_REP-->") + 16; // +16 for length of comment tag
+const endRepPos = thoughtsPageContents.indexOf("<!--END_REP-->");
+
+const repeatableBlock = thoughtsPageContents.substr(
+  startRepPos,
+  endRepPos - startRepPos
+);
+
+let blockToPaste = "";
+
+articlesGenerated.sort((a, b) => b.dateNum - a.dateNum); // most-recent first
+
 for (let i = 0; i < Math.min(2, articlesGenerated.length); i++) {
-  thoughtsPageContents = thoughtsPageContents
-    .replace(`{title${i}}`, articlesGenerated[i].title)
-    .replace(`{date${i}}`, articlesGenerated[i].date)
-    .replace(`{body${i}}`, articlesGenerated[i].body)
-    .replace(`{link${i}}`, articlesGenerated[i].link);
+  blockToPaste =
+    blockToPaste +
+    `${repeatableBlock}`
+      .replace(`{title}`, articlesGenerated[i].title)
+      .replace(`{date}`, articlesGenerated[i].date)
+      .replace(`{body}`, articlesGenerated[i].body)
+      .replace(`{link}`, articlesGenerated[i].link);
 }
+
+thoughtsPageContents =
+  `${thoughtsPageContents}`.substr(0, startRepPos) +
+  blockToPaste +
+  `${thoughtsPageContents}`.substr(
+    endRepPos,
+    thoughtsPageContents.length - endRepPos
+  );
 
 console.log("Updated thoughts page");
 

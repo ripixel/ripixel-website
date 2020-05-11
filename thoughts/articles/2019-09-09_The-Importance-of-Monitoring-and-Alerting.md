@@ -19,6 +19,8 @@ For the purpose of this story, this is actually not important (although obviousl
 
 ## So, how did we get here?
 
+Oh, so many questions, so few graphs...
+
 ### The Service
 
 First thing's first - let's have a look at the monitoring that was in place on the service I was calling:
