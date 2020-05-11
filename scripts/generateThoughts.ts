@@ -17,7 +17,7 @@ let thoughtsPageTemplateContents = fs.readFileSync(
 templates.forEach((template) => {
   const templateContents = fs
     .readFileSync(template, "utf8")
-    .replace(new RegExp(`{page}`, "g"), "thoughts");
+    .replace(/{page}/g, "thoughts");
 
   thoughtsPageTemplateContents = thoughtsPageTemplateContents.replace(
     new RegExp(`{${template.replace("templates/", "")}}`, "g"),
@@ -48,19 +48,26 @@ articles.forEach((article) => {
   const title = titleWithDash.replace(/-/g, " ");
   const body = mdConverter.makeHtml(fs.readFileSync(article, "utf8"));
 
+  const splitBody = body.split("</p>");
+
   const articleContents = thoughtsPageTemplateContents
     .replace("{title}", title)
     .replace("{date}", date)
     .replace("{body}", body)
-    .replace("thoughts {subpage}", `${title}`);
+    .replace(/thoughts {subpage}/g, `${title}`)
+    .replace(
+      /{description}/g,
+      `${splitBody[0]} ${splitBody[1]}`
+        .replace(/\<(.*?)\>/g, "")
+        .replace("\n", "")
+    );
+
   console.log(`Found article ${title} published ${date}`);
   fs.writeFileSync(
     `public/thoughts/${articleWithoutFolder}`,
     articleContents,
     "utf8"
   );
-
-  const splitBody = body.split("</p>");
 
   articlesGenerated.push({
     link: `${datestring}_${titleWithDash}`,

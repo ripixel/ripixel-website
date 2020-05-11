@@ -1,10 +1,8 @@
-_This thought was first published on the [DVELP blog](https://dvelp.co.uk/articles/monitoring-and-alerting) - but it was still written by me!_
-
 We all know that monitoring and alerting are important, right? But just _how_ important do we really think that? How much do we show that in what we do?
 
-## What happened?
-
 This is a story about an experience I had at a previous company, where I had the pleasure of being at least partially responsible for the system going down, and what we learned.
+
+## What happened?
 
 As some scene-setting - we had to implement a service that would be accessed anytime a user visited the site. I did the work, got it reviewed, tested, and hey-presto, got it live. More testing, ensure nothing went bang, and went home.
 
@@ -72,3 +70,5 @@ So, some takeaways from my (traumatic) trip down memory lane about how I took do
 - Data is only important if you use it
 - Graphs and alerts are really boring until _they save you_
 - Give developers time to make "of no immediate value" things like monitoring and alerting, and make it part of any Acceptance into Service checklists
+
+_This thought was first published on the [DVELP blog](https://dvelp.co.uk/articles/monitoring-and-alerting) - but it was still written by me!_

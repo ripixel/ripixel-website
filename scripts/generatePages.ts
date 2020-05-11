@@ -15,6 +15,22 @@ pages.forEach((page) => {
     pageName = "home";
   }
 
+  let description = "I'm James King, and I make things for the web";
+  switch (pageName) {
+    case "thoughts":
+      description = "A peak inside my brain you ask? Reader, beware...";
+      break;
+    case "profile":
+      description =
+        "So who am I? I'm James King, a 27 year old Software Engineer from Lincolnshire. You want some more info?";
+      break;
+    case "coding":
+      description = "Shall we take a look at some projects I've done?";
+      break;
+    default:
+    // do nothing - already set description for home/index
+  }
+
   templates.forEach((template) => {
     const templateContents = fs
       .readFileSync(template, "utf8")
@@ -25,7 +41,8 @@ pages.forEach((page) => {
         new RegExp(`{${template.replace("templates/", "")}}`, "g"),
         templateContents
       )
-      .replace("{subpage}", "");
+      .replace(/{subpage}/g, "")
+      .replace(/{description}/g, description);
   });
 
   fs.writeFileSync(page.replace("pages/", "public/"), pageContents, "utf8");
