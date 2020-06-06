@@ -5,8 +5,8 @@
     "main": "index.js",
     "scripts": {
         "dev": "nodemon",
-        "build": "mkdir -p ./public && npm run build:css && npm run build:favicons && npm run build:pages && npm run build:images && npm run build:thoughts && npm run build:sitemap",
-        "build:dev": "mkdir -p ./public && npm run build:css && npm run build:pages && npm run build:images && npm run build:thoughts",
+        "build": "mkdir -p ./public && npm run build:css && npm run build:favicons && npm run build:pages && npm run build:images && npm run build:thoughts && npm run build:sitemap && npm run build:changelog",
+        "build:dev": "mkdir -p ./public && npm run build:css && npm run build:pages && npm run build:images && npm run build:thoughts && npm run build:changelog",
         "build:pages": "ts-node ./scripts/generatePages",
         "build:css": "cleancss -o ./public/styles.min.css ./assets/styles/*.css",
         "build:favicons": "favicons-generate",
@@ -15,7 +15,7 @@
         "build:changelog": "ts-node ./scripts/generateChangelog",
         "build:thoughts": "mkdir -p ./public/thoughts && ts-node ./scripts/generateThoughts",
         "release": "standard-version",
-        "rbp": "npm run release && npm run build &&"
+        "rp": "npm run release && git push --follow-tags origin master"
     },
     "repository": {
         "type": "git",

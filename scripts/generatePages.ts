@@ -27,6 +27,9 @@ pages.forEach((page) => {
     case "coding":
       description = "Shall we take a look at some projects I've done?";
       break;
+    case "changelog":
+      description = "What changes have happened to this site?";
+      break;
     default:
     // do nothing - already set description for home/index
   }

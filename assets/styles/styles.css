@@ -270,6 +270,31 @@ main.area {
   white-space: nowrap;
 }
 
+main.changelog {
+  min-height: 0;
+  background: #fff;
+  color: #333;
+}
+
+main.changelog * {
+  text-transform: none;
+}
+
+main.changelog a {
+  color: #333;
+  border-bottom: 1px solid #333;
+}
+
+main.changelog a:hover {
+  color: #aaa;
+  border-bottom: 1px solid #aaa;
+}
+
+main.changelog section {
+  border-left: none;
+  padding-left: 0;
+}
+
 main.coding {
   min-height: 0;
   background: rgb(78, 0, 72);
@@ -354,6 +379,16 @@ footer a:hover path {
 footer .copy {
   padding-top: 10px;
   font-size: 0.8em;
+}
+
+footer .copy a {
+  color: #777;
+  border-bottom: 1px solid #777;
+}
+
+footer .copy a:hover {
+  color: #ccc;
+  border-bottom: 1px solid #ccc;
 }
 
 .flexme {

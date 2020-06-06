@@ -45,8 +45,14 @@ const generateUrlElement = (loc: string) => {
 
   if (loc.indexOf("thoughts/") > -1) {
     // is an article/subpage
-    prio = "0.5";
+    prio = "1";
     changefreq = "yearly";
+  }
+
+  if (loc.indexOf("changelog") > 1) {
+    // it's the changelog
+    prio = "0.1";
+    changefreq = "weekly";
   }
 
   console.log(loc, prio, changefreq);
