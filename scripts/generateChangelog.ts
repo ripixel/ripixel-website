@@ -21,11 +21,12 @@ changelogHtmlContent = changelogHtmlContent.replace(
 fs.writeFileSync(CHANGELOG_HTML_LOCATION, changelogHtmlContent, "utf8");
 
 const versionMatch = changelogMdContent.match(
-  /## ((0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?)/
+  /(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?/
 );
 
-const version =
-  versionMatch && versionMatch.length > 2 ? versionMatch[1] : "ER.RO.R";
+const version = versionMatch ? versionMatch[0] : "ER.RO.R";
+
+console.log(`Found version v${version}`);
 
 const pages = findInDir("./public", ".html");
 
@@ -33,5 +34,7 @@ pages.forEach((page) => {
   const pageContent = fs.readFileSync(page, "utf8");
   fs.writeFileSync(page, pageContent.replace("{version}", version), "utf8");
 });
+
+console.log(`Updated ${pages.length} with correct version changelog link`);
 
 console.log("/// Finished changelog generation");

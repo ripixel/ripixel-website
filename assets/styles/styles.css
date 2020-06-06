@@ -280,6 +280,15 @@ main.changelog * {
   text-transform: none;
 }
 
+main.changelog h1,
+main.changelog h2,
+main.changelog h3,
+main.changelog h4,
+main.changelog h5,
+main.changelog h6 {
+  padding-bottom: 20px !important;
+}
+
 main.changelog a {
   color: #333;
   border-bottom: 1px solid #333;
