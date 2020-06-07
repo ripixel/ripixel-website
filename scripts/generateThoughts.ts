@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import showdown from "showdown";
+import showdownHighlight from "showdown-highlight";
 import { format as dateFormat } from "date-fns";
 
 import findInDir from "./findInDir";
@@ -28,7 +29,9 @@ templates.forEach((template) => {
 console.log(`Processing articles`);
 const articles = findInDir("./thoughts/articles", ".md");
 
-const mdConverter = new showdown.Converter();
+const mdConverter = new showdown.Converter({
+  extensions: [showdownHighlight],
+});
 
 const articlesGenerated: Array<{
   title: string;
