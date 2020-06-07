@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/ripixelcodes/ripixel-website/compare/v2.2.0...v2.3.0) (2020-06-07)
+
+
+### Features
+
+* Added code syntax highlighting for use in articles ([9dd2dd4](https://github.com/ripixelcodes/ripixel-website/commit/9dd2dd4868f9d9a47f4479c3080ad1bc952bc321))
+
 ## [2.2.0](https://github.com/ripixelcodes/ripixel-website/compare/v2.1.4...v2.2.0) (2020-06-07)
 
 
