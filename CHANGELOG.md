@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/ripixelcodes/ripixel-website/compare/v2.3.0...v2.4.0) (2020-06-08)
+
+
+### Features
+
+* Added linting and pre-push hooks ([b633d99](https://github.com/ripixelcodes/ripixel-website/commit/b633d99366ef9bb20b32d969bd0e6fbef568aec6))
+
 ## [2.3.0](https://github.com/ripixelcodes/ripixel-website/compare/v2.2.0...v2.3.0) (2020-06-07)
 
 
