@@ -66,3 +66,6 @@ node_modules/
 
 # Public output
 public/
+
+# Reports output
+reports/

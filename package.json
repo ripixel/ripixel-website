@@ -14,8 +14,10 @@
         "build:sitemap": "ts-node ./scripts/generateSitemap",
         "build:changelog": "ts-node ./scripts/generateChangelog",
         "build:thoughts": "mkdir -p ./public/thoughts && ts-node ./scripts/generateThoughts",
-        "release": "standard-version",
-        "rp": "npm run release && git push --follow-tags origin master"
+        "lint": "eslint \"scripts/**/*{.js,.ts}\"",
+        "lint:ci": "eslint \"scripts/**/*{.js,.ts}\" --format junit -o reports/eslint/results.xml",
+        "release": "npm run lint && standard-version",
+        "rp": "npm run release && git push --follow-tags origin master --no-verify"
     },
     "repository": {
         "type": "git",
@@ -29,17 +31,31 @@
     "homepage": "https://github.com/ripixelcodes/ripixel-website#readme",
     "devDependencies": {
         "@types/node": "^13.13.5",
+        "@types/prettier": "^2.0.1",
         "@types/showdown": "^1.9.3",
+        "@typescript-eslint/eslint-plugin": "^3.2.0",
+        "@typescript-eslint/parser": "^3.2.0",
         "clean-css-cli": "^4.3.0",
         "date-fns": "^2.13.0",
+        "eslint": "^7.2.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-plugin-prettier": "^3.1.3",
         "favicons-generate": "0.0.15",
         "firebase-tools": "^8.2.0",
+        "husky": "^4.2.5",
         "nodemon": "^2.0.3",
+        "prettier": "^2.0.5",
+        "pretty-quick": "^2.0.1",
         "showdown": "^1.9.1",
         "showdown-highlight": "^2.1.4",
         "standard-version": "^8.0.0",
         "ts-node": "^8.10.1",
         "typescript": "^3.8.3",
         "xml-js": "^1.6.11"
+    },
+    "husky": {
+        "hooks": {
+            "pre-push": "pretty-quick --staged"
+        }
     }
 }

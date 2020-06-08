@@ -1,33 +1,33 @@
-import * as fs from "fs";
-import showdown from "showdown";
-import showdownHighlight from "showdown-highlight";
-import { format as dateFormat } from "date-fns";
+import * as fs from 'fs';
+import showdown from 'showdown';
+import showdownHighlight from 'showdown-highlight';
+import { format as dateFormat } from 'date-fns';
 
-import findInDir from "./findInDir";
+import findInDir from './findInDir';
 
-console.log("/// Beginning generation of thoughts");
+console.log('/// Beginning generation of thoughts');
 
-const templates = findInDir("./templates", ".html");
+const templates = findInDir('./templates', '.html');
 
 console.log(`Processing initial thoughts page template`);
 let thoughtsPageTemplateContents = fs.readFileSync(
-  "./thoughts/template.html",
-  "utf8"
+  './thoughts/template.html',
+  'utf8'
 );
 
 templates.forEach((template) => {
   const templateContents = fs
-    .readFileSync(template, "utf8")
-    .replace(/{page}/g, "thoughts");
+    .readFileSync(template, 'utf8')
+    .replace(/{page}/g, 'thoughts');
 
   thoughtsPageTemplateContents = thoughtsPageTemplateContents.replace(
-    new RegExp(`{${template.replace("templates/", "")}}`, "g"),
+    new RegExp(`{${template.replace('templates/', '')}}`, 'g'),
     templateContents
   );
 });
 
 console.log(`Processing articles`);
-const articles = findInDir("./thoughts/articles", ".md");
+const articles = findInDir('./thoughts/articles', '.md');
 
 const mdConverter = new showdown.Converter({
   extensions: [showdownHighlight],
@@ -43,35 +43,35 @@ const articlesGenerated: Array<{
 
 articles.forEach((article) => {
   const articleWithoutFolder = article
-    .replace("thoughts/articles/", "")
-    .replace(".md", ".html");
-  let [datestring, titleWithDash] = articleWithoutFolder
-    .replace(".html", "")
-    .split("_");
+    .replace('thoughts/articles/', '')
+    .replace('.md', '.html');
+  const [datestring, titleWithDash] = articleWithoutFolder
+    .replace('.html', '')
+    .split('_');
   const dateObj = new Date(datestring);
-  const date = dateFormat(dateObj, "do LLL, u");
-  const title = titleWithDash.replace(/-/g, " ");
-  const body = mdConverter.makeHtml(fs.readFileSync(article, "utf8"));
+  const date = dateFormat(dateObj, 'do LLL, u');
+  const title = titleWithDash.replace(/-/g, ' ');
+  const body = mdConverter.makeHtml(fs.readFileSync(article, 'utf8'));
 
-  const splitBody = body.split("</p>");
+  const splitBody = body.split('</p>');
 
   const articleContents = thoughtsPageTemplateContents
-    .replace("{title}", title)
-    .replace("{date}", date)
-    .replace("{body}", body)
+    .replace('{title}', title)
+    .replace('{date}', date)
+    .replace('{body}', body)
     .replace(/thoughts {subpage}/g, `${title}`)
     .replace(
       /{description}/g,
       `${splitBody[0]} ${splitBody[1]}`
-        .replace(/\<(.*?)\>/g, "")
-        .replace("\n", "")
+        .replace(/<(.*?)>/g, '')
+        .replace('\n', '')
     );
 
   console.log(`Found article ${title} published ${date}`);
   fs.writeFileSync(
     `public/thoughts/${articleWithoutFolder}`,
     articleContents,
-    "utf8"
+    'utf8'
   );
 
   articlesGenerated.push({
@@ -85,18 +85,18 @@ articles.forEach((article) => {
 
 console.log(`Generated ${articlesGenerated.length} articles`);
 
-console.log("Updating thoughts page proper");
-let thoughtsPageContents = fs.readFileSync("./public/thoughts.html", "utf8");
+console.log('Updating thoughts page proper');
+let thoughtsPageContents = fs.readFileSync('./public/thoughts.html', 'utf8');
 
-const startRepPos = thoughtsPageContents.indexOf("<!--START_REP-->") + 16; // +16 for length of comment tag
-const endRepPos = thoughtsPageContents.indexOf("<!--END_REP-->");
+const startRepPos = thoughtsPageContents.indexOf('<!--START_REP-->') + 16; // +16 for length of comment tag
+const endRepPos = thoughtsPageContents.indexOf('<!--END_REP-->');
 
 const repeatableBlock = thoughtsPageContents.substr(
   startRepPos,
   endRepPos - startRepPos
 );
 
-let blockToPaste = "";
+let blockToPaste = '';
 
 articlesGenerated.sort((a, b) => b.dateNum - a.dateNum); // most-recent first
 
@@ -118,8 +118,8 @@ thoughtsPageContents =
     thoughtsPageContents.length - endRepPos
   );
 
-console.log("Updated thoughts page");
+console.log('Updated thoughts page');
 
-fs.writeFileSync("./public/thoughts.html", thoughtsPageContents, "utf8");
+fs.writeFileSync('./public/thoughts.html', thoughtsPageContents, 'utf8');
 
-console.log("/// Finished generation of thoughts");
+console.log('/// Finished generation of thoughts');

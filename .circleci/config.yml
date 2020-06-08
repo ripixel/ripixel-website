@@ -21,6 +21,20 @@ jobs: # a collection of steps
           paths:
             - ~/tmp/node_modules
 
+  lint: # lint the project - requires dependencies to have been installed
+    executor: node-project
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run: # run linter
+          name: Linting
+          command: npm run lint:ci
+      - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
+          path: ~/tmp/reports/eslint
+      - store_artifacts:
+          path: ~/tmp/reports/eslint
+
   build: # build the project - requires dependencies to have been installed
     executor: node-project
     steps:
@@ -58,6 +72,9 @@ workflows:
   build_and_deploy:
     jobs:
       - install_deps
+      - lint:
+          requires:
+            - install_deps
       - build:
           requires:
             - install_deps
@@ -67,3 +84,4 @@ workflows:
               only: master
           requires:
             - build
+            - lint

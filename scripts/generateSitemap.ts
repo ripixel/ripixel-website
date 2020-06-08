@@ -1,37 +1,37 @@
-import * as fs from "fs";
-import { js2xml } from "xml-js";
+import * as fs from 'fs';
+import { js2xml } from 'xml-js';
 
-import findInDir from "./findInDir";
+import findInDir from './findInDir';
 
-const SITE_ROOT = "https://www.ripixel.co.uk/";
+const SITE_ROOT = 'https://www.ripixel.co.uk/';
 
-console.log("/// Beginning sitemap generation");
+console.log('/// Beginning sitemap generation');
 
-const generatedPagesLocations = findInDir("./public", ".html");
+const generatedPagesLocations = findInDir('./public', '.html');
 const generatedPages = generatedPagesLocations
-  .filter((page) => page !== "public/404.html" && page !== "public/index.html")
-  .map((page) => page.replace("public/", "").replace(".html", ""));
+  .filter((page) => page !== 'public/404.html' && page !== 'public/index.html')
+  .map((page) => page.replace('public/', '').replace('.html', ''));
 
 const pagesModifiedDates: {
   [key: string]: Date;
 } = {};
 
-const templatePagesLocations = findInDir("./pages", ".html");
-const thoughtsPagesLocations = findInDir("./thoughts/articles", ".md");
+const templatePagesLocations = findInDir('./pages', '.html');
+const thoughtsPagesLocations = findInDir('./thoughts/articles', '.md');
 
 templatePagesLocations.forEach((pageLocation) => {
   pagesModifiedDates[
     SITE_ROOT +
       pageLocation
-        .replace("pages/", "")
-        .replace(".html", "")
-        .replace("index", "")
+        .replace('pages/', '')
+        .replace('.html', '')
+        .replace('index', '')
   ] = fs.statSync(pageLocation).mtime;
 });
 
 thoughtsPagesLocations.forEach((pageLocation) => {
   pagesModifiedDates[
-    SITE_ROOT + pageLocation.replace("articles/", "").replace(".md", "")
+    SITE_ROOT + pageLocation.replace('articles/', '').replace('.md', '')
   ] = fs.statSync(pageLocation).mtime;
 });
 
@@ -40,63 +40,63 @@ console.log(
 );
 
 const generateUrlElement = (loc: string) => {
-  let changefreq = loc === SITE_ROOT ? "monthly" : "weekly";
-  let prio = loc === SITE_ROOT ? "1.0" : "0.8";
+  let changefreq = loc === SITE_ROOT ? 'monthly' : 'weekly';
+  let prio = loc === SITE_ROOT ? '1.0' : '0.8';
 
-  if (loc.indexOf("thoughts/") > -1) {
+  if (loc.indexOf('thoughts/') > -1) {
     // is an article/subpage
-    prio = "1";
-    changefreq = "yearly";
+    prio = '1';
+    changefreq = 'yearly';
   }
 
-  if (loc.indexOf("changelog") > 1) {
+  if (loc.indexOf('changelog') > 1) {
     // it's the changelog
-    prio = "0.1";
-    changefreq = "weekly";
+    prio = '0.1';
+    changefreq = 'weekly';
   }
 
   console.log(loc, prio, changefreq);
 
   return {
-    type: "element",
-    name: "url",
+    type: 'element',
+    name: 'url',
     elements: [
       {
-        type: "element",
-        name: "loc",
+        type: 'element',
+        name: 'loc',
         elements: [
           {
-            type: "text",
+            type: 'text',
             text: loc,
           },
         ],
       },
       {
-        type: "element",
-        name: "lastmod",
+        type: 'element',
+        name: 'lastmod',
         elements: [
           {
-            type: "text",
-            text: pagesModifiedDates[loc].toISOString().split("T")[0],
+            type: 'text',
+            text: pagesModifiedDates[loc].toISOString().split('T')[0],
           },
         ],
       },
       {
-        type: "element",
-        name: "changefreq",
+        type: 'element',
+        name: 'changefreq',
         elements: [
           {
-            type: "text",
+            type: 'text',
             text: changefreq,
           },
         ],
       },
       {
-        type: "element",
-        name: "priority",
+        type: 'element',
+        name: 'priority',
         elements: [
           {
-            type: "text",
+            type: 'text',
             text: prio,
           },
         ],
@@ -108,16 +108,16 @@ const generateUrlElement = (loc: string) => {
 const sitemapJs = {
   declaration: {
     attributes: {
-      version: "1.0",
-      encoding: "utf-8",
+      version: '1.0',
+      encoding: 'utf-8',
     },
   },
   elements: [
     {
-      type: "element",
-      name: "urlset",
+      type: 'element',
+      name: 'urlset',
       attributes: {
-        xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9",
+        xmlns: 'http://www.sitemaps.org/schemas/sitemap/0.9',
       },
       elements: [generateUrlElement(SITE_ROOT)],
     },
@@ -130,6 +130,6 @@ generatedPages.forEach((page) => {
 
 const sitemapXml = js2xml(sitemapJs, { spaces: 4 });
 
-fs.writeFileSync("./public/sitemap.xml", sitemapXml, "utf8");
+fs.writeFileSync('./public/sitemap.xml', sitemapXml, 'utf8');
 
-console.log("/// Finished sitemap generation");
+console.log('/// Finished sitemap generation');
