@@ -16,7 +16,7 @@
         "build:thoughts": "mkdir -p ./public/thoughts && ts-node ./scripts/generateThoughts",
         "lint": "eslint \"scripts/**/*{.js,.ts}\"",
         "lint:ci": "eslint \"scripts/**/*{.js,.ts}\" --format junit -o reports/eslint/results.xml",
-        "release": "standard-version",
+        "release": "standard-version -m '[skip ci]'",
         "release:ci": "npm run release && git push --follow-tags origin master --no-verify"
     },
     "repository": {
