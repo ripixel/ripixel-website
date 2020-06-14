@@ -12,12 +12,12 @@ jobs: # a collection of steps
     steps:
       - checkout
       - restore_cache: # special step to restore the dependency cache
-          key: dependency-cache-{{ checksum "package-lock.json" }}
+          key: dependency-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
       - run:
           name: Install NPM Dependencies
           command: npm i
       - save_cache: # special step to save the dependency cache
-          key: dependency-cache-{{ checksum "package-lock.json" }}
+          key: dependency-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
           paths:
             - ~/tmp/node_modules
 
@@ -26,7 +26,7 @@ jobs: # a collection of steps
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
+          key: dependency-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
       - run: # run linter
           name: Linting
           command: npm run lint:ci
@@ -40,7 +40,7 @@ jobs: # a collection of steps
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
+          key: dependency-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
       - run:
           name: Add Git User details
           command: |
@@ -50,18 +50,20 @@ jobs: # a collection of steps
           name: Bump version and generate changelog
           command: npm run release:ci
       - save_cache: # special step to save the changelog
-          key: changelog-cache-{{ checksum "package-lock.json" }}
+          key: changelog-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
           paths:
             - ~/tmp/CHANGELOG.md
+            - ~/tmp/package-lock.json
+            - ~/tmp/package.json
 
   build: # build the project - requires dependencies to have been installed
     executor: node-project
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
+          key: dependency-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
       - restore_cache:
-          key: changelog-cache-{{ checksum "package-lock.json" }}
+          key: changelog-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
       - run: # run build
           name: Build
           command: |
@@ -83,7 +85,7 @@ jobs: # a collection of steps
       - restore_cache: # restore the /public folder and associated deploy files
           key: deploy-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
       - restore_cache: # special step to restore the dependency cache
-          key: dependency-cache-{{ checksum "package-lock.json" }}
+          key: dependency-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
       - run:
           name: Deploy to Firebase Hosting
           command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
