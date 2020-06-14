@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.0](https://github.com/ripixelcodes/ripixel-website/compare/v2.6.0...v2.7.0) (2020-06-14)
+
+
+### Features
+
+* Add staging workflow ([964188e](https://github.com/ripixelcodes/ripixel-website/commit/964188e6ea5e629997db0b94b9c59c66982ddff4))
+
 ## [2.6.0](https://github.com/ripixelcodes/ripixel-website/compare/v2.5.3...v2.6.0) (2020-06-14)
 
 
