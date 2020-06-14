@@ -35,6 +35,21 @@ jobs: # a collection of steps
       - store_artifacts:
           path: ~/tmp/reports/eslint
 
+  version: # version the project
+    executor: node-project
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: Add Git User details
+          command: |
+            git config --global user.email "ripixel+ci@gmail.com"
+            git config --global user.name "CircleCi"
+      - run:
+          name: Standard version
+          command: npm run release:ci
+
   build: # build the project - requires dependencies to have been installed
     executor: node-project
     steps:
@@ -75,13 +90,21 @@ workflows:
       - lint:
           requires:
             - install_deps
-      - build:
+      - version:
+          filters:
+            branches:
+              only: master
           requires:
-            - install_deps
+            - lint
+      - build:
+          filters:
+            branches:
+              only: master
+          requires:
+            - version
       - deploy_to_firebase:
           filters:
             branches:
               only: master
           requires:
             - build
-            - lint
