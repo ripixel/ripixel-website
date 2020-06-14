@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.5.1](https://github.com/ripixelcodes/ripixel-website/compare/v2.5.0...v2.5.1) (2020-06-14)
+
+
+### Bug Fixes
+
+* Do not build tags ([c7ef7a0](https://github.com/ripixelcodes/ripixel-website/commit/c7ef7a009e9c3c3a80dc76b50b6a3f7e168d96ee))
+* Save changelog to cache for building ([7a7cb47](https://github.com/ripixelcodes/ripixel-website/commit/7a7cb4743af14492f9ca22c3b5582698491620b1))
+
 ## [2.5.0](https://github.com/ripixelcodes/ripixel-website/compare/v2.4.0...v2.5.0) (2020-06-14)
 
 
