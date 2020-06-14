@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.5.2](https://github.com/ripixelcodes/ripixel-website/compare/v2.5.1...v2.5.2) (2020-06-14)
+
+
+### Bug Fixes
+
+* More descriptive tag standard-version commit message ([59e0171](https://github.com/ripixelcodes/ripixel-website/commit/59e01710a96986892d0bcd27fe9cacaf91c1eb5e))
+* Oops! Add node_mods back in for build step CI ([17eeee2](https://github.com/ripixelcodes/ripixel-website/commit/17eeee22c13d77fb3d39c965654b9a2c849f3f47))
+
 ### [2.5.1](https://github.com/ripixelcodes/ripixel-website/compare/v2.5.0...v2.5.1) (2020-06-14)
 
 
