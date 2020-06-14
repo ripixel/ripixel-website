@@ -47,15 +47,20 @@ jobs: # a collection of steps
             git config --global user.email "ripixel+ci@gmail.com"
             git config --global user.name "CircleCi"
       - run:
-          name: Standard version
+          name: Bump version and generate changelog
           command: npm run release:ci
+      - save_cache: # special step to save the cache
+          key: versioned-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - ~/tmp/node_modules
+            - ~/tmp/CHANGELOG.md
 
   build: # build the project - requires dependencies to have been installed
     executor: node-project
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
+          key: versioned-cache-{{ checksum "package-lock.json" }}
       - run: # run build
           name: Build
           command: |
