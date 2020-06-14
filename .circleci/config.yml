@@ -35,7 +35,29 @@ jobs: # a collection of steps
       - store_artifacts:
           path: ~/tmp/reports/eslint
 
-  version: # version the project
+  build_without_version: # build the project - requires dependencies to have been installed
+    executor: node-project
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+      - restore_cache:
+          key: changelog-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+      - run: # run build
+          name: Build
+          command: npm run build
+      - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
+          path: public
+          prefix: public
+      - save_cache: # special step to save the public cache and deploy files
+          key: deploy-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+          paths:
+            - ~/tmp/public
+            - ~/tmp/.firebaserc
+            - ~/tmp/firebase.json
+            - ~/tmp/package-lock.json
+
+  build_and_version:
     executor: node-project
     steps:
       - checkout
@@ -49,25 +71,9 @@ jobs: # a collection of steps
       - run:
           name: Bump version and generate changelog
           command: npm run release:ci
-      - save_cache: # special step to save the changelog
-          key: changelog-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
-          paths:
-            - ~/tmp/CHANGELOG.md
-            - ~/tmp/package-lock.json
-            - ~/tmp/package.json
-
-  build: # build the project - requires dependencies to have been installed
-    executor: node-project
-    steps:
-      - checkout
-      - restore_cache:
-          key: dependency-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
-      - restore_cache:
-          key: changelog-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
       - run: # run build
           name: Build
-          command: |
-            npm run build
+          command: npm run build
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: public
           prefix: public
@@ -79,7 +85,7 @@ jobs: # a collection of steps
             - ~/tmp/firebase.json
             - ~/tmp/package-lock.json
 
-  deploy_to_firebase: # deploy the project to prod - SHOULD ONLY BE RUN ON MASTER BRANCH
+  deploy_to_firebase_prod: # deploy the project to prod - SHOULD ONLY BE RUN ON MASTER BRANCH
     executor: node-project
     steps:
       - restore_cache: # restore the /public folder and associated deploy files
@@ -87,8 +93,19 @@ jobs: # a collection of steps
       - restore_cache: # special step to restore the dependency cache
           key: dependency-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
       - run:
-          name: Deploy to Firebase Hosting
-          command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
+          name: Deploy to Firebase Production Hosting
+          command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting:production
+
+  deploy_to_firebase_stg: # deploy the project to staging - SHOULD ONLY BE RUN ON STAGING BRANCH
+    executor: node-project
+    steps:
+      - restore_cache: # restore the /public folder and associated deploy files
+          key: deploy-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+      - restore_cache: # special step to restore the dependency cache
+          key: dependency-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+      - run:
+          name: Deploy to Firebase Staging Hosting
+          command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting:staging
 
 workflows:
   version: 2
@@ -98,21 +115,28 @@ workflows:
       - lint:
           requires:
             - install_deps
-      - version:
+      - build_without_version:
+          filters:
+            branches:
+              ignore: master
+          requires:
+            - install_deps
+      - build_and_version:
           filters:
             branches:
               only: master
           requires:
+            - install_deps
             - lint
-      - build:
+      - deploy_to_firebase_prod:
           filters:
             branches:
               only: master
           requires:
-            - version
-      - deploy_to_firebase:
+            - build_and_version
+      - deploy_to_firebase_stg:
           filters:
             branches:
-              only: master
+              only: staging
           requires:
-            - build
+            - build_without_version

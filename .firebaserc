@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "ripixel-f24bf"
+  },
+  "targets": {
+    "ripixel-f24bf": {
+      "hosting": {
+        "production": [
+          "ripixel-f24bf"
+        ],
+        "staging": [
+          "ripixel-staging"
+        ]
+      }
+    }
   }
 }
