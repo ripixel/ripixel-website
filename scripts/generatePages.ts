@@ -45,7 +45,15 @@ pages.forEach((page) => {
         templateContents
       )
       .replace(/{subpage}/g, '')
-      .replace(/{description}/g, description);
+      .replace(/{description}/g, description)
+      .replace(
+        /{age}/g,
+        new Number(
+          (new Date().getTime() - new Date('1992-05-21').getTime()) /
+            31536000000
+        ).toFixed(0)
+      )
+      .replace(/{year}/g, new Date().getFullYear().toString());
   });
 
   fs.writeFileSync(page.replace('pages/', 'public/'), pageContents, 'utf8');
