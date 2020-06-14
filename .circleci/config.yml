@@ -49,10 +49,9 @@ jobs: # a collection of steps
       - run:
           name: Bump version and generate changelog
           command: npm run release:ci
-      - save_cache: # special step to save the cache
-          key: versioned-cache-{{ checksum "package-lock.json" }}
+      - save_cache: # special step to save the changelog
+          key: changelog-cache-{{ checksum "package-lock.json" }}
           paths:
-            - ~/tmp/node_modules
             - ~/tmp/CHANGELOG.md
 
   build: # build the project - requires dependencies to have been installed
@@ -60,7 +59,9 @@ jobs: # a collection of steps
     steps:
       - checkout
       - restore_cache:
-          key: versioned-cache-{{ checksum "package-lock.json" }}
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - restore_cache:
+          key: changelog-cache-{{ checksum "package-lock.json" }}
       - run: # run build
           name: Build
           command: |
