@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.5.3](https://github.com/ripixelcodes/ripixel-website/compare/v2.5.2...v2.5.3) (2020-06-14)
+
+
+### Bug Fixes
+
+* Ammend changelog message to have skip CI at the end ([057ff04](https://github.com/ripixelcodes/ripixel-website/commit/057ff045f2e8aab20c6100a48a85d97e05fcd3e5))
+* Use circle workflow ID for caches ([491cc62](https://github.com/ripixelcodes/ripixel-website/commit/491cc6263eed5e98a700a30065b4ce927b9456f9))
+
 ### [2.5.2](https://github.com/ripixelcodes/ripixel-website/compare/v2.5.1...v2.5.2) (2020-06-14)
 
 
