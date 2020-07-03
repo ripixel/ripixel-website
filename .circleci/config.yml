@@ -132,10 +132,12 @@ workflows:
             branches:
               only: master
           requires:
+            - lint
             - build_and_version
       - deploy_to_firebase_stg:
           filters:
             branches:
               only: staging
           requires:
+            - lint
             - build_without_version
