@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.7.2](https://github.com/ripixelcodes/ripixel-website/compare/v2.7.1...v2.7.2) (2020-07-03)
+
+
+### Bug Fixes
+
+* Do not require lint for build_and_version step ([#2](https://github.com/ripixelcodes/ripixel-website/issues/2)) ([e6ec40f](https://github.com/ripixelcodes/ripixel-website/commit/e6ec40f4a777d2cd13673d3a60c9de0a101cf1d9))
+* Require lint for build steps ([#3](https://github.com/ripixelcodes/ripixel-website/issues/3)) ([49e463e](https://github.com/ripixelcodes/ripixel-website/commit/49e463eba337503e45e9727c99fe819af5f7b397))
+
 ### [2.7.1](https://github.com/ripixelcodes/ripixel-website/compare/v2.7.0...v2.7.1) (2020-07-03)
 
 ## [2.7.0](https://github.com/ripixelcodes/ripixel-website/compare/v2.6.0...v2.7.0) (2020-06-14)
