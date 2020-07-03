@@ -45,7 +45,7 @@ jobs: # a collection of steps
           key: changelog-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
       - run: # run build
           name: Build
-          command: npm run build
+          command: npm run build:dev
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: public
           prefix: public

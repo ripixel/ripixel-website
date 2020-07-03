@@ -53,7 +53,13 @@ pages.forEach((page) => {
             31536000000
         ).toFixed(0)
       )
-      .replace(/{year}/g, new Date().getFullYear().toString());
+      .replace(/{year}/g, new Date().getFullYear().toString())
+      .replace(
+        /{noindex}/g,
+        process.env.NODE_ENV === 'development'
+          ? '<meta name="robots" content="noindex" />'
+          : ''
+      );
   });
 
   fs.writeFileSync(page.replace('pages/', 'public/'), pageContents, 'utf8');

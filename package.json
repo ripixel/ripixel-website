@@ -5,8 +5,8 @@
     "main": "index.js",
     "scripts": {
         "dev": "nodemon",
-        "build": "mkdir -p ./public && npm run build:css && npm run build:favicons && npm run build:pages && npm run build:images && npm run build:thoughts && npm run build:sitemap && npm run build:changelog",
-        "build:dev": "mkdir -p ./public && npm run build:css && npm run build:pages && npm run build:images && npm run build:thoughts && npm run build:changelog",
+        "build": "mkdir -p ./public && npm run build:css && npm run build:favicons && NODE_ENV=production npm run build:pages && npm run build:images && npm run build:thoughts && npm run build:sitemap && npm run build:changelog",
+        "build:dev": "mkdir -p ./public && npm run build:css && NODE_ENV=development npm run build:pages && npm run build:images && npm run build:thoughts",
         "build:pages": "ts-node ./scripts/generatePages",
         "build:css": "cleancss -o ./public/styles.min.css ./assets/styles/*.css",
         "build:favicons": "favicons-generate",
