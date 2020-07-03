@@ -127,7 +127,6 @@ workflows:
               only: master
           requires:
             - install_deps
-            - lint
       - deploy_to_firebase_prod:
           filters:
             branches:
