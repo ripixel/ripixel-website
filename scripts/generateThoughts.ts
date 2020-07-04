@@ -66,6 +66,7 @@ articles.forEach((article) => {
         .replace(/<(.*?)>/g, '')
         .replace('\n', '')
     )
+    .replace(/{year}/g, new Date().getFullYear().toString())
     .replace(
       /{noindex}/g,
       process.env.NODE_ENV === 'development'
