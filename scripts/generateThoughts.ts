@@ -65,6 +65,12 @@ articles.forEach((article) => {
       `${splitBody[0]} ${splitBody[1]}`
         .replace(/<(.*?)>/g, '')
         .replace('\n', '')
+    )
+    .replace(
+      /{noindex}/g,
+      process.env.NODE_ENV === 'development'
+        ? '<meta name="robots" content="noindex" />'
+        : ''
     );
 
   console.log(`Found article ${title} published ${date}`);
