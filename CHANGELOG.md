@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.8.3](https://github.com/ripixelcodes/ripixel-website/compare/v2.8.2...v2.8.3) (2020-08-16)
+
+
+### Bug Fixes
+
+* **article:** Correct spelling errors in Stop Blaming Slack article ([00f3f3e](https://github.com/ripixelcodes/ripixel-website/commit/00f3f3e2d40015dd63bdfec7c6b43d735187d970))
+
 ### [2.8.2](https://github.com/ripixelcodes/ripixel-website/compare/v2.8.1...v2.8.2) (2020-08-16)
 
 ### [2.8.1](https://github.com/ripixelcodes/ripixel-website/compare/v2.8.0...v2.8.1) (2020-08-16)
