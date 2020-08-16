@@ -5,6 +5,8 @@ import { format as dateFormat } from 'date-fns';
 
 import findInDir from './findInDir';
 
+const ARTICLES_TO_SHOW = 5;
+
 console.log('/// Beginning generation of thoughts');
 
 const templates = findInDir('./templates', '.html');
@@ -107,7 +109,7 @@ let blockToPaste = '';
 
 articlesGenerated.sort((a, b) => b.dateNum - a.dateNum); // most-recent first
 
-for (let i = 0; i < Math.min(2, articlesGenerated.length); i++) {
+for (let i = 0; i < Math.min(ARTICLES_TO_SHOW, articlesGenerated.length); i++) {
   blockToPaste =
     blockToPaste +
     `${repeatableBlock}`
