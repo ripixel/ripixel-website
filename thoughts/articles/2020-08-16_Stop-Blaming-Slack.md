@@ -1,10 +1,10 @@
-These unprecedent times have caused many companies to shift to or expand their usage of communication technologies, such as Microsoft Teams and Slack. With this expansion have come teething issues - as would be expected.
+These unprecedented times have caused many companies to shift to or expand their usage of communication technologies, such as Microsoft Teams and Slack. With this expansion have come teething issues - as would be expected.
 
 What I didn't expect though is the number of articles decrying Slack specifically as mostly a terrible thing, and that it ["has made work more taxing"](https://www.ft.com/content/e036016c-39f0-4ce7-a64b-845f764d3254). To those writing these articles: stop blaming Slack.
 
 ## Slack is not a real-time communication app
 
-Slack (and other workplace communication tools) are primarily intended to replace (or supplement) *email*. You know, that incredibly slow, old-fashioned, and unreliable mechanism. The one where you have to trawl through endless replies/forwards/"I don't think they're CC'd into this email chain" messages to find the actual information you want. Or even more accurately, to often find that most of the emails you receive you don't even need to read.
+Slack (and other workplace communication tools) are primarily intended to replace (or supplement) _email_. You know, that incredibly slow, old-fashioned, and unreliable mechanism. The one where you have to trawl through endless replies/forwards/"I don't think they're CC'd into this email chain" messages to find the actual information you want. Or even more accurately, to often find that most of the emails you receive you don't even need to read.
 
 Slack steps in here, allowing companies who use it to create channels, stick all the people related to that topic (ie #team-marketing), so that anything the marketing team needs gets posted there.
 
@@ -22,7 +22,7 @@ It's important that you respect the Do Not Disturb flag, and that your employees
 
 Yet another issue is that "now I have to monitor email and Slack" - again, not Slack's fault - it's your company.
 
-While it's true Slack is not a complete replacement for email (you still need to email people outside of your organisation, unless you have brought them into your Slack org via a shared channel), Slack *should* replace **all internal email**. I should only be checking it for external communications, which I should receive a lot fewer of in the first place. If people are still sending things via email that should be via Slack, employees should feel able to say "Hey, for future communications can you pop into our Slack channel?" without fear of repremand.
+While it's true Slack is not a complete replacement for email (you still need to email people outside of your organisation, unless you have brought them into your Slack org via a shared channel), Slack _should_ replace **all internal email**. I should only be checking it for external communications, which I should receive a lot fewer of in the first place. If people are still sending things via email that should be via Slack, employees should feel able to say "Hey, for future communications can you pop into our Slack channel?" without fear of reprimand.
 
 If you find yourself having to check multiple communication apps, then please, for the love of all that is holy, as an organization **pick one and ditch the others**. Be that Slack, Teams, Facebook Workplace, or whatever. You may say "Oh but the marketing team prefer X and the business ops team prefer Y", but at the end of the day it's much-of-a-muchness. You will reduce hate, workload, and stress by having a single internal communications platform.
 
