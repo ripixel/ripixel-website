@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.8.1](https://github.com/ripixelcodes/ripixel-website/compare/v2.8.0...v2.8.1) (2020-08-16)
+
+
+### Bug Fixes
+
+* Update articles to show on Thoughts page to 5 ([56d258c](https://github.com/ripixelcodes/ripixel-website/commit/56d258c57319f95fb9a379dd8c60e7859e446f85))
+
 ## [2.8.0](https://github.com/ripixelcodes/ripixel-website/compare/v2.7.4...v2.8.0) (2020-08-16)
 
 
