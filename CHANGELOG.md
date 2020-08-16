@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.8.0](https://github.com/ripixelcodes/ripixel-website/compare/v2.7.4...v2.8.0) (2020-08-16)
+
+
+### Features
+
+* **article:** Added Stop Blaming Slack article ([1a5bb0e](https://github.com/ripixelcodes/ripixel-website/commit/1a5bb0ea4463a086e3b2b636417b453f2a2ed403))
+
 ### [2.7.4](https://github.com/ripixelcodes/ripixel-website/compare/v2.7.3...v2.7.4) (2020-07-04)
 
 
