@@ -21,14 +21,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ripixelcodes/ripixel-website.git"
+        "url": "git+https://github.com/ripixel/ripixel-website.git"
     },
     "author": "James King <ripixel@gmail.com>",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/ripixelcodes/ripixel-website/issues"
+        "url": "https://github.com/ripixel/ripixel-website/issues"
     },
-    "homepage": "https://github.com/ripixelcodes/ripixel-website#readme",
+    "homepage": "https://github.com/ripixel/ripixel-website#readme",
     "devDependencies": {
         "@types/node": "^13.13.5",
         "@types/prettier": "^2.0.1",
