@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.9.0](https://github.com/ripixel/ripixel-website/compare/v2.8.5...v2.9.0) (2020-11-08)
+
+
+### Features
+
+* Added CodeQL analysis action workflow ([eed4bed](https://github.com/ripixel/ripixel-website/commit/eed4bed0b4893ff06ca30b819d18d995aed2dc77))
+
+
+### Bug Fixes
+
+* Update machine details on profile ([d9419d5](https://github.com/ripixel/ripixel-website/commit/d9419d524f50567aeb6a39e9cca5808d1c2e9c6d))
+* Update references to github.com/ripixelcodes to /ripixel ([28bdd30](https://github.com/ripixel/ripixel-website/commit/28bdd30c3b27c8b0b1ad83180931344bd370312c))
+
 ### [2.8.5](https://github.com/ripixelcodes/ripixel-website/compare/v2.8.4...v2.8.5) (2020-11-08)
 
 ### [2.8.4](https://github.com/ripixelcodes/ripixel-website/compare/v2.8.3...v2.8.4) (2020-11-08)
