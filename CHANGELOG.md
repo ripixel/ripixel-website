@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.10.0](https://github.com/ripixel/ripixel-website/compare/v2.9.1...v2.10.0) (2020-11-30)
+
+
+### Features
+
+* Added serious/silly game items ([0e9d54d](https://github.com/ripixel/ripixel-website/commit/0e9d54dfb7706dd4008249681505cb69cb4110f7))
+* Updated profile with new role and various updates ([d279465](https://github.com/ripixel/ripixel-website/commit/d27946535395e399852da5c327d5dcf14ffccef4))
+
 ### [2.9.1](https://github.com/ripixel/ripixel-website/compare/v2.9.0...v2.9.1) (2020-11-29)
 
 ## [2.9.0](https://github.com/ripixel/ripixel-website/compare/v2.8.5...v2.9.0) (2020-11-08)
