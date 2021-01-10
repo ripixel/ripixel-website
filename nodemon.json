@@ -2,7 +2,7 @@
   "watch": [
     "pages",
     "assets",
-    "templates",
+    "partials",
     "thoughts"
   ],
   "ext": "html,css,md",

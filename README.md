@@ -8,7 +8,7 @@ SSGs are amazing, if you want a full-fledged site. But if you just want to dumb 
 
 ## What
 
-This repo simply looks for any `{template_name.html}` in the body of the `pages/page_name.html`, and replaces it with the content of `templates/template_name.html`, and writes it to `public/page_name.html` with that new content.
+This repo simply looks for any `{template_name.html}` in the body of the `pages/page_name.html`, and replaces it with the content of `partials/template_name.html`, and writes it to `public/page_name.html` with that new content.
 
 It also does a few other little things, like looking for `{page}` and replacing it with the `page_name` (for uses like `class="home"` and setting the `<title>`).
 

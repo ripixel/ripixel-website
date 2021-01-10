@@ -1,12 +1,12 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-export const findInDir = (startPath: string, filter: string): string[] => {
-  console.log(
-    `Finding files in directory '${startPath}' containing '${filter}'`
-  );
+const findInDir = (startPath: string, filter: string): string[] => {
+  // console.log(
+  //   `Finding files in directory '${startPath}' containing '${filter}'`
+  // );
   if (!fs.existsSync(startPath)) {
-    console.error('no dir ' + startPath);
+    // console.error('no dir ' + startPath);
     return [];
   }
 
@@ -22,7 +22,7 @@ export const findInDir = (startPath: string, filter: string): string[] => {
     }
   }
 
-  console.log(`Found ${foundFiles.length} files`);
+  // console.log(`Found ${foundFiles.length} files`);
   return foundFiles;
 };
 
