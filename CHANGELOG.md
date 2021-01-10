@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/ripixel/ripixel-website/compare/v2.10.0...v3.0.0) (2021-01-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* Initial moving to single humble SSG script rather than npm
+
+### Features
+
+* Initial moving to single humble SSG script rather than npm ([91a9f78](https://github.com/ripixel/ripixel-website/commit/91a9f780576ddfdbac24acebada0ce862a451960))
+
 ## [2.10.0](https://github.com/ripixel/ripixel-website/compare/v2.9.1...v2.10.0) (2020-11-30)
 
 
