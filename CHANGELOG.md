@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/ripixel/ripixel-website/compare/v3.0.0...v3.1.0) (2021-02-17)
+
+
+### Features
+
+* Added presentation timer section on coding page ([0dca7db](https://github.com/ripixel/ripixel-website/commit/0dca7db0026d44ace5bacf34e3f127f727f4683d))
+
+
+### Bug Fixes
+
+* Remove double-underline from version number in footer ([b8e5b73](https://github.com/ripixel/ripixel-website/commit/b8e5b73548a1d49440eb279aab194098e3bdd9cd))
+
 ## [3.0.0](https://github.com/ripixel/ripixel-website/compare/v2.10.0...v3.0.0) (2021-01-10)
 
 
