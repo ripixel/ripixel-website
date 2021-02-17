@@ -52,7 +52,7 @@ const generatePages = (): void => {
           new Number(
             (new Date().getTime() - new Date('1992-05-21').getTime()) /
               31536000000
-          ).toFixed(0)
+          ).toFixed(0) - 1
         )
         .replace(/{year}/g, new Date().getFullYear().toString())
         .replace(
