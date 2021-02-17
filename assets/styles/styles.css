@@ -1,5 +1,5 @@
 body {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 200;
   background: #111;
   color: #fff;
@@ -29,7 +29,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Fredoka One", sans-serif;
+  font-family: 'Fredoka One', sans-serif;
   letter-spacing: 0.1em;
 }
 
@@ -100,7 +100,7 @@ nav a:hover {
 }
 
 nav ul {
-  font-family: "Fredoka One", sans-serif;
+  font-family: 'Fredoka One', sans-serif;
   letter-spacing: 0.1em;
   margin-top: 20px;
 }
@@ -178,7 +178,7 @@ main {
 }
 
 main > p {
-  font-family: "Fredoka One", sans-serif;
+  font-family: 'Fredoka One', sans-serif;
   letter-spacing: 0.1em;
   font-size: 1.2em;
   text-align: center;
@@ -261,7 +261,7 @@ main.area {
 
 .details .item h4 {
   text-transform: uppercase;
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   padding-bottom: 2px;
 }
 
@@ -393,6 +393,7 @@ footer .copy {
 footer .copy a {
   color: #777;
   border-bottom: 1px solid #777;
+  text-decoration: none;
 }
 
 footer .copy a:hover {
@@ -579,7 +580,7 @@ em {
 .article section.area h4,
 .article section.area h5,
 .article section.area h6 {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: normal;
 }
 
@@ -616,7 +617,7 @@ em {
 
 .article section.area ol li:before,
 .article section.area ul li:before {
-  content: " - ";
+  content: ' - ';
   margin-left: 10px;
 }
 
