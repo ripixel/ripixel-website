@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.1](https://github.com/ripixel/ripixel-website/compare/v3.1.0...v3.1.1) (2021-02-17)
+
+
+### Bug Fixes
+
+* Made age correct on profile page ([1d6a4cf](https://github.com/ripixel/ripixel-website/commit/1d6a4cfe8905832d6c891bf1326d3377845c039d))
+* Really fixed the age this time ([88a38cc](https://github.com/ripixel/ripixel-website/commit/88a38cce2049f36ce8ec2f22e43080fae865ed58))
+
 ## [3.1.0](https://github.com/ripixel/ripixel-website/compare/v3.0.0...v3.1.0) (2021-02-17)
 
 
