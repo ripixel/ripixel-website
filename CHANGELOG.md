@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.2](https://github.com/ripixel/ripixel-website/compare/v3.1.1...v3.1.2) (2021-02-17)
+
+
+### Bug Fixes
+
+* Re-order items on coding page ([8e1c89d](https://github.com/ripixel/ripixel-website/commit/8e1c89dae72048d50eea75cced9ba95aed23b24d))
+
 ### [3.1.1](https://github.com/ripixel/ripixel-website/compare/v3.1.0...v3.1.1) (2021-02-17)
 
 
