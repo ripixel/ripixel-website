@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.0](https://github.com/ripixel/ripixel-website/compare/v3.1.4...v3.2.0) (2021-03-17)
+
+
+### Features
+
+* add rel=me to twitter and github links ([9e65f05](https://github.com/ripixel/ripixel-website/commit/9e65f05acd20dc07664dc36b3711929920f47d74))
+
 ### [3.1.4](https://github.com/ripixel/ripixel-website/compare/v3.1.3...v3.1.4) (2021-03-08)
 
 ### [3.1.3](https://github.com/ripixel/ripixel-website/compare/v3.1.2...v3.1.3) (2021-02-18)
