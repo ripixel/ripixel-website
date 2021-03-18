@@ -169,11 +169,11 @@ workflows:
   hourly:
     triggers:
       - schedule:
-        cron: '55 * * * *'
-        filters:
-          branches:
-            only:
-              - master
+          cron: '55 * * * *'
+          filters:
+            branches:
+              only:
+                - master
     jobs:
       - install_deps
       - lint:
