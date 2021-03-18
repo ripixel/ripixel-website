@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/ripixel/ripixel-website/compare/v3.3.0...v4.0.0) (2021-03-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* implemented webmention receiving and cron-scheduled ci runs
+
+### Features
+
+* implemented webmention receiving and cron-scheduled ci runs ([89c2f07](https://github.com/ripixel/ripixel-website/commit/89c2f07795ed0d2828ab6602fa17591a1c814fdf))
+
+
+### Bug Fixes
+
+* update workflow with correct schedule formatting ([103ca52](https://github.com/ripixel/ripixel-website/commit/103ca5269785f257a81126263e2b2954e715dbe2))
+
 ## [3.3.0](https://github.com/ripixel/ripixel-website/compare/v3.2.0...v3.3.0) (2021-03-17)
 
 
