@@ -207,6 +207,119 @@ main.area {
   min-height: 30vh;
 }
 
+.mentions {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 40px 120px 20px;
+  max-width: 100%;
+  font-size: 1em;
+}
+
+.mentions .item {
+  background: rgba(0, 0, 0, 0.2);
+  margin-right: 10px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-family: 'Lato', sans-serif;
+}
+
+.mentions .item span {
+  padding: 10px;
+}
+
+.mentions h4 {
+  padding-bottom: 10px;
+}
+
+.mentions > div {
+  max-width: 100%;
+  padding-bottom: 20px;
+}
+
+.mention-links a {
+  display: inline-block;
+}
+
+.mention-links img {
+  background-color: #999;
+  max-width: 30px;
+  vertical-align: middle;
+  border-left: 2px solid #fff;
+}
+
+.comments {
+  max-width: 100%;
+}
+
+.comments .mention-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.mention-links .comment {
+  background: #025a44;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.mention-links .comment:last-child {
+  margin-bottom: 0;
+}
+
+.mention-links .comment .comment-link {
+  padding: 5px;
+  float: right;
+  margin-right: 0;
+  margin-bottom: 0;
+  font-size: 0.8em;
+}
+
+.mention-links .comment .comment-link:hover {
+  transform: none;
+}
+
+.mention-links .comment p {
+  padding: 0 10px 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .mentions {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 20px 40px 10px;
+  }
+
+  .mention-links {
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .comments .mention-links {
+    white-space: normal;
+  }
+
+  .mention-links .comment {
+    max-width: 100%;
+  }
+
+  .mention-links .comment p {
+    padding: 10px;
+  }
+
+  .mentions .item {
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .mentions {
+    padding: 20px 30px 10px;
+  }
+}
+
 .details {
   display: flex;
   justify-content: flex-start;
@@ -330,6 +443,10 @@ main.thoughts section h3 {
 
 main.thoughts.details {
   background: rgb(1, 65, 49);
+}
+
+main.thoughts.mentions {
+  background: rgb(0, 112, 84);
 }
 
 main.profile {

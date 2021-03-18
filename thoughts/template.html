@@ -16,6 +16,92 @@
       </section>
     </main>
 
+    <!-- START_MENTIONS -->
+    <main class="thoughts mentions">
+      <!-- START_LIKES -->
+      <div class="likes">
+        <h4>{LIKES} likes</h4>
+        <div class="mention-links">
+          <!-- START_LIKES_REP -->
+          <a
+            class="item"
+            href="{mention_link}"
+            target="_blank"
+            rel="external noopener noreferrer"
+          >
+            <img
+              src="{mention_avatar}"
+              loading="lazy"
+              decoding="async"
+              width="28"
+              height="28"
+            /><span>{mention_name}</span></a
+          >
+          <!-- END_LIKES_REP -->
+        </div>
+      </div>
+      <!-- END_LIKES -->
+
+      <!-- START_REPOSTS -->
+      <div class="reposts">
+        <h4>{REPOSTS} reposts</h4>
+        <div class="mention-links">
+          <!-- START_REPOSTS_REP -->
+          <a
+            class="item"
+            href="{mention_link}"
+            target="_blank"
+            rel="external noopener noreferrer"
+          >
+            <img
+              src="{mention_avatar}"
+              loading="lazy"
+              decoding="async"
+              width="28"
+              height="28"
+            /><span>{mention_name}</span></a
+          >
+          <!-- END_REPOSTS_REP -->
+        </div>
+      </div>
+      <!-- END_REPOSTS -->
+
+      <!-- START_COMMENTS -->
+      <div class="comments">
+        <h4>{COMMENTS} comments</h4>
+        <div class="mention-links">
+          <!-- START_COMMENTS_REP -->
+          <div class="comment">
+            <a
+              class="item"
+              href="{mention_link}"
+              target="_blank"
+              rel="external noopener noreferrer"
+            >
+              <img
+                src="{mention_avatar}"
+                loading="lazy"
+                decoding="async"
+                width="28"
+                height="28"
+              /><span>{mention_name}</span></a
+            >
+            <p>{comment}</p>
+            <a
+              class="item comment-link"
+              href="{comment_link}"
+              target="_blank"
+              rel="external noopener noreferrer"
+              ><span>View</span></a
+            >
+          </div>
+          <!-- END_COMMENTS_REP -->
+        </div>
+      </div>
+      <!-- END_COMMENTS -->
+    </main>
+    <!-- END_MENTIONS -->
+
     <main class="thoughts details">
       <p>Thanks for reading! Fancy sharing...?</p>
       <a href="/thoughts" class="button">More thoughts</a>

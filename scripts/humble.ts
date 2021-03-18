@@ -47,8 +47,8 @@ const allTaskList = [
   {
     title: 'Build Repeatable Pages',
     task: () =>
-      execa(`mkdir`, [`-p`, `${outDir}/thoughts`]).then(() =>
-        generateThoughts()
+      execa(`mkdir`, [`-p`, `${outDir}/thoughts`]).then(
+        async () => await generateThoughts()
       ),
   },
 ];

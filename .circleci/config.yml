@@ -35,7 +35,7 @@ jobs: # a collection of steps
       - store_artifacts:
           path: ~/tmp/reports/eslint
 
-  build_without_version: # build the project - requires dependencies to have been installed
+  build_dev: # build the project - requires dependencies to have been installed
     executor: node-project
     steps:
       - checkout
@@ -57,7 +57,32 @@ jobs: # a collection of steps
             - ~/tmp/firebase.json
             - ~/tmp/package-lock.json
 
-  build_and_version:
+  build_prod_no_version:
+    executor: node-project
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+      - run:
+          name: Add Git User details
+          command: |
+            git config --global user.email "ripixel+ci@gmail.com"
+            git config --global user.name "CircleCi"
+      - run: # run build
+          name: Build
+          command: npm run build
+      - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
+          path: public
+          prefix: public
+      - save_cache: # special step to save the public cache and deploy files
+          key: deploy-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+          paths:
+            - ~/tmp/public
+            - ~/tmp/.firebaserc
+            - ~/tmp/firebase.json
+            - ~/tmp/package-lock.json
+
+  build_prod_with_version:
     executor: node-project
     steps:
       - checkout
@@ -115,13 +140,13 @@ workflows:
       - lint:
           requires:
             - install_deps
-      - build_without_version:
+      - build_dev:
           filters:
             branches:
               ignore: master
           requires:
             - install_deps
-      - build_and_version:
+      - build_prod_with_version:
           filters:
             branches:
               only: master
@@ -133,11 +158,31 @@ workflows:
               only: master
           requires:
             - lint
-            - build_and_version
+            - build_prod_with_version
       - deploy_to_firebase_stg:
           filters:
             branches:
               only: staging
           requires:
             - lint
-            - build_without_version
+            - build_dev
+  hourly:
+    triggers:
+      - schedule:
+        cron: '55 * * * *'
+        filters:
+          branches:
+            only:
+              - master
+    jobs:
+      - install_deps
+      - lint:
+          requires:
+            - install_deps
+      - build_prod_no_version:
+          requires:
+            - install_deps
+      - deploy_to_firebase_prod:
+          requires:
+            - lint
+            - build_prod_no_version
