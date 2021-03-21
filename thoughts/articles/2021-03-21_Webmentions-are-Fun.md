@@ -33,9 +33,9 @@ You should then be dumped at the settings page, with some code that looks very s
 
 <link
   rel="webmention"
-  href="https://webmention.io/www.ripixel.co.uk/webmention"
+  href="https://webmention.io/www.your-website.com/webmention"
 />
-<link rel="pingback" href="https://webmention.io/www.ripixel.co.uk/xmlrpc" />
+<link rel="pingback" href="https://webmention.io/www.your-website.com/xmlrpc" />
 ```
 
 Once you've done that, that's it! You're ready to accept webmentions! Any pages trying to send a webmention will see those tags, and know where to send requests.
