@@ -57,7 +57,7 @@ export const webmentionsForPage = (
     .filter((mention) => mention['wm-target'] === url)
     .sort(
       (a, b) =>
-        new Date(b.published).getTime() - new Date(a.published).getTime()
+        new Date(a.published).getTime() - new Date(b.published).getTime()
     )
     .map(clean);
 

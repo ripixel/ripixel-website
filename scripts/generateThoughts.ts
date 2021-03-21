@@ -5,11 +5,12 @@ import { format as dateFormat } from 'date-fns';
 
 import findInDir from './findInDir';
 import { getWebmentions, webmentionsForPage } from './getWebmentions';
+import { generateRssFeed } from './generateRssFeed';
 
 const ARTICLES_TO_SHOW = 5;
 
 const generateWebmentionBlock = (
-  tag: string,
+  tag: 'COMMENTS' | 'LIKES' | 'REPOSTS',
   content: string,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   mentions: any[]
@@ -162,8 +163,10 @@ const generateThoughts = async (): Promise<void> => {
   const articlesGenerated: Array<{
     title: string;
     link: string;
+    excerpt: string;
     body: string;
     date: string;
+    dateObj: Date;
     dateNum: number;
   }> = [];
 
@@ -173,7 +176,7 @@ const generateThoughts = async (): Promise<void> => {
     const articleWithoutFolder = article
       .replace('thoughts/articles/', '')
       .replace('.md', '.html');
-    console.log(`Processing article ${articleWithoutFolder}`);
+    // console.log(`Processing article ${articleWithoutFolder}`);
     const [datestring, titleWithDash] = articleWithoutFolder
       .replace('.html', '')
       .split('_');
@@ -220,8 +223,10 @@ const generateThoughts = async (): Promise<void> => {
       link: `${datestring}_${titleWithDash}`,
       title,
       date,
+      dateObj,
       dateNum: dateObj.valueOf(),
-      body: `${splitBody[0]}</p>${splitBody[1]}</p>`,
+      body,
+      excerpt: `${splitBody[0]}</p>${splitBody[1]}</p>`,
     });
   });
 
@@ -254,7 +259,7 @@ const generateThoughts = async (): Promise<void> => {
       `${repeatableBlock}`
         .replace(`{title}`, articlesGenerated[i].title)
         .replace(`{date}`, articlesGenerated[i].date)
-        .replace(`{body}`, articlesGenerated[i].body)
+        .replace(`{body}`, articlesGenerated[i].excerpt)
         .replace(`{link}`, articlesGenerated[i].link);
   }
 
@@ -269,6 +274,8 @@ const generateThoughts = async (): Promise<void> => {
   // console.log('Updated thoughts page');
 
   fs.writeFileSync('./public/thoughts.html', thoughtsPageContents, 'utf8');
+
+  generateRssFeed(articlesGenerated);
 
   // console.log('/// Finished generation of thoughts');
 };

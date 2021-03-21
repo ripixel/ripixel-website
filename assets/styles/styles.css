@@ -5,6 +5,13 @@ body {
   color: #fff;
 }
 
+code {
+  font-family: 'Courier New', Courier, monospace;
+  background: rgba(0, 0, 0, 0.2);
+  font-size: 0.8em;
+  padding: 0.1em 0.3em;
+}
+
 * {
   font-size: 1em;
   position: relative;
