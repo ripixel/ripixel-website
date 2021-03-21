@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.0](https://github.com/ripixel/ripixel-website/compare/v4.0.0...v4.1.0) (2021-03-21)
+
+
+### Features
+
+* add RSS feed generation ([f4661cb](https://github.com/ripixel/ripixel-website/commit/f4661cbbd47f91d14f7772aed7adbd340417c32e))
+* add RSS feed link to thoughts page ([537d9c8](https://github.com/ripixel/ripixel-website/commit/537d9c8a5ebd6c779ea6804f063053575970d8d8))
+* add Webmentions are Fun article ([1fa2bbd](https://github.com/ripixel/ripixel-website/commit/1fa2bbd3cc3bcdc811800b12d2e1b68813be5052))
+
 ## [4.0.0](https://github.com/ripixel/ripixel-website/compare/v3.3.0...v4.0.0) (2021-03-18)
 
 
