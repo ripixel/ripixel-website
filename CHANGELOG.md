@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.1.2](https://github.com/ripixel/ripixel-website/compare/v4.1.1...v4.1.2) (2021-03-21)
+
+
+### Bug Fixes
+
+* spelling mistakes on Webmentions article ([36693a7](https://github.com/ripixel/ripixel-website/commit/36693a704b090eed96299609d5d7dec2932519be))
+
 ### [4.1.1](https://github.com/ripixel/ripixel-website/compare/v4.1.0...v4.1.1) (2021-03-21)
 
 
