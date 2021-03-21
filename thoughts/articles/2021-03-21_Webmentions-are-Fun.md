@@ -42,7 +42,7 @@ Once you've done that, that's it! You're ready to accept webmentions! Any pages 
 
 ### Rendering webmentions
 
-So this will be different depending on how your website works, but as I'm a crazy person who wrote their own (admiteddly very noddy) Static Site Generator, I had to do all this manually (code shamelessly stolen from Luke's article).
+So this will be different depending on how your website works, but as I'm a crazy person who wrote their own (admittedly very noddy) Static Site Generator, I had to do all this manually (code shamelessly stolen from Luke's article).
 
 So, when I'm generating my articles, I first get all the webmentions for my site using the below script:
 
@@ -66,7 +66,7 @@ export const getWebmentions = async (): Promise<any[]> => {
 };
 ```
 
-Ensre you define `WEBMENTION_BASE_URL`, `DOMAIN` and your `WEBMENTION_IO_TOKEN`, and you when this runs you'll now have all webmentions for your entire website!
+Ensure you define `WEBMENTION_BASE_URL`, `DOMAIN` and your `WEBMENTION_IO_TOKEN`, and you when this runs you'll now have all webmentions for your entire website!
 
 So the next step is to filter out the webmentions you care about for each page. The following script takes all the webmentions, and filters out the ones that aren't any of the types we care about (more on that in a moment), and only for the page we care about:
 
@@ -232,7 +232,7 @@ Now this is where my janky SSG really makes things look complicated, but essenti
 <!-- END_MENTIONS -->
 ```
 
-Those `<!-- START_X -->` and `<!-- END_X -->` blocks are for my SSG script to see which bits should be repeated. The script that then replaces them looks something like (ommitting the SSG jank bits):
+Those `<!-- START_X -->` and `<!-- END_X -->` blocks are for my SSG script to see which bits should be repeated. The script that then replaces them looks something like (omitting the SSG janky bits):
 
 ```typescript
 // TypeScript
