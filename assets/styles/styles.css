@@ -73,6 +73,18 @@ a.button {
   margin-top: 10px;
 }
 
+a.rss {
+  border-bottom: none;
+}
+
+a.rss svg path {
+  fill: #fff;
+}
+
+a.rss:hover svg path {
+  fill: #ccc;
+}
+
 nav {
   padding: 40px;
   background: #333;
