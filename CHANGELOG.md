@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.1.1](https://github.com/ripixel/ripixel-website/compare/v4.1.0...v4.1.1) (2021-03-21)
+
+
+### Bug Fixes
+
+* remove ripixel.co.uk from sample code ([f5ac153](https://github.com/ripixel/ripixel-website/commit/f5ac1530a7dbd2e6ebe58e82eea8c1bd51dd12da))
+
 ## [4.1.0](https://github.com/ripixel/ripixel-website/compare/v4.0.0...v4.1.0) (2021-03-21)
 
 
