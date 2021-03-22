@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.1.6](https://github.com/ripixel/ripixel-website/compare/v4.1.5...v4.1.6) (2021-03-22)
+
+
+### Bug Fixes
+
+* more fixes for code block styling ([3bfaf57](https://github.com/ripixel/ripixel-website/commit/3bfaf577d08319668874c32c8d1d672887b5f903))
+
 ### [4.1.5](https://github.com/ripixel/ripixel-website/compare/v4.1.4...v4.1.5) (2021-03-22)
 
 
