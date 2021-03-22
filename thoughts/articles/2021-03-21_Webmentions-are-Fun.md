@@ -22,7 +22,16 @@ Ok, with that gushing out the way, we're going to use [webmention.io](https://we
 
 To get started accepting webmentions with .io, we've got to let it know we are responsible for that site. So you need to do two things.
 
-Firstly, ensure that your website is on the profile of one of the sign on mechanisms they support, so for me that was Twitter or GitHub. Now when you enter your website into the sign in page of .io, it'll ask you to sign in using one of those platforms - noice.
+Firstly, ensure that your website is on the profile of one of the sign on mechanisms they support, so for me that was Twitter or GitHub. Then you need to add `rel="me"` to a link to that profile on your website, for example:
+
+```html
+<!-- HTML -->
+
+<a href="https://github.com/your_gh_username" rel="me">GitHub</a>
+<a href="https://www.twitter.com/your_twitter_handle" rel="me">Twitter</a>
+```
+
+Now when you enter your website into the sign in page of .io, it'll ask you to sign in using one of those platforms - noice.
 
 Now you need to add some tags to your `<head>` so .io knows you want to use it:
 
