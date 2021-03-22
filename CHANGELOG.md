@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.1.7](https://github.com/ripixel/ripixel-website/compare/v4.1.6...v4.1.7) (2021-03-22)
+
+
+### Bug Fixes
+
+* add content about rel=me to webmentions article ([192106f](https://github.com/ripixel/ripixel-website/commit/192106f30a0565551617f427d5edd098cff59fba))
+
 ### [4.1.6](https://github.com/ripixel/ripixel-website/compare/v4.1.5...v4.1.6) (2021-03-22)
 
 
