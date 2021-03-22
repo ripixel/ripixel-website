@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.1.4](https://github.com/ripixel/ripixel-website/compare/v4.1.3...v4.1.4) (2021-03-22)
+
+
+### Bug Fixes
+
+* generateWebmentionBlock code on webmentions article ([3877b38](https://github.com/ripixel/ripixel-website/commit/3877b38eb692f23de94404be3d6d83a9de32d134))
+
 ### [4.1.3](https://github.com/ripixel/ripixel-website/compare/v4.1.2...v4.1.3) (2021-03-22)
 
 
