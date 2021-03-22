@@ -207,10 +207,6 @@ code.hljs {
   main {
     padding: 10px;
   }
-
-  pre {
-    max-width: calc(100vw - 20px);
-  }
 }
 
 main > p {
