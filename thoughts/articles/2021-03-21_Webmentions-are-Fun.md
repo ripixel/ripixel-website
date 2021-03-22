@@ -247,16 +247,26 @@ const generateWebmentionBlock = (
   // do" coding for personal stuff. You can always see the source code for this site
   // on my GitHub if you really want to see how bad it is...!
 
-  return content
-    .replace(/{mention_link}/g, !isComment ? mention.url : mention.author.url)
-    .replace(
-      /{mention_avatar}/g,
-      (!isComment ? mention.photo : mention.author.photo) ??
-        '/default_avatar.png'
-    )
-    .replace(/{mention_name}/g, !isComment ? mention.name : mention.author.name)
-    .replace(/{comment}/g, isComment ? mention.content.value : '')
-    .replace(/{comment_link}/g, isComment ? mention.url : '');
+  return mentions
+    .map((mention) => {
+      return content
+        .replace(
+          /{mention_link}/g,
+          !isComment ? mention.url : mention.author.url
+        )
+        .replace(
+          /{mention_avatar}/g,
+          (!isComment ? mention.photo : mention.author.photo) ??
+            '/default_avatar.png'
+        )
+        .replace(
+          /{mention_name}/g,
+          !isComment ? mention.name : mention.author.name
+        )
+        .replace(/{comment}/g, isComment ? mention.content.value : '')
+        .replace(/{comment_link}/g, isComment ? mention.url : '');
+    })
+    .join('');
 };
 ```
 
