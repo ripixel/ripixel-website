@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.2.0](https://github.com/ripixel/ripixel-website/compare/v4.1.7...v4.2.0) (2022-05-23)
+
+
+### Features
+
+* add RSS feed discoverability link ([e268a55](https://github.com/ripixel/ripixel-website/commit/e268a5586ff106b0b4fb91f0b432431c01b92cc5))
+
 ### [4.1.7](https://github.com/ripixel/ripixel-website/compare/v4.1.6...v4.1.7) (2021-03-22)
 
 
