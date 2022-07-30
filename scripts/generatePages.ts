@@ -50,9 +50,8 @@ const generatePages = (): void => {
         .replace(
           /{age}/g,
           new Number(
-            (new Date().getTime() - new Date('1992-05-21').getTime()) /
-              31536000000 -
-              1
+            (new Date().getTime() - new Date('1992-05-01').getTime()) /
+              (31536000000 - 1)
           ).toFixed(0)
         )
         .replace(/{year}/g, new Date().getFullYear().toString())
