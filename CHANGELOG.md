@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.3.0](https://github.com/ripixel/ripixel-website/compare/v4.2.0...v4.3.0) (2022-07-30)
+
+
+### Features
+
+* add Staff engineer role for Deliveroo to profile page ([75e0968](https://github.com/ripixel/ripixel-website/commit/75e096870d01d001facd1cc604983c7e5334a07c))
+* add State Management Examples to coding page ([184f53e](https://github.com/ripixel/ripixel-website/commit/184f53ec8394895b7205dfbca2fb1bd61a692360))
+* update some profile tidbits with most recent purchases ([785211f](https://github.com/ripixel/ripixel-website/commit/785211ffc3a767a1e96521a02b8b8eb82c9302be))
+
 ## [4.2.0](https://github.com/ripixel/ripixel-website/compare/v4.1.7...v4.2.0) (2022-05-23)
 
 
