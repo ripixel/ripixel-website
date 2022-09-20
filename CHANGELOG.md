@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.3.3](https://github.com/ripixel/ripixel-website/compare/v4.3.2...v4.3.3) (2022-09-20)
+
+
+### Bug Fixes
+
+* make age correct in profile page description ([3fd199e](https://github.com/ripixel/ripixel-website/commit/3fd199e64b5c1170700c5565648f5bfb8acd4f55))
+* spelling error in Verizon Group ([a89e5bc](https://github.com/ripixel/ripixel-website/commit/a89e5bce0cef8c5e396fdcd88fe541f8bc493a96))
+
 ### [4.3.2](https://github.com/ripixel/ripixel-website/compare/v4.3.1...v4.3.2) (2022-07-30)
 
 
