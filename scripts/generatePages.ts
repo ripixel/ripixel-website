@@ -8,6 +8,11 @@ const generatePages = (): void => {
   const partials = findInDir('./partials', '.html');
   const pages = findInDir('./pages', '.html');
 
+  const age = new Number(
+    (new Date().getTime() - new Date('1992-05-01').getTime()) /
+      (31536000000 - 1)
+  ).toFixed(0);
+
   pages.forEach((page) => {
     // console.log(`Processing ${page}`);
     let pageContents = fs.readFileSync(page, 'utf8');
@@ -22,8 +27,7 @@ const generatePages = (): void => {
         description = 'A peak inside my brain you ask? Reader, beware...';
         break;
       case 'profile':
-        description =
-          "So who am I? I'm James King, a 27 year old Software Engineer from Lincolnshire. You want some more info?";
+        description = `So who am I? I'm James King, a ${age} year old Software Engineer from Lincolnshire. You want some more info?`;
         break;
       case 'coding':
         description = "Shall we take a look at some projects I've done?";
@@ -47,13 +51,7 @@ const generatePages = (): void => {
         )
         .replace(/{subpage}/g, '')
         .replace(/{description}/g, description)
-        .replace(
-          /{age}/g,
-          new Number(
-            (new Date().getTime() - new Date('1992-05-01').getTime()) /
-              (31536000000 - 1)
-          ).toFixed(0)
-        )
+        .replace(/{age}/g, age)
         .replace(/{year}/g, new Date().getFullYear().toString())
         .replace(
           /{noindex}/g,
