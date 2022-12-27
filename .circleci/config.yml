@@ -166,10 +166,10 @@ workflows:
           requires:
             - lint
             - build_dev
-  hourly:
+  daily:
     triggers:
       - schedule:
-          cron: '55 * * * *'
+          cron: '55 20 * * *'
           filters:
             branches:
               only:
