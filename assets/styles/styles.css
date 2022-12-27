@@ -499,6 +499,10 @@ main .header-details h3 {
   padding-bottom: 15px;
 }
 
+.header-details.spaced {
+  margin-top: 20px;
+}
+
 main .header-details h4 {
   padding-bottom: 10px;
 }
