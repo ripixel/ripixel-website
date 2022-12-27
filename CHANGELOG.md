@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.4.0](https://github.com/ripixel/ripixel-website/compare/v4.3.5...v4.4.0) (2022-12-27)
+
+
+### Features
+
+* add serve to nodemon for dev mode ([1a401da](https://github.com/ripixel/ripixel-website/commit/1a401da2583d1306cee023f82d421fb4074d8fd1))
+* enable dark mode support ([6e35446](https://github.com/ripixel/ripixel-website/commit/6e354461d42a98f0e5809eadd8db485bdd5a2c8b))
+
 ### [4.3.5](https://github.com/ripixel/ripixel-website/compare/v4.3.4...v4.3.5) (2022-12-27)
 
 ### [4.3.4](https://github.com/ripixel/ripixel-website/compare/v4.3.3...v4.3.4) (2022-12-27)
