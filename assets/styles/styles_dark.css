@@ -41,6 +41,14 @@
   background: rgb(32, 0, 29);
 }
 
+.dark .coding h2, .dark .coding h3, .dark .coding h4, .dark .coding h5 {
+  color: rgb(136, 1, 124);
+}
+
+.dark .coding section.area {
+  border-left-color: rgb(136, 1, 124);
+}
+
 .dark nav.coding a.coding {
   border-left: 2px solid #fff;
 }
@@ -49,12 +57,28 @@
   background: rgb(0, 31, 23);
 }
 
+.dark .thoughts h2, .dark .thoughts h3, .dark .thoughts h4, .dark .thoughts h5, .dark .thoughts .header-details h1 {
+  color: rgb(0, 129, 97);
+}
+
+.dark .thoughts section.area {
+  border-left-color: rgb(0, 129, 97);
+}
+
 .dark nav.thoughts a.thoughts {
   border-left: 2px solid #fff;
 }
 
 .dark nav.profile {
   background: rgb(6, 15, 41);
+}
+
+.dark .profile h2, .dark .profile h3, .dark .profile h4, .dark .profile h5 {
+  color: rgb(22, 61, 168);
+}
+
+.dark .profile section.area {
+  border-left-color: rgb(22, 61, 168);
 }
 
 .dark nav.profile a.profile {
@@ -88,6 +112,10 @@
 
 .dark .details .item {
   background: rgba(0, 0, 0, 0.2);
+}
+
+.dark .details .item h4 {
+  color: #ddd;
 }
 
 .dark main.changelog {
@@ -190,7 +218,7 @@
 }
 
 .dark .article .header-details {
-  border-left: 5px solid #fff;
+  border-left: 5px solid rgb(0, 129, 97);
 }
 
 .dark .tag {
