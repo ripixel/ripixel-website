@@ -3,8 +3,9 @@
     "pages",
     "assets",
     "partials",
-    "thoughts"
+    "thoughts",
+    "scripts"
   ],
   "ext": "html,css,md",
-  "exec": "rm -rf public/ && npm run build:dev"
+  "exec": "rm -rf public/ && npm run build:dev && npm run serve"
 }
