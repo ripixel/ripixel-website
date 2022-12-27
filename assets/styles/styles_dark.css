@@ -1,0 +1,223 @@
+.dark code {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.dark p a {
+  border-bottom: 1px solid #fff;
+}
+
+.dark p a:hover {
+  color: #ccc;
+  border-color: #ccc;
+}
+
+.dark a.button {
+  background: rgba(0, 0, 0, 0.2);
+  border-left: 2px solid #fff;
+}
+
+.dark a.rss svg path {
+  fill: #fff;
+}
+
+.dark a.rss:hover svg path {
+  fill: #ccc;
+}
+
+.dark nav {
+  background: #333;
+  color: #fff;
+}
+
+.dark nav a {
+  color: #fff;
+}
+
+.dark nav a:hover {
+  color: #ccc;
+}
+
+.dark nav.coding {
+  background: rgb(32, 0, 29);
+}
+
+.dark nav.coding a.coding {
+  border-left: 2px solid #fff;
+}
+
+.dark nav.thoughts {
+  background: rgb(0, 31, 23);
+}
+
+.dark nav.thoughts a.thoughts {
+  border-left: 2px solid #fff;
+}
+
+.dark nav.profile {
+  background: rgb(6, 15, 41);
+}
+
+.dark nav.profile a.profile {
+  border-left: 2px solid #fff;
+}
+
+.dark main {
+  background: #333;
+  color: #fff;
+}
+
+.dark main a {
+  color: #fff;
+}
+
+.dark main.hello {
+  background: rgb(108, 61, 0);
+}
+
+.dark .mentions .item {
+  background: rgba(0, 0, 0, 0.2);
+}
+.dark .mention-links img {
+  background-color: #999;
+  border-left: 2px solid #fff;
+}
+
+.dark .mention-links .comment {
+  background: #025a44;
+}
+
+.dark .details .item {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.dark main.changelog {
+  background: #000;
+  color: #fff;
+}
+
+.dark main.changelog a {
+  color: #333;
+  border-bottom: 1px solid #333;
+}
+
+.dark main.changelog a:hover {
+  color: #aaa;
+  border-bottom: 1px solid #aaa;
+}
+
+.dark main.coding {
+  background: rgb(41, 0, 37);
+}
+
+.dark main.area.coding {
+  color: #fff;
+  background: rgb(41, 0, 37);
+}
+
+.dark main.thoughts {
+  background: rgb(0, 35, 26);
+}
+
+.dark main.area.thoughts {
+  color: #fff;
+  background: rgb(0, 55, 41);
+}
+
+.dark main.thoughts.details {
+  background: rgb(0, 46, 34);
+}
+
+.dark main.thoughts.mentions {
+  background: rgb(0, 60, 45);
+}
+
+.dark main.profile {
+  background: rgb(8, 20, 55);
+}
+
+.dark main.profile.details {
+  background: rgb(5, 12, 33);
+}
+
+.dark main.area.profile {
+  color: #fff;
+  background: rgb(8, 20, 55);
+}
+
+.dark footer {
+  background: #111;
+  color: #777;
+}
+
+.dark footer a path {
+  fill: #777;
+}
+
+.dark footer a:hover path {
+  fill: #ccc;
+}
+
+.dark footer .copy a {
+  color: #777;
+  border-bottom: 1px solid #777;
+}
+
+.dark footer .copy a:hover {
+  color: #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.dark section.intro h1 {
+  color: rgb(255, 145, 0);
+}
+
+.dark section.intro p {
+  color: #fff;
+}
+
+.dark section.welcome {
+  color: #fff;
+  border-right: 5px solid #fff;
+}
+
+.dark section.welcome.error {
+  color: #fff;
+  border-right: 5px solid #fff;
+}
+
+.dark section.area {
+  border-left: 5px solid #fff;
+}
+
+.dark .article .header-details {
+  border-left: 5px solid #fff;
+}
+
+.dark .tag {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+@media only screen and (max-width: 400px) {
+  .dark section.welcome {
+    border-right: none;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .dark section.area {
+    border-left: none;
+  }
+}
+
+.lightSun {
+  display: none;
+}
+
+.dark .lightSun {
+  display: block;
+  fill: #fff;
+}
+
+.dark .darkSun {
+  display: none;
+}

@@ -565,6 +565,19 @@ section.intro {
   margin: 40px;
 }
 
+section.darkmode {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
+
+section.darkmode button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 600px) {
   section.intro {
     margin: 10px;
