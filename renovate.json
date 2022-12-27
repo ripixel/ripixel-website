@@ -22,6 +22,11 @@
       "groupName": "minor-and-patch",
       "matchUpdateTypes": ["minor", "patch"],
       "matchCurrentVersion": "!/^0/",
+    },
+    {
+      "groupName": "major",
+      "matchUpdateTypes": ["major"],
+      "matchCurrentVersion": "!/^0/",
     }
   ]
 }
