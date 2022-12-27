@@ -96,8 +96,8 @@
 }
 
 .dark main.changelog a {
-  color: #333;
-  border-bottom: 1px solid #333;
+  color: #ccc;
+  border-bottom: 1px solid #ccc;
 }
 
 .dark main.changelog a:hover {
