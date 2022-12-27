@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.4.1](https://github.com/ripixel/ripixel-website/compare/v4.4.0...v4.4.1) (2022-12-27)
+
+
+### Bug Fixes
+
+* make changelog links lighter in dark mode ([c222e0c](https://github.com/ripixel/ripixel-website/commit/c222e0cbcdb230719dfb73816402c73dd8994c0b))
+
 ## [4.4.0](https://github.com/ripixel/ripixel-website/compare/v4.3.5...v4.4.0) (2022-12-27)
 
 
