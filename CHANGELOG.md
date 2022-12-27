@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.5.0](https://github.com/ripixel/ripixel-website/compare/v4.4.1...v4.5.0) (2022-12-27)
+
+
+### Features
+
+* combine multiple roles at the same company into one block ([690a091](https://github.com/ripixel/ripixel-website/commit/690a091810db4c5d4040fb70b7779310d9a633f5))
+* more fun colours in dark mode ([5199f53](https://github.com/ripixel/ripixel-website/commit/5199f53c07072b85288b03efba75a1fbc72c1d48))
+
 ### [4.4.1](https://github.com/ripixel/ripixel-website/compare/v4.4.0...v4.4.1) (2022-12-27)
 
 
