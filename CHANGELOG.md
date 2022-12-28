@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.6.1](https://github.com/ripixel/ripixel-website/compare/v4.6.0...v4.6.1) (2022-12-28)
+
+
+### Bug Fixes
+
+* do not install deps if cache found ([6d8c718](https://github.com/ripixel/ripixel-website/commit/6d8c7187d6db7ac285c41385b7a9e964511d4971))
+
 ## [4.6.0](https://github.com/ripixel/ripixel-website/compare/v4.5.7...v4.6.0) (2022-12-28)
 
 
