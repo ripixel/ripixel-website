@@ -8,11 +8,6 @@ const generatePages = (): void => {
   const partials = findInDir('./partials', '.html');
   const pages = findInDir('./pages', '.html');
 
-  const age = new Number(
-    (new Date().getTime() - new Date('1992-05-01').getTime()) /
-      (31536000000 - 1)
-  ).toFixed(0);
-
   pages.forEach((page) => {
     // console.log(`Processing ${page}`);
     let pageContents = fs.readFileSync(page, 'utf8');
