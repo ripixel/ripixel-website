@@ -12,12 +12,12 @@ jobs: # a collection of steps
     steps:
       - checkout
       - restore_cache: # special step to restore the dependency cache
-          key: dependency-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+          key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
           name: Install NPM Dependencies
           command: npm i
       - save_cache: # special step to save the dependency cache
-          key: dependency-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+          key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - ~/tmp/node_modules
 
@@ -26,7 +26,7 @@ jobs: # a collection of steps
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+          key: dependency-cache-{{ checksum "package-lock.json" }}
       - run: # run linter
           name: Linting
           command: npm run lint:ci
@@ -40,7 +40,7 @@ jobs: # a collection of steps
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+          key: dependency-cache-{{ checksum "package-lock.json" }}
       - restore_cache:
           key: changelog-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
       - run: # run build
@@ -48,7 +48,6 @@ jobs: # a collection of steps
           command: npm run build:dev
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: public
-          prefix: public
       - save_cache: # special step to save the public cache and deploy files
           key: deploy-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
           paths:
@@ -62,7 +61,7 @@ jobs: # a collection of steps
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+          key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
           name: Add Git User details
           command: |
@@ -73,7 +72,6 @@ jobs: # a collection of steps
           command: npm run build
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: public
-          prefix: public
       - save_cache: # special step to save the public cache and deploy files
           key: deploy-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
           paths:
@@ -87,7 +85,7 @@ jobs: # a collection of steps
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+          key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
           name: Add Git User details
           command: |
@@ -101,7 +99,6 @@ jobs: # a collection of steps
           command: npm run build
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: public
-          prefix: public
       - save_cache: # special step to save the public cache and deploy files
           key: deploy-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
           paths:
@@ -116,7 +113,7 @@ jobs: # a collection of steps
       - restore_cache: # restore the /public folder and associated deploy files
           key: deploy-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
       - restore_cache: # special step to restore the dependency cache
-          key: dependency-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+          key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
           name: Deploy to Firebase Production Hosting
           command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting:production
@@ -127,13 +124,69 @@ jobs: # a collection of steps
       - restore_cache: # restore the /public folder and associated deploy files
           key: deploy-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
       - restore_cache: # special step to restore the dependency cache
-          key: dependency-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+          key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
           name: Deploy to Firebase Staging Hosting
           command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting:staging
+      - run:
+          name: Post Github PR Comment
+          command: |
+            sudo apt-get install jq
+
+            pr_response=$(curl --location --request GET "https://api.github.com/repos/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/pulls?head=$CIRCLE_PROJECT_USERNAME:$CIRCLE_BRANCH&state=open" \
+            -u $GH_USER:$GH_TOKEN)
+
+            if [ $(echo $pr_response | jq length) -eq 0 ]; then
+              echo "No PR found to update"
+            else
+              pr_comment_url=$(echo $pr_response | jq -r ".[]._links.comments.href")
+            fi
+
+            curl --location --request POST "$pr_comment_url" \
+            -u $GH_USER:$GH_TOKEN \
+            --header 'Content-Type: application/json' \
+            --data-raw '{
+            "body": "Successfully deployed to Firebase! Go to https://staging.ripixel.co.uk"
+            }'
+
+  deploy_to_firebase_preview: # deploy the project to preview channel - SHOULD ONLY BE RUN ON PR BRANCHES
+    executor: node-project
+    steps:
+      - restore_cache: # restore the /public folder and associated deploy files
+          key: deploy-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+      - restore_cache: # special step to restore the dependency cache
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: Deploy to Firebase Preview Channel
+          command: ./node_modules/.bin/firebase hosting:channel:deploy $CIRCLE_BRANCH --token "$FIREBASE_TOKEN"
+      - run:
+          name: Post Github PR Comment
+          command: |
+            sudo apt-get install jq
+
+            channels=$(./node_modules/.bin/firebase hosting:channel:list)
+            regex='(https:\/\/[a-z0-9-]*--'$(echo $CIRCLE_BRANCH | sed "s/\//-/")'-[a-z0-9-]*.web.app)'
+            [[ $channels =~ $regex ]] && url=${BASH_REMATCH[0]}
+
+            if [ $(echo $url | jq length) -eq 0]; then
+              url="Unable to get URL - check Firebase console"
+            fi
+
+            pr_response=$(curl --location --request GET "https://api.github.com/repos/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/pulls?head=$CIRCLE_PROJECT_USERNAME:$CIRCLE_BRANCH&state=open" \
+            -u $GH_USER:$GH_TOKEN)
+
+            if [ $(echo $pr_response | jq length) -eq 0 ]; then
+              echo "No PR found to update"
+            else
+              pr_comment_url=$(echo $pr_response | jq -r ".[]._links.comments.href")
+            fi
+
+            curl --location --request POST "$pr_comment_url" \
+            -u $GH_USER:$GH_TOKEN \
+            --header 'Content-Type: application/json' \
+            --data-raw '{"body": "Successfully deployed to Firebase preview channel! Available at: '"$url"'"}'
 
 workflows:
-  version: 2
   build_and_deploy:
     jobs:
       - install_deps
@@ -159,6 +212,15 @@ workflows:
           requires:
             - lint
             - build_prod_with_version
+      - deploy_to_firebase_preview:
+          filters:
+            branches:
+              ignore:
+                - master
+                - staging
+          requires:
+            - lint
+            - build_dev
       - deploy_to_firebase_stg:
           filters:
             branches:
@@ -169,7 +231,7 @@ workflows:
   daily:
     triggers:
       - schedule:
-          cron: '55 20 * * *'
+          cron: "55 20 * * *"
           filters:
             branches:
               only:
@@ -186,3 +248,4 @@ workflows:
           requires:
             - lint
             - build_prod_no_version
+# VS Code Extension Version: 1.5.0
