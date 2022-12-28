@@ -14,8 +14,9 @@ jobs: # a collection of steps
       - restore_cache: # special step to restore the dependency cache
           key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
-          name: Install NPM Dependencies
-          command: npm i
+          name: Install NPM Dependencies if no cache
+          command: |
+            [ ! -d "/tmp/node_modules" ] && npm ci
       - save_cache: # special step to save the dependency cache
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
