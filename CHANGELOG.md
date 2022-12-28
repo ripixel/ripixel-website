@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.6.0](https://github.com/ripixel/ripixel-website/compare/v4.5.7...v4.6.0) (2022-12-28)
+
+
+### Features
+
+* enable preview deployments ([#42](https://github.com/ripixel/ripixel-website/issues/42)) ([0945224](https://github.com/ripixel/ripixel-website/commit/09452248912a2cc8704215c2cd5713a89bc33e7a))
+
 ### [4.5.7](https://github.com/ripixel/ripixel-website/compare/v4.5.6...v4.5.7) (2022-12-28)
 
 ### [4.5.6](https://github.com/ripixel/ripixel-website/compare/v4.5.5...v4.5.6) (2022-12-28)
