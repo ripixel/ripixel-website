@@ -111,10 +111,11 @@ jobs: # a collection of steps
   deploy_to_firebase_prod: # deploy the project to prod - SHOULD ONLY BE RUN ON MASTER BRANCH
     executor: node-project
     steps:
-      - restore_cache: # restore the /public folder and associated deploy files
-          key: deploy-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+      - checkout
       - restore_cache: # special step to restore the dependency cache
           key: dependency-cache-{{ checksum "package-lock.json" }}
+      - restore_cache: # restore the /public folder and associated deploy files
+          key: deploy-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
       - run:
           name: Deploy to Firebase Production Hosting
           command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting:production
@@ -122,10 +123,11 @@ jobs: # a collection of steps
   deploy_to_firebase_stg: # deploy the project to staging - SHOULD ONLY BE RUN ON STAGING BRANCH
     executor: node-project
     steps:
-      - restore_cache: # restore the /public folder and associated deploy files
-          key: deploy-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+      - checkout
       - restore_cache: # special step to restore the dependency cache
           key: dependency-cache-{{ checksum "package-lock.json" }}
+      - restore_cache: # restore the /public folder and associated deploy files
+          key: deploy-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
       - run:
           name: Deploy to Firebase Staging Hosting
           command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting:staging
@@ -153,10 +155,11 @@ jobs: # a collection of steps
   deploy_to_firebase_preview: # deploy the project to preview channel - SHOULD ONLY BE RUN ON PR BRANCHES
     executor: node-project
     steps:
-      - restore_cache: # restore the /public folder and associated deploy files
-          key: deploy-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+      - checkout
       - restore_cache: # special step to restore the dependency cache
           key: dependency-cache-{{ checksum "package-lock.json" }}
+      - restore_cache: # restore the /public folder and associated deploy files
+          key: deploy-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
       - run:
           name: Deploy to Firebase Preview Channel
           command: ./node_modules/.bin/firebase hosting:channel:deploy $CIRCLE_BRANCH --token "$FIREBASE_TOKEN"
