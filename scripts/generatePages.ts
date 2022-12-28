@@ -27,7 +27,7 @@ const generatePages = (): void => {
         description = 'A peak inside my brain you ask? Reader, beware...';
         break;
       case 'profile':
-        description = `So who am I? I'm James King, a ${age} year old Software Engineer from Lincolnshire. You want some more info?`;
+        description = `So who am I? I'm James King, a Software Engineer from Nottinghamshire. You want some more info?`;
         break;
       case 'coding':
         description = "Shall we take a look at some projects I've done?";
@@ -51,7 +51,6 @@ const generatePages = (): void => {
         )
         .replace(/{subpage}/g, '')
         .replace(/{description}/g, description)
-        .replace(/{age}/g, age)
         .replace(/{year}/g, new Date().getFullYear().toString())
         .replace(
           /{noindex}/g,
