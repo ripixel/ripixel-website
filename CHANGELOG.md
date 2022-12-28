@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.6.2](https://github.com/ripixel/ripixel-website/compare/v4.6.1...v4.6.2) (2022-12-28)
+
+
+### Bug Fixes
+
+* checkout code in deploy steps to ensure package-lock is the same ([a10d312](https://github.com/ripixel/ripixel-website/commit/a10d312240c565401abc5b5e4623228fa4d029c5))
+
 ### [4.6.1](https://github.com/ripixel/ripixel-website/compare/v4.6.0...v4.6.1) (2022-12-28)
 
 
