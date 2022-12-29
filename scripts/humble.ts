@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as path from 'path';
 import { Listr } from 'listr2';
-import execa from 'execa';
+import { execa } from 'execa';
 
 import generatePages from './generatePages';
 import generateThoughts from './generateThoughts';

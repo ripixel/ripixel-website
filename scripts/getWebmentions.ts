@@ -14,7 +14,7 @@ export const getWebmentions = async (): Promise<any[]> => {
     const res = await fetch(url);
     if (res.ok) {
       const feed = await res.json();
-      return feed.children as any[];
+      return (feed as any).children as any[];
     }
   } catch (err) {
     console.error(err);
