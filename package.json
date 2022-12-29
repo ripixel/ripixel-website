@@ -1,6 +1,6 @@
 {
     "name": "ripixel",
-    "version": "4.6.4",
+    "version": "4.6.5",
     "description": "I'm James King, and I make things for the web",
     "main": "index.js",
     "scripts": {
@@ -40,7 +40,7 @@
         "favicons-generate": "0.0.15",
         "feed": "^4.2.2",
         "firebase-tools": "^8.12.0",
-        "husky": "^4.2.5",
+        "husky": "^8.0.0",
         "listr": "^0.14.3",
         "listr2": "^3.2.3",
         "nodemon": "^2.0.3",
