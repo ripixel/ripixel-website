@@ -4,7 +4,7 @@ executors:
   node-project:
     working_directory: ~/tmp
     docker:
-      - image: circleci/node:12.22.7
+      - image: cimg/node:18.12.1
 
 jobs: # a collection of steps
   install_deps: # install npm deps
@@ -252,4 +252,4 @@ workflows:
           requires:
             - lint
             - build_prod_no_version
-# VS Code Extension Version: 1.5.0
+# VS Code Extension Version: 1.5.1
