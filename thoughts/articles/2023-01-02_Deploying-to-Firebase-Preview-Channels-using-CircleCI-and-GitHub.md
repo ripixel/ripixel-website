@@ -93,18 +93,18 @@ workflows:
             - build_dev
 ```
 
-This config means that if I merge to these different branches, then these jobs run:
-  + merge to `master`:
+This config means that if I push to these different branches, then these jobs run:
+  + push to `master`:
     - `install_deps`
     - `lint`
     - `build_prod_with_version`
     - `deploy_to_firebase_prod`
-  + merge to `staging`:
+  + push to `staging`:
     - `install_deps`
     - `lint`
     - `build_dev`
     - `deploy_to_firebase_stg`
-  + merge to any other branch:
+  + push to any other branch:
     - `install_deps`
     - `lint`
     - `build_dev`
@@ -230,6 +230,8 @@ result='some "text" with double-quotes in it '"$some_var"' more text'
 echo $result
 # some "text" with double-quotes in it hello more text
 ```
+
+## Final Step Code
 
 Et voila! Putting it all together we have:
 
