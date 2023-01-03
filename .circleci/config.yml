@@ -169,7 +169,8 @@ jobs: # a collection of steps
             sudo apt-get install jq
 
             channels=$(./node_modules/.bin/firebase hosting:channel:list)
-            regex='(https:\/\/[a-z0-9-]*--'$(echo $CIRCLE_BRANCH | sed "s/\//-/")'-[a-z0-9-]*.web.app)'
+            circle_branch_replaced=$(echo $CIRCLE_BRANCH | sed "s/\//-/")
+            regex='(https:\/\/[a-z0-9-]*--'"${circle_branch_replaced:0:39}"'-[a-z0-9-]*.web.app)'
             [[ $channels =~ $regex ]] && url=${BASH_REMATCH[0]}
 
             if [ $(echo $url | jq length) -eq 0]; then

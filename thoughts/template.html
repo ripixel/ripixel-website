@@ -6,6 +6,8 @@
   <body>
     {nav.html}
 
+    {darkmode.html}
+
     <main class="thoughts article">
       <section class="area">
         <div class="header-details">
@@ -23,20 +25,9 @@
         <h4>{LIKES} likes</h4>
         <div class="mention-links">
           <!-- START_LIKES_REP -->
-          <a
-            class="item"
-            href="{mention_link}"
-            target="_blank"
-            rel="external noopener noreferrer"
-          >
-            <img
-              src="{mention_avatar}"
-              loading="lazy"
-              decoding="async"
-              width="28"
-              height="28"
-            /><span>{mention_name}</span></a
-          >
+          <a class="item" href="{mention_link}" target="_blank" rel="external noopener noreferrer">
+            <img src="{mention_avatar}" loading="lazy" decoding="async" width="28"
+              height="28" /><span>{mention_name}</span></a>
           <!-- END_LIKES_REP -->
         </div>
       </div>
@@ -47,20 +38,9 @@
         <h4>{REPOSTS} reposts</h4>
         <div class="mention-links">
           <!-- START_REPOSTS_REP -->
-          <a
-            class="item"
-            href="{mention_link}"
-            target="_blank"
-            rel="external noopener noreferrer"
-          >
-            <img
-              src="{mention_avatar}"
-              loading="lazy"
-              decoding="async"
-              width="28"
-              height="28"
-            /><span>{mention_name}</span></a
-          >
+          <a class="item" href="{mention_link}" target="_blank" rel="external noopener noreferrer">
+            <img src="{mention_avatar}" loading="lazy" decoding="async" width="28"
+              height="28" /><span>{mention_name}</span></a>
           <!-- END_REPOSTS_REP -->
         </div>
       </div>
@@ -72,28 +52,12 @@
         <div class="mention-links">
           <!-- START_COMMENTS_REP -->
           <div class="comment">
-            <a
-              class="item"
-              href="{mention_link}"
-              target="_blank"
-              rel="external noopener noreferrer"
-            >
-              <img
-                src="{mention_avatar}"
-                loading="lazy"
-                decoding="async"
-                width="28"
-                height="28"
-              /><span>{mention_name}</span></a
-            >
+            <a class="item" href="{mention_link}" target="_blank" rel="external noopener noreferrer">
+              <img src="{mention_avatar}" loading="lazy" decoding="async" width="28"
+                height="28" /><span>{mention_name}</span></a>
             <p>{comment}</p>
-            <a
-              class="item comment-link"
-              href="{comment_link}"
-              target="_blank"
-              rel="external noopener noreferrer"
-              ><span>View</span></a
-            >
+            <a class="item comment-link" href="{comment_link}" target="_blank"
+              rel="external noopener noreferrer"><span>View</span></a>
           </div>
           <!-- END_COMMENTS_REP -->
         </div>
@@ -109,4 +73,5 @@
 
     {footer.html}
   </body>
+
 </html>
