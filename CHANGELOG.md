@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.8.1](https://github.com/ripixel/ripixel-website/compare/v4.8.0...v4.8.1) (2023-01-03)
+
+
+### Bug Fixes
+
+* ensure nav anchors are styled correctly ([0182507](https://github.com/ripixel/ripixel-website/commit/018250712749f6b347d4b2397b15ad1916224ce6))
+
 ## [4.8.0](https://github.com/ripixel/ripixel-website/compare/v4.7.0...v4.8.0) (2023-01-03)
 
 
