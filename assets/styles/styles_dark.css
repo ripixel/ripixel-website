@@ -2,11 +2,11 @@
   background: rgba(0, 0, 0, 0.2);
 }
 
-.dark p a {
+.dark p a, .dark ul a:not(.navlink), .dark ol a {
   border-bottom: 1px solid #fff;
 }
 
-.dark p a:hover {
+.dark p a:hover, .dark ul a:not(.navlink):hover, .dark ol a:hover {
   color: #ccc;
   border-color: #ccc;
 }
