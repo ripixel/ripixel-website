@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.7.0](https://github.com/ripixel/ripixel-website/compare/v4.6.19...v4.7.0) (2023-01-03)
+
+
+### Features
+
+* **thought:** Added Deploying to Firebase Preview Channels thought ([#61](https://github.com/ripixel/ripixel-website/issues/61)) ([41bef2b](https://github.com/ripixel/ripixel-website/commit/41bef2bbea04ada65dce09a890e48593ca10fd02))
+
 ### [4.6.19](https://github.com/ripixel/ripixel-website/compare/v4.6.18...v4.6.19) (2023-01-02)
 
 ### [4.6.18](https://github.com/ripixel/ripixel-website/compare/v4.6.17...v4.6.18) (2022-12-29)
