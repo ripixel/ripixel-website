@@ -14,9 +14,7 @@ Let's start at the beginning - Firebase is Google's free-to-use (up to a point) 
 
 ## How do you get set up with Firebase?
 
-This website uses it, so if you want the quick-version and you're confident with Continuous Deployment pipelines, go check out its [CircleCI config](https://github.com/ripixel/ripixel-website/blob/master/.circleci/config.yml).
-
-There's also the excellent [Get started with Firebase Hosting](https://firebase.google.com/docs/hosting/quickstart?authuser=0&hl=en) page from Google which explains all the basics of getting set up with Firebase Hosting, that I won't repeat here as there's nothing I can add!
+As a quick start, you can't get better than the [Get started with Firebase Hosting](https://firebase.google.com/docs/hosting/quickstart?authuser=0&hl=en) page from Google which explains all the basics of getting set up with Firebase Hosting, that I won't repeat here as there's nothing I can add!
 
 ## What is CircleCI?
 
@@ -27,6 +25,8 @@ It also helps that it's fantastically configurable, fast, and y'know... free!
 ## How do you get set up with CircleCI?
 
 CircleCI has a great [Getting started](https://circleci.com/docs/getting-started/) guide which should get you through the initial hoops of getting your repository building from GitHub, with some great initial templates for whatever your application needs.
+
+This website uses it, so if you want to just see the output and you're confident with Continuous Deployment pipelines, go check out its [CircleCI config](https://github.com/ripixel/ripixel-website/blob/master/.circleci/config.yml).
 
 ## What are Firebase Preview Channels?
 
@@ -165,7 +165,8 @@ But what if we want to post a GitHub comment on the PR that accompanies the bran
             sudo apt-get install jq
 
             channels=$(./node_modules/.bin/firebase hosting:channel:list)
-            regex='(https:\/\/[a-z0-9-]*--'$(echo $CIRCLE_BRANCH | sed "s/\//-/")'-[a-z0-9-]*.web.app)'
+            circle_branch_replaced=$(echo $CIRCLE_BRANCH | sed "s/\//-/")
+            regex='(https:\/\/[a-z0-9-]*--'"${circle_branch_replaced:0:39}"'-[a-z0-9-]*.web.app)'
             [[ $channels =~ $regex ]] && url=${BASH_REMATCH[0]}
 
             if [ $(echo $url | jq length) -eq 0]; then
@@ -187,13 +188,15 @@ But what if we want to post a GitHub comment on the PR that accompanies the bran
             --data-raw '{"body": "Successfully deployed to Firebase preview channel! Available at: '"$url"'"}'
 ```
 
-This step does a few things!
+This step does a few things, and begins with some set up and variable assigning.
 
 `sudo apt-get install jq` installs the `jq` package to enable some functions we want to use in the script.
 
 `channels=$(./node_modules/.bin/firebase hosting:channel:list)` assigns a variable called `$channels` with a value of all the different preview channels that are currently live that Firebase is tracking. Assuming this command is run after a successful `firebase hosting:channel:deploy` run, this will include the most recently-deployed channel.
 
-`regex='(https:\/\/[a-z0-9-]*--'$(echo $CIRCLE_BRANCH | sed "s/\//-/")'-[a-z0-9-]*.web.app)'` creates a regex that looks for the URL that looks like the channel you've just deployed. This looks more complex than it should be because if you try to use a preview channel ID with a forward slash (`/`) in it (like `mybranch/something`), Firebase will replace it with a dash (`-`). So we do the same for the `$CIRCLE_BRANCH` while constructing the regex, so our regex ends up something like:
+`circle_branch_replaced=$(echo $CIRCLE_BRANCH | sed "s/\//-/")` is replacing any forward slashes found in `$CIRCLE_BRANCH` with dashes, just like firebase will do if you pass in anything with slashes.
+
+`regex='(https:\/\/[a-z0-9-]*--'"${circle_branch_replaced:0:39}"'-[a-z0-9-]*.web.app)'` creates a regex that looks for the URL that looks like the channel you've just deployed. Firebase also only uses the first 40 characters of the ID (which is what `"${circle_branch_replaced:0:39}"` is doing). So our regex ends up something like:
 
 ```
 (https:\/\/[a-z0-9-]*--mybranch-something-[a-z0-9-]*.web.app)
@@ -201,7 +204,7 @@ This step does a few things!
 
 Don't forget the parenthesis around it so you create a regex capture group!
 
-`[[ $channels =~ $regex ]] && url=${BASH_REMATCH[0]}` uses the `$channels` and `$regex` variables we've defined above, and runs the regex against the channel list. It then assigns a variable called `$url` with the matched URL.
+`[[ $channels =~ $regex ]] && url=${BASH_REMATCH[0]}` uses the `$channels` and `$regex` variables we've defined above, and runs the regex against the channel list. It then assigns a variable called `$url` with the matched URL in a capture group.
 
 The `if [ $(echo $url | jq length) -eq 0]; then` statement checks that we've actually found a URL by asserting the length of `$url` is greater than zero - if it's not, we assign an error message to the `$url` variable.
 
@@ -232,7 +235,7 @@ Et voila! Putting it all together we have:
 
 ```yaml
 jobs:
-  deploy_to_firebase_preview:
+  deploy_to_firebase_preview: # deploy the project to preview channel - SHOULD ONLY BE RUN ON PR BRANCHES
     executor: node-project
     steps:
       - checkout
@@ -249,7 +252,8 @@ jobs:
             sudo apt-get install jq
 
             channels=$(./node_modules/.bin/firebase hosting:channel:list)
-            regex='(https:\/\/[a-z0-9-]*--'$(echo $CIRCLE_BRANCH | sed "s/\//-/")'-[a-z0-9-]*.web.app)'
+            circle_branch_replaced=$(echo $CIRCLE_BRANCH | sed "s/\//-/")
+            regex='(https:\/\/[a-z0-9-]*--'"${circle_branch_replaced:0:39}"'-[a-z0-9-]*.web.app)'
             [[ $channels =~ $regex ]] && url=${BASH_REMATCH[0]}
 
             if [ $(echo $url | jq length) -eq 0]; then
@@ -272,3 +276,5 @@ jobs:
 ```
 
 And now we have PRs (well, any branches that aren't `master` or `staging`) deploying to preview channels and posting back to the relevant PR with a comment to view the changes.
+
+To see the entire build step for this website, check out its [CircleCI config](https://github.com/ripixel/ripixel-website/blob/master/.circleci/config.yml). It's not doing anything crazy - install dependencies, lint the repo, build the site, and deploy!
