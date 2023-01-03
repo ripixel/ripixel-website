@@ -55,11 +55,11 @@ ul:last-child {
   padding-bottom: 0;
 }
 
-p a {
+p a, ul a, ol a {
   border-bottom: 1px solid #fff;
 }
 
-p a:hover {
+p a:hover, ul a:hover, ol a:hover {
   color: #ccc;
   border-color: #ccc;
 }
