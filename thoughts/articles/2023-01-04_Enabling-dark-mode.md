@@ -224,4 +224,9 @@ Now I just add this code to all my pages, popping the JavaScript in my `footer.h
 
 This is by no means a perfect implementation - the biggest issue is that there's a "flash of unstyled content" when the page loads and it runs the JavaScript to detect if you have dark mode on, and _then_ applies the `dark` class to the `<body>` element. However, for this _incredibly basic site_ it happens in ~2ms, so I think it's a trade-off worth making for the utter simplicity of the implementation.
 
+You can check out all the eventual code for this in this website's repository:
+ - [darkmode.html partial](https://github.com/ripixel/ripixel-website/blob/master/partials/darkmode.html) (for the switching button, included on every page)
+ - [footer.html partial](https://github.com/ripixel/ripixel-website/blob/master/partials/footer.html#L30) (for the switching JavaScript
+ - [styles_dark.css](https://github.com/ripixel/ripixel-website/blob/master/assets/styles/styles_dark.css)) (the dark mode specific styles)
+
 Go click that sun in the top-right hand corner of the site and let me know what you think!
