@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.8.0](https://github.com/ripixel/ripixel-website/compare/v4.7.0...v4.8.0) (2023-01-03)
+
+
+### Features
+
+* **thought:** added dark mode article ([#62](https://github.com/ripixel/ripixel-website/issues/62)) ([c12af05](https://github.com/ripixel/ripixel-website/commit/c12af0502bf1f938747c688a64f985b61bd8dbe3))
+
 ## [4.7.0](https://github.com/ripixel/ripixel-website/compare/v4.6.19...v4.7.0) (2023-01-03)
 
 
