@@ -31,7 +31,7 @@
         "@types/node": "^18.0.0",
         "@types/prettier": "^2.0.1",
         "@types/showdown": "^2.0.0",
-        "@typescript-eslint/eslint-plugin": "^5.0.0",
+        "@typescript-eslint/eslint-plugin": "^5.55.0",
         "@typescript-eslint/parser": "^5.0.0",
         "clean-css-cli": "^5.0.0",
         "date-fns": "^2.13.0",
