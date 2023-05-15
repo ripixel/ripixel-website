@@ -29,7 +29,7 @@
         "minor",
         "patch"
       ],
-      "matchCurrentVersion": "!/^0/",
+      "matchCurrentVersion": "!/^0/"
     }
   ]
 }
