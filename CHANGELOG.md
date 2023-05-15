@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.9.1](https://github.com/ripixel/ripixel-website/compare/v4.9.0...v4.9.1) (2023-05-15)
+
+
+### Bug Fixes
+
+* renovate JSON file validity ([9d32507](https://github.com/ripixel/ripixel-website/commit/9d325077281307917691f5c9e5c2638166690030))
+
 ## [4.9.0](https://github.com/ripixel/ripixel-website/compare/v4.8.3...v4.9.0) (2023-05-15)
 
 
