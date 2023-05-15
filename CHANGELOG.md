@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.9.0](https://github.com/ripixel/ripixel-website/compare/v4.8.3...v4.9.0) (2023-05-15)
+
+
+### Features
+
+* add Monzo employment details ([44e9191](https://github.com/ripixel/ripixel-website/commit/44e9191c810b15a36fafacf3448be5edc5254944))
+* updated profile detail items with new PC setup ([f54422f](https://github.com/ripixel/ripixel-website/commit/f54422fdefb673070884fa6ba8f0f4a47e5f548a))
+
 ### [4.8.3](https://github.com/ripixel/ripixel-website/compare/v4.8.2...v4.8.3) (2023-03-28)
 
 ### [4.8.2](https://github.com/ripixel/ripixel-website/compare/v4.8.1...v4.8.2) (2023-01-04)
