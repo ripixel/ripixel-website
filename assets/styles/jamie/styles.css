@@ -1,0 +1,46 @@
+body {
+  background-color: aqua;
+  background-image: url("jvtbg.png");
+  background-repeat: repeat;
+  color: blueviolet;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  padding: 40px;
+  text-align: center;
+}
+
+h1,
+h2,
+marquee {
+  background-color: aqua;
+}
+
+h1 {
+  font-size: x-large;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+img {
+  padding: 20px;
+  background-color: orchid;
+  border: 3px dashed orchid;
+}
+
+h2 {
+  font-size: large;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+marquee {
+  font-style: italic;
+  font-size: xx-large;
+  padding-bottom: 20px;
+}
+
+iframe {
+  border-style: groove;
+  border-width: 20pt;
+  display: block;
+  cursor: crosshair;
+}

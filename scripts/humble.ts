@@ -28,12 +28,21 @@ const allTaskList = [
     task: () => execa(`rm`, [`-rf`, `${outDir}/*`]),
   },
   {
-    title: 'Build CSS',
+    title: 'Build Site CSS',
     task: () =>
       execa(`${nodeModulesDir}/clean-css-cli/bin/cleancss`, [
         `-o`,
         `${outDir}/styles.min.css`,
         `${cssDir}/*.css`,
+      ]),
+  },
+  {
+    title: 'Build Jamie CSS',
+    task: () =>
+      execa(`${nodeModulesDir}/clean-css-cli/bin/cleancss`, [
+        `-o`,
+        `${outDir}/styles.jamie.min.css`,
+        `${cssDir}/jamie/*.css`,
       ]),
   },
   {
