@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.0.0](https://github.com/ripixel/ripixel-website/compare/v4.9.6...v5.0.0) (2023-05-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added a surprise
+
+### Features
+
+* Added a surprise ([5706b89](https://github.com/ripixel/ripixel-website/commit/5706b89a7d67d5ff95940b85a929d6707f2eb1e6))
+
 ### [4.9.6](https://github.com/ripixel/ripixel-website/compare/v4.9.5...v4.9.6) (2023-05-15)
 
 ### [4.9.5](https://github.com/ripixel/ripixel-website/compare/v4.9.4...v4.9.5) (2023-05-15)
