@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <!-- Apparently GTag has to be first thing after the head tag... hmmm-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MNE4SWQ0L0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'G-MNE4SWQ0L0');
+    </script>
+
+    <!-- Traditional Metadata -->
+    <title>did you know jamie has a website</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="did you know jamie has a website" />
+    <meta name="author" content="James King" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {noindex}
+
+    <!-- Social sharing meta -->
+    <meta property="og:title" content="did you know" />
+    <meta property="og:site_name" content="jamie has a website" />
+    <meta property="og:description" content="{description}" />
+    <meta property="og:image" content="https://www.ripixel.co.uk/jamie.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/styles.jamie.min.css" />
+  </head>
+
+
+  <body>
+    <main>
+      <h1>Did you know...</h1>
+      <img src="/jamie.jpg" />
+      <h2>This guy has a website!</h2>
+      <marquee scrollamount="15">It's amaaaaazing! It has everything you could ever want! It's the ramblings of a mad
+        man! It's got dog
+        pics, and cat pics! It has the whole sum of human knowledge! It's got the nuclear launch codes! It's got
+        swaaaaag!</marquee>
+
+      <h1>👇👇👇 Check it out! 👇👇👇</h1>
+      <iframe id="jvt" title="he has a website" width="100%" height="800px" src="https://www.jvt.me/"></iframe>
+      <h1>It's the best around!</h1>
+    </main>
+
+    <script>
+      document.querySelector("#jvt").addEventListener("click", (e) => {
+        e.preventDefault();
+        window.location = "https://jvt.me";
+      });
+    </script>
+  </body>
+
+</html>
