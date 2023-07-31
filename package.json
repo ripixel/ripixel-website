@@ -45,7 +45,7 @@
         "firebase-tools": "^12.0.0",
         "husky": "^8.0.0",
         "listr": "^0.14.3",
-        "listr2": "^6.0.0",
+        "listr2": "^6.6.1",
         "node-fetch": "^3.3.0",
         "nodemon": "^2.0.3",
         "prettier": "^2.0.5",
