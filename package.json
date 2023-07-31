@@ -29,7 +29,7 @@
     "homepage": "https://github.com/ripixel/ripixel-website#readme",
     "devDependencies": {
         "@types/node": "^18.0.0",
-        "@types/prettier": "^2.0.1",
+        "@types/prettier": "^3.0.0",
         "@types/showdown": "^2.0.0",
         "@typescript-eslint/eslint-plugin": "^5.0.0",
         "@typescript-eslint/parser": "^5.0.0",
@@ -48,7 +48,7 @@
         "listr2": "^6.0.0",
         "node-fetch": "^3.3.0",
         "nodemon": "^2.0.3",
-        "prettier": "^2.0.5",
+        "prettier": "^3.0.0",
         "pretty-quick": "^3.0.0",
         "serve": "^14.0.0",
         "showdown": "^2.0.0",
