@@ -37,7 +37,7 @@
         "date-fns": "^2.13.0",
         "enquirer": "^2.3.6",
         "eslint": "^8.0.0",
-        "eslint-config-prettier": "^8.0.0",
+        "eslint-config-prettier": "^9.0.0",
         "eslint-plugin-prettier": "^4.0.0",
         "execa": "^7.0.0",
         "favicons-generate": "0.0.15",
