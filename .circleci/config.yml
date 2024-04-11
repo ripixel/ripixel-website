@@ -4,7 +4,7 @@ executors:
   node-project:
     working_directory: ~/tmp
     docker:
-      - image: cimg/node:18.16.0
+      - image: cimg/node:21.7.3
 
 jobs: # a collection of steps
   install_deps: # install npm deps
