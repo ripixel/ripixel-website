@@ -34,7 +34,7 @@
         "@typescript-eslint/eslint-plugin": "^5.0.0",
         "@typescript-eslint/parser": "^5.0.0",
         "clean-css-cli": "^5.0.0",
-        "date-fns": "^2.13.0",
+        "date-fns": "^3.0.0",
         "enquirer": "^2.3.6",
         "eslint": "^8.0.0",
         "eslint-config-prettier": "^8.0.0",
