@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.0.36](https://github.com/ripixel/ripixel-website/compare/v5.0.35...v5.0.36) (2025-02-24)
+
+
+### Bug Fixes
+
+* **renovate:** Automerge minor-and-patch deps updates ([37f55f0](https://github.com/ripixel/ripixel-website/commit/37f55f06b024643897d0d387ce528b4d3cc73d8a))
+
 ### [5.0.35](https://github.com/ripixel/ripixel-website/compare/v5.0.34...v5.0.35) (2025-02-24)
 
 
