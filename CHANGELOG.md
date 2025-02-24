@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.0.34](https://github.com/ripixel/ripixel-website/compare/v5.0.33...v5.0.34) (2025-02-24)
+
+
+### Bug Fixes
+
+* **senior-staff-engineer:** Updated Monzo title to reflect re-titling ([c41ba29](https://github.com/ripixel/ripixel-website/commit/c41ba29ccb1ebc63ab40234bcb9f9166533f27f4))
+
 ### [5.0.33](https://github.com/ripixel/ripixel-website/compare/v5.0.32...v5.0.33) (2023-12-04)
 
 ### [5.0.32](https://github.com/ripixel/ripixel-website/compare/v5.0.31...v5.0.32) (2023-11-27)
