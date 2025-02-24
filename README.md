@@ -16,7 +16,7 @@ Nice and simple, who needs Gatsby.
 
 ## How
 
-Using TypeScript and ts-node, this script lives in `./scripts/generatePages.ts`. Why TypeScript; because it's great, and it makes JavaScript fun again.
+Using TypeScript, this script lives in `./scripts/generatePages.ts`. Why TypeScript; because it's great, and it makes JavaScript fun again.
 
 Run `npm run build` to execute this script, as well as copy over any assets required into the `public/` directory.
 
