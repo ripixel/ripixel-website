@@ -47,7 +47,7 @@
         "listr": "^0.14.3",
         "listr2": "^6.0.0",
         "node-fetch": "^3.3.0",
-        "nodemon": "^2.0.3",
+        "nodemon": "^3.0.0",
         "prettier": "^2.0.5",
         "pretty-quick": "^3.0.0",
         "serve": "^14.0.0",
