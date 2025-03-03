@@ -42,7 +42,7 @@
         "execa": "^7.0.0",
         "favicons-generate": "0.0.15",
         "feed": "^4.2.2",
-        "firebase-tools": "^12.0.0",
+        "firebase-tools": "^13.32.0",
         "husky": "^8.0.0",
         "listr": "^0.14.3",
         "listr2": "^6.0.0",
