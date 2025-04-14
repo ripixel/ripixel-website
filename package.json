@@ -60,7 +60,7 @@
         "xml-js": "^1.6.11"
     },
     "overrides": {
-        "sharp": "^0.32.0"
+        "sharp": "^0.34.0"
     },
     "husky": {
         "hooks": {
