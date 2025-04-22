@@ -19,7 +19,8 @@
       ],
       "matchPackagePatterns": [
         "lint",
-        "prettier"
+        "prettier",
+        "pretty-quick"
       ],
       "automerge": true
     },
