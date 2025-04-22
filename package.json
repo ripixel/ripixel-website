@@ -36,6 +36,7 @@
         "enquirer": "^2.3.6",
         "eslint": "^9.0.0",
         "eslint-config-prettier": "^10.0.0",
+        "eslint-formatter-junit": "^8.40.0",
         "eslint-plugin-prettier": "^5.0.0",
         "execa": "^7.0.0",
         "favicons-generate": "0.0.15",
