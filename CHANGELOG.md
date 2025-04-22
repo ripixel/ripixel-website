@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.0.56](https://github.com/ripixel/ripixel-website/compare/v5.0.55...v5.0.56) (2025-04-22)
+
+
+### Bug Fixes
+
+* **renovate:** Update renovate linting group settings ([e8f38e1](https://github.com/ripixel/ripixel-website/commit/e8f38e1f5d0fd64014be738d69fea4f732fedadd))
+
 ### [5.0.55](https://github.com/ripixel/ripixel-website/compare/v5.0.54...v5.0.55) (2025-04-22)
 
 ### [5.0.54](https://github.com/ripixel/ripixel-website/compare/v5.0.53...v5.0.54) (2025-04-22)
