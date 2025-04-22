@@ -38,7 +38,7 @@
         "eslint-config-prettier": "^10.0.0",
         "eslint-formatter-junit": "^8.40.0",
         "eslint-plugin-prettier": "^5.0.0",
-        "execa": "^7.0.0",
+        "execa": "^9.0.0",
         "favicons-generate": "0.0.15",
         "feed": "^4.2.2",
         "firebase-tools": "^14.0.0",
