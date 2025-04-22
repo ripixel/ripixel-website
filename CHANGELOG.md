@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.1.0](https://github.com/ripixel/ripixel-website/compare/v5.0.57...v5.1.0) (2025-04-22)
+
+
+### Features
+
+* **linting:** Upgrade to tseslint and new config format ([068d7b9](https://github.com/ripixel/ripixel-website/commit/068d7b9fc4cd45def9e87a5754d3e43c2d8081c1))
+
+
+### Bug Fixes
+
+* **linting:** Install JUnit reporter ([6205efb](https://github.com/ripixel/ripixel-website/commit/6205efb18e5c4d2f6100fd2805fb527efa95a28d))
+
 ### [5.0.57](https://github.com/ripixel/ripixel-website/compare/v5.0.56...v5.0.57) (2025-04-22)
 
 ### [5.0.56](https://github.com/ripixel/ripixel-website/compare/v5.0.55...v5.0.56) (2025-04-22)
