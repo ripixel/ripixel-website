@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.2.0](https://github.com/ripixel/ripixel-website/compare/v5.1.0...v5.2.0) (2025-04-22)
+
+
+### Features
+
+* **dependabot:** Remove dependabot. Renovate is better. ([836737f](https://github.com/ripixel/ripixel-website/commit/836737f150e554f30f91bfec3b8be450d0738c63))
+
 ## [5.1.0](https://github.com/ripixel/ripixel-website/compare/v5.0.57...v5.1.0) (2025-04-22)
 
 
