@@ -1,6 +1,6 @@
 {
     "name": "ripixel",
-    "version": "5.2.4",
+    "version": "5.2.5",
     "description": "I'm James King, and I make things for the web",
     "main": "index.js",
     "scripts": {
