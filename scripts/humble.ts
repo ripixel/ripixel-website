@@ -1,86 +1,41 @@
-import * as path from 'path';
 import { Listr } from 'listr2';
-import { execa } from 'execa';
 
-import generatePages from './generatePages';
-import generateThoughts from './generateThoughts';
-import generateSitemap from './generateSitemap';
-import generateChangelog from './generateChangelog';
+import { parseCliArgs } from './utils/cli';
 
-import { config } from '../humble.config';
+// --- Task Registry ---
+// To add a new generator, simply add it to coreTasks in utils/taskRegistry.ts
+import { coreTasks } from './utils/taskRegistry';
 
-const rootDir = path.resolve(config.rootDir);
-const outDir = path.resolve(rootDir, config.outDir);
-const cssDir = path.resolve(rootDir, config.cssDir);
-const nodeModulesDir = path.resolve(rootDir, config.nodeModulesDir);
-const imagesDir = path.resolve(rootDir, config.imagesDir);
-// const pagesDir = path.resolve(rootDir, config.pagesDir);
-// const partialsDir = path.resolve(rootDir, config.partialsDir);
+// Example: To add a new generator, edit utils/taskRegistry.ts:
+// import generateRssFeed from '../generateRssFeed';
+// coreTasks.push({ name: 'rss', title: 'Generate RSS Feed', run: () => generateRssFeed() });
 
-const allTaskList = [
-  {
-    title: 'Create output directory',
-    task: () => execa(`mkdir`, ['-p', `${outDir}`]),
-  },
-  {
-    title: 'Clean output directory',
-    task: () => execa(`rm`, [`-rf`, `${outDir}/*`]),
-  },
-  {
-    title: 'Build Site CSS',
-    task: () =>
-      execa(`${nodeModulesDir}/clean-css-cli/bin/cleancss`, [
-        `-o`,
-        `${outDir}/styles.min.css`,
-        `${cssDir}/*.css`,
-      ]),
-  },
-  {
-    title: 'Build Jamie CSS',
-    task: () =>
-      execa(`${nodeModulesDir}/clean-css-cli/bin/cleancss`, [
-        `-o`,
-        `${outDir}/styles.jamie.min.css`,
-        `${cssDir}/jamie/*.css`,
-      ]),
-  },
-  {
-    title: 'Copy Images',
-    task: () => execa(`cp`, [`-R`, `${imagesDir}/.`, `${outDir}/`]),
-  },
-  {
-    title: 'Build Pages',
-    task: () => generatePages(),
-  },
-  {
-    title: 'Build Repeatable Pages',
-    task: () =>
-      execa(`mkdir`, [`-p`, `${outDir}/thoughts`]).then(
-        async () => await generateThoughts()
-      ),
-  },
-];
+// --- CLI Option Parsing ---
+const { only, skip } = parseCliArgs(process.argv);
 
-const prodTaskList = [
-  {
-    title: 'Build Favicons',
-    task: () =>
-      execa(`node`, [`${nodeModulesDir}/favicons-generate/bin/cli.js`]),
-    skip: () => !config.generateFavicons,
-  },
-  {
-    title: 'Build Sitemap',
-    task: () => generateSitemap(),
-  },
-  {
-    title: 'Build Changelog',
-    task: () => generateChangelog(),
-  },
-];
+// --- Task Filtering Logic ---
+let tasksToRun = coreTasks;
+if (only && only.length > 0) {
+  tasksToRun = coreTasks.filter(task => only.includes(task.name));
+} else if (skip && skip.length > 0) {
+  tasksToRun = coreTasks.filter(task => !skip.includes(task.name));
+}
 
-const toExecute =
-  process.env.NODE_ENV !== 'development'
-    ? [...allTaskList, ...prodTaskList]
-    : allTaskList;
+// --- Listr Task List ---
+const listrTasks = tasksToRun.map(task => ({
+  title: task.title,
+  task: () => task.run(),
+}));
 
-new Listr(toExecute).run();
+async function main() {
+  const runner = new Listr(listrTasks, { concurrent: false });
+  try {
+    await runner.run();
+    console.log('\n✅ Site generation complete!');
+  } catch (err) {
+    console.error('❌ Site generation failed:', err);
+    process.exit(1);
+  }
+}
+
+main();
