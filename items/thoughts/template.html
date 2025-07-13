@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  {{> head}}
+
+  <body>
+    {{> nav}}
+
+    {{> darkmode}}
+
+    <main class="thoughts article">
+      <section class="area">
+        <div class="header-details">
+          <h1>{{title}}</h1>
+          <p class="tag">{{dateDisplay}}</p>
+        </div>
+        {{{content}}}
+      </section>
+    </main>
+
+    <main class="thoughts mentions">
+      {{#if likes}}
+        <div class="likes">
+          <h4>{{likes.length}} likes</h4>
+          <div class="mention-links">
+            {{#each likes}}
+              <a class="item" href="{{link}}" target="_blank" rel="external noopener noreferrer">
+                <img src="{{avatar}}" loading="lazy" decoding="async" width="28" height="28" />
+                <span>{{name}}</span>
+              </a>
+            {{/each}}
+          </div>
+        </div>
+      {{/if}}
+
+      {{#if reposts}}
+        <div class="reposts">
+          <h4>{{reposts.length}} reposts</h4>
+          <div class="mention-links">
+            {{#each reposts}}
+              <a class="item" href="{{link}}" target="_blank" rel="external noopener noreferrer">
+                <img src="{{avatar}}" loading="lazy" decoding="async" width="28" height="28" />
+                <span>{{name}}</span>
+              </a>
+            {{/each}}
+          </div>
+        </div>
+      {{/if}}
+
+      {{#if comments}}
+        <div class="comments">
+          <h4>{{comments.length}} comments</h4>
+          <div class="mention-links">
+            {{#each comments}}
+              <div class="comment">
+                <a class="item" href="{{link}}" target="_blank" rel="external noopener noreferrer">
+                  <img src="{{avatar}}" loading="lazy" decoding="async" width="28" height="28" />
+                  <span>{{name}}</span>
+                </a>
+                <p>{{text}}</p>
+                <a class="item comment-link" href="{{comment_link}}" target="_blank"
+                  rel="external noopener noreferrer"><span>View</span></a>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      {{/if}}
+    </main>
+
+    <main class="thoughts details">
+      <p>Thanks for reading! Fancy sharing...?</p>
+      <a href="/thoughts" class="button">More thoughts</a>
+    </main>
+
+    {{> footer}}
+  </body>
+
+</html>

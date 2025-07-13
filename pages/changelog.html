@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  {head.html}
+  {{> head}}
 
   <body>
-    {nav.html}
+    {{> nav}}
 
-    {darkmode.html}
+    {{> darkmode}}
 
     <main class="changelog article">
       <p>What changes have happened to this site?</p>
       <section class="area">
-        {changelog}
+        {{{changelogHtml}}}
       </section>
     </main>
 
-    {footer.html}
+    {{> footer}}
   </body>
 
 </html>
