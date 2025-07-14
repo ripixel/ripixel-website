@@ -2,37 +2,37 @@
 
 <html lang="en">
 
-  <head>
-    <!-- Apparently GTag has to be first thing after the head tag... hmmm-->
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MNE4SWQ0L0"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
+  {{> head}}
+  <!-- Apparently GTag has to be first thing after the head tag... hmmm-->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MNE4SWQ0L0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-      gtag('config', 'G-MNE4SWQ0L0');
-    </script>
+    gtag('config', 'G-MNE4SWQ0L0');
+  </script>
 
-    <!-- Traditional Metadata -->
-    <title>did you know jamie has a website</title>
-    <meta charset="utf-8" />
-    <meta name="description" content="did you know jamie has a website" />
-    <meta name="author" content="James King" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    {noindex}
+  <!-- Traditional Metadata -->
+  <title>{{title}}</title>
+  <meta charset="utf-8" />
+  <meta name="description" content="{{description}}" />
+  <meta name="author" content="James King" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {{{noindex}}}
 
-    <!-- Social sharing meta -->
-    <meta property="og:title" content="did you know" />
-    <meta property="og:site_name" content="jamie has a website" />
-    <meta property="og:description" content="{description}" />
-    <meta property="og:image" content="https://www.ripixel.co.uk/jamie.jpg" />
-    <meta name="twitter:card" content="summary_large_image" />
+  <!-- Social sharing meta -->
+  <meta property="og:title" content="{{title}}" />
+  <meta property="og:site_name" content="{{siteName}}" />
+  <meta property="og:description" content="{{description}}" />
+  <meta property="og:image" content="https://www.ripixel.co.uk/jamie.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="/styles.jamie.min.css" />
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles.jamie.min.css" />
   </head>
 
 
