@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.0](https://github.com/ripixel/ripixel-website/compare/v5.2.89...v6.0.0) (2025-07-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* use skier npm package (that I wrote) for build steps
+
+### Features
+
+* use skier npm package (that I wrote) for build steps ([60c6a36](https://github.com/ripixel/ripixel-website/commit/60c6a36bef9e8a0719dc0e70ef73badad01938e8))
+
 ### [5.2.89](https://github.com/ripixel/ripixel-website/compare/v5.2.88...v5.2.89) (2025-07-14)
 
 ### [5.2.88](https://github.com/ripixel/ripixel-website/compare/v5.2.87...v5.2.88) (2025-07-14)
