@@ -1,32 +1,40 @@
 // @ts-check
-const { cleanAndCreateOutputTask, processCssTask, copyAssetsTask, readMarkdownTask, setGlobalsTask, generateItemisedTask, generateRssFeedTask, generateHtmlTask, generateSitemapTask } = require('skier');
+const { prepareOutputTask,
+  bundleCssTask,
+  copyStaticTask,
+  setGlobalFromMarkdownTask,
+  setGlobalsTask,
+  generateItemsTask,
+  generateFeedTask,
+  generatePagesTask,
+  generateSitemapTask } = require('skier');
 
 exports.tasks = [
   // Clean & Create output directory (new built-in)
-  cleanAndCreateOutputTask({
+  prepareOutputTask({
     outDir: './public',
   }),
   // Process main CSS
-  processCssTask({
+  bundleCssTask({
     from: './assets/styles/main',
     to: './public',
     output: 'styles.min.css',
     minify: true,
   }),
   // Process Jamie CSS
-  processCssTask({
+  bundleCssTask({
     from: './assets/styles/jamie',
     to: './public',
     output: 'styles.jamie.min.css',
     minify: true,
   }),
   // Copy images/assets
-  copyAssetsTask({
+  copyStaticTask({
     from: './assets/images',
     to: './public',
   }),
   // Read and convert CHANGELOG.md to HTML for downstream use
-  readMarkdownTask({
+  setGlobalFromMarkdownTask({
     mdPath: './CHANGELOG.md',
     outputVar: 'changelogHtml',
   }),
@@ -44,7 +52,7 @@ exports.tasks = [
     }
   }),
   // Generate thoughts
-  generateItemisedTask({
+  generateItemsTask({
     itemsDir: './items',
     partialsDir: './partials',
     outDir: './public',
@@ -56,7 +64,7 @@ exports.tasks = [
     }),
   }),
   // Generate RSS/Atom/JSON feeds for thoughts
-  generateRssFeedTask({
+  generateFeedTask({
     articles: '${thoughtsList}', // Will be resolved from previous task output
     outDir: './public',
     site: {
@@ -79,7 +87,7 @@ exports.tasks = [
     },
   }),
   // Generate HTML pages
-  generateHtmlTask({
+  generatePagesTask({
     pagesDir: './pages',
     partialsDir: './partials',
     outDir: './public',
@@ -106,6 +114,7 @@ exports.tasks = [
   // Generate sitemap.xml by auto-discovering all .html files in ./public
   generateSitemapTask({
     outDir: './public',
+    scanDir: './public',
     siteUrl: 'https://www.ripixel.co.uk',
   }),
 ];
