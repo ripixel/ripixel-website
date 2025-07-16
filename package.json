@@ -27,9 +27,7 @@
     "devDependencies": {
         "firebase-tools": "^14.10.1",
         "nodemon": "^3.0.0",
+        "skier": "^1.5.0",
         "standard-version": "^9.0.0"
-    },
-    "dependencies": {
-        "skier": "^1.4.0"
     }
 }
