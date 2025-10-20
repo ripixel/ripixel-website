@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.0.31](https://github.com/ripixel/ripixel-website/compare/v6.0.30...v6.0.31) (2025-10-20)
+
 ### [6.0.30](https://github.com/ripixel/ripixel-website/compare/v6.0.29...v6.0.30) (2025-10-13)
 
 ### [6.0.29](https://github.com/ripixel/ripixel-website/compare/v6.0.28...v6.0.29) (2025-10-06)
