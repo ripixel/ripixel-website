@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.1.0](https://github.com/ripixel/ripixel-website/compare/v6.0.51...v6.1.0) (2026-01-08)
+
+
+### Features
+
+* BREAKING CHANGE upgrade node to 24 ([abba19b](https://github.com/ripixel/ripixel-website/commit/abba19b9720e31395d35497e356083f6198f0eff))
+
 ### [6.0.51](https://github.com/ripixel/ripixel-website/compare/v6.0.50...v6.0.51) (2026-01-08)
 
 ### [6.0.50](https://github.com/ripixel/ripixel-website/compare/v6.0.49...v6.0.50) (2026-01-08)
