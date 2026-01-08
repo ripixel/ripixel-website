@@ -47,7 +47,7 @@ exports.tasks = [
     valuesFn: globals => {
       // Extract first vX.Y.Z version from changelogHtml
       const match = globals.changelogHtml && globals.changelogHtml.match(/v(\d+\.\d+\.\d+)/i);
-      const latestVersion = match ? match[1] : undefined;
+      const latestVersion = match ? match[0] : undefined;
       return { latestVersion };
     }
   }),

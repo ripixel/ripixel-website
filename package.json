@@ -21,7 +21,7 @@
         "url": "https://github.com/ripixel/ripixel-website/issues"
     },
     "engines": {
-        "node": "^22"
+        "node": "^24"
     },
     "homepage": "https://github.com/ripixel/ripixel-website#readme",
     "devDependencies": {
