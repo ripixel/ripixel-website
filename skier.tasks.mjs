@@ -1,6 +1,8 @@
 // @ts-check
-const fs = require('fs');
-const { prepareOutputTask,
+import fs from 'fs';
+import path from 'path';
+import {
+  prepareOutputTask,
   bundleCssTask,
   copyStaticTask,
   setGlobalFromMarkdownTask,
@@ -9,7 +11,8 @@ const { prepareOutputTask,
   generateFeedTask,
   generatePagesTask,
   generatePaginatedItemsTask,
-  generateSitemapTask } = require('skier');
+  generateSitemapTask
+} from 'skier';
 
 // Custom task to write a global variable to a JSON file
 function writeGlobalToJsonTask(config) {
@@ -23,7 +26,7 @@ function writeGlobalToJsonTask(config) {
         ctx.logger.warn(`Global variable '${cfg.globalVar}' not found`);
         return {};
       }
-      const dir = require('path').dirname(cfg.outFile);
+      const dir = path.dirname(cfg.outFile);
       if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, { recursive: true });
       }
@@ -34,7 +37,7 @@ function writeGlobalToJsonTask(config) {
   };
 }
 
-exports.tasks = [
+export const tasks = [
   // Clean & Create output directory (new built-in)
   prepareOutputTask({
     outDir: './public',
