@@ -105,6 +105,8 @@ exports.tasks = [
             return 'What changes have happened to this site?';
           case 'home':
             return "I'm James King, and I make things for the web";
+          case 'life':
+            return "What's going on in my life? Fitness, media, and upcoming events.";
           default:
             return vars.description || '';
         }

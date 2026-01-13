@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  {{> head}}
+
+  <body>
+    {{> nav}}
+
+    {{> darkmode}}
+
+    <main class="life">
+      <p>
+        What I'm watching, reading, listening to, and playing.
+      </p>
+
+      <section class="area disclaimer">
+        <p>
+          ⚠️ <strong>Data is dummy while I build the actual data ingest.</strong> Bloody brain is being slowwww 🐌
+        </p>
+      </section>
+
+      <section class="area">
+        <div class="header-details">
+          <h3>Media Timeline</h3>
+        </div>
+        <div class="timeline">
+
+          <!-- Currently Watching TV -->
+          <div class="timeline-item watching">
+            <div class="timeline-date">
+              <span class="day">12</span>
+              <span class="month">Jan 2026</span>
+            </div>
+            <div class="timeline-content">
+              <h4>📺 Severance</h4>
+              <p class="tag">TV Show • Watching</p>
+              <p>Season 2, Episode 3 - Mind-bending as always. The tension is unreal.</p>
+              <div class="details">
+                <div class="item">
+                  <h4>Platform</h4>
+                  <p>Apple TV+</p>
+                </div>
+                <div class="item">
+                  <h4>Progress</h4>
+                  <p>S2 E3</p>
+                </div>
+                <div class="item">
+                  <h4>Rating</h4>
+                  <p>⭐ 9/10</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Finished Book -->
+          <div class="timeline-item reading">
+            <div class="timeline-date">
+              <span class="day">11</span>
+              <span class="month">Jan 2026</span>
+            </div>
+            <div class="timeline-content">
+              <h4>📚 Project Hail Mary</h4>
+              <p class="tag">Book • Finished</p>
+              <p>Absolutely brilliant sci-fi. Andy Weir does it again. Couldn't put it down.</p>
+              <div class="details">
+                <div class="item">
+                  <h4>Author</h4>
+                  <p>Andy Weir</p>
+                </div>
+                <div class="item">
+                  <h4>Pages</h4>
+                  <p>496</p>
+                </div>
+                <div class="item">
+                  <h4>Rating</h4>
+                  <p>⭐ 10/10</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gaming -->
+          <div class="timeline-item gaming">
+            <div class="timeline-date">
+              <span class="day">10</span>
+              <span class="month">Jan 2026</span>
+            </div>
+            <div class="timeline-content">
+              <h4>🎮 Baldur's Gate 3</h4>
+              <p class="tag">Game • Playing</p>
+              <p>Still on my first playthrough. Just reached Act 3. This game is massive!</p>
+              <div class="details">
+                <div class="item">
+                  <h4>Platform</h4>
+                  <p>PC</p>
+                </div>
+                <div class="item">
+                  <h4>Hours</h4>
+                  <p>87</p>
+                </div>
+                <div class="item">
+                  <h4>Progress</h4>
+                  <p>Act 3</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Music Album -->
+          <div class="timeline-item listening">
+            <div class="timeline-date">
+              <span class="day">9</span>
+              <span class="month">Jan 2026</span>
+            </div>
+            <div class="timeline-content">
+              <h4>🎵 In Rainbows</h4>
+              <p class="tag">Album • Listening</p>
+              <p>Revisiting this classic. Still holds up incredibly well after all these years.</p>
+              <div class="details">
+                <div class="item">
+                  <h4>Artist</h4>
+                  <p>Radiohead</p>
+                </div>
+                <div class="item">
+                  <h4>Year</h4>
+                  <p>2007</p>
+                </div>
+                <div class="item">
+                  <h4>Plays</h4>
+                  <p>12</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Movie Watched -->
+          <div class="timeline-item watching">
+            <div class="timeline-date">
+              <span class="day">8</span>
+              <span class="month">Jan 2026</span>
+            </div>
+            <div class="timeline-content">
+              <h4>🎬 Dune: Part Two</h4>
+              <p class="tag">Film • Watched</p>
+              <p>Finally saw it on the big screen. Absolutely epic. Villeneuve is a genius.</p>
+              <div class="details">
+                <div class="item">
+                  <h4>Director</h4>
+                  <p>Denis Villeneuve</p>
+                </div>
+                <div class="item">
+                  <h4>Runtime</h4>
+                  <p>2h 46m</p>
+                </div>
+                <div class="item">
+                  <h4>Rating</h4>
+                  <p>⭐ 9/10</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Podcast -->
+          <div class="timeline-item listening">
+            <div class="timeline-date">
+              <span class="day">7</span>
+              <span class="month">Jan 2026</span>
+            </div>
+            <div class="timeline-content">
+              <h4>🎙️ Lex Fridman Podcast</h4>
+              <p class="tag">Podcast • Episode</p>
+              <p>#412 with Andrej Karpathy - Great deep dive into AI and neural networks.</p>
+              <div class="details">
+                <div class="item">
+                  <h4>Guest</h4>
+                  <p>Andrej Karpathy</p>
+                </div>
+                <div class="item">
+                  <h4>Length</h4>
+                  <p>3h 22m</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Currently Reading -->
+          <div class="timeline-item reading">
+            <div class="timeline-date">
+              <span class="day">5</span>
+              <span class="month">Jan 2026</span>
+            </div>
+            <div class="timeline-content">
+              <h4>📖 Staff Engineer</h4>
+              <p class="tag">Book • Reading</p>
+              <p>Great insights on the Staff+ engineering path. Very relevant to my work.</p>
+              <div class="details">
+                <div class="item">
+                  <h4>Author</h4>
+                  <p>Will Larson</p>
+                </div>
+                <div class="item">
+                  <h4>Progress</h4>
+                  <p>67%</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Game Achievement -->
+          <div class="timeline-item gaming">
+            <div class="timeline-date">
+              <span class="day">3</span>
+              <span class="month">Jan 2026</span>
+            </div>
+            <div class="timeline-content">
+              <h4>🏆 Rocket League</h4>
+              <p class="tag">Game • Achievement</p>
+              <p>Finally hit Diamond rank in 2v2! The grind was real.</p>
+              <div class="details">
+                <div class="item">
+                  <h4>Platform</h4>
+                  <p>PC</p>
+                </div>
+                <div class="item">
+                  <h4>Rank</h4>
+                  <p>Diamond I</p>
+                </div>
+                <div class="item">
+                  <h4>Hours</h4>
+                  <p>450</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Finished TV Series -->
+          <div class="timeline-item watching">
+            <div class="timeline-date">
+              <span class="day">1</span>
+              <span class="month">Jan 2026</span>
+            </div>
+            <div class="timeline-content">
+              <h4>📺 The Bear</h4>
+              <p class="tag">TV Show • Finished</p>
+              <p>Binged all 3 seasons over the holidays. Stressful but incredible TV.</p>
+              <div class="details">
+                <div class="item">
+                  <h4>Platform</h4>
+                  <p>Disney+</p>
+                </div>
+                <div class="item">
+                  <h4>Seasons</h4>
+                  <p>3</p>
+                </div>
+                <div class="item">
+                  <h4>Rating</h4>
+                  <p>⭐ 9/10</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    {{> footer}}
+  </body>
+
+</html>

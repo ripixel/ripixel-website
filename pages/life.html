@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  {{> head}}
+
+  <body>
+    {{> nav}}
+
+    {{> darkmode}}
+
+    <main class="life">
+      <section class="area">
+        <h3>What's going on in my life?</h3>
+        <p>
+          A peek behind the curtain at what I'm up to outside of work.
+          From <span class="em">running</span> and fitness stats, to what I'm
+          <span class="em2">watching</span>, reading, and playing.
+        </p>
+      </section>
+    </main>
+
+    <main class="area life">
+      <a href="life-fitness">
+        <section class="area">
+          <h2>Fitness &raquo;</h2>
+          <p>
+            Running, walking, and staying active. Recent activities,
+            upcoming events, and personal records.
+          </p>
+        </section>
+      </a>
+    </main>
+    <main class="area life">
+      <a href="life-media">
+        <section class="area">
+          <h2>Media &raquo;</h2>
+          <p>
+            What I'm currently watching, reading, listening to, and playing.
+          </p>
+        </section>
+      </a>
+    </main>
+
+    {{> footer}}
+  </body>
+
+</html>
