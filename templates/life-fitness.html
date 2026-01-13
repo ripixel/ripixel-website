@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  {{> head}}
+
+  <body>
+    {{> nav}}
+
+    {{> darkmode}}
+
+    <main class="life">
+      <p>
+        Running, walking, and generally trying to stay active.
+      </p>
+
+      <section class="area disclaimer">
+        <p>
+          ⚠️ <strong>Data is dummy while I build the actual data ingest.</strong> Bloody brain is being slowwww 🐌
+        </p>
+      </section>
+
+      <section class="area">
+        <div class="header-details">
+          <h3>Upcoming Events</h3>
+        </div>
+        <div class="timeline">
+          {{#each events}}
+            <div class="timeline-item {{type}}">
+              <div class="timeline-date">
+                <span class="day">{{day}}</span>
+                <span class="month">{{month}}</span>
+              </div>
+              <div class="timeline-content">
+                <h4>{{emoji}} {{title}}</h4>
+                <p class="tag">{{tag}}</p>
+                <p>{{description}}</p>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      </section>
+
+      <section class="area">
+        <div class="header-details">
+          <h3>Activity Timeline</h3>
+        </div>
+        <div class="timeline">
+          {{#each activities}}
+            <div class="timeline-item {{type}}">
+              <div class="timeline-date">
+                <span class="day">{{day}}</span>
+                <span class="month">{{month}}</span>
+              </div>
+              <div class="timeline-content">
+                <h4>{{emoji}} {{title}}</h4>
+                <p class="tag">{{tag}}</p>
+                <p>{{description}}</p>
+                {{#if details}}
+                  <div class="details">
+                    {{#each details}}
+                      <div class="item">
+                        <h4>{{label}}</h4>
+                        <p>{{value}}</p>
+                      </div>
+                    {{/each}}
+                  </div>
+                {{/if}}
+                {{#if exercises}}
+                  <div class="exercise-list">
+                    {{#each exercises}}
+                      <p><strong>{{this}}</strong></p>
+                    {{/each}}
+                  </div>
+                {{/if}}
+                {{#if hasMap}}
+                  <div class="map-placeholder">
+                    <p><em>📍 GPS Route Map</em></p>
+                  </div>
+                {{/if}}
+              </div>
+            </div>
+          {{/each}}
+        </div>
+        {{> pagination}}
+      </section>
+    </main>
+
+    {{> footer}}
+  </body>
+
+</html>

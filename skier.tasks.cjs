@@ -1,4 +1,5 @@
 // @ts-check
+const fs = require('fs');
 const { prepareOutputTask,
   bundleCssTask,
   copyStaticTask,
@@ -7,7 +8,31 @@ const { prepareOutputTask,
   generateItemsTask,
   generateFeedTask,
   generatePagesTask,
+  generatePaginatedItemsTask,
   generateSitemapTask } = require('skier');
+
+// Custom task to write a global variable to a JSON file
+function writeGlobalToJsonTask(config) {
+  return {
+    name: 'write-global-to-json',
+    title: `Write ${config.globalVar} to ${config.outFile}`,
+    config,
+    run: async (cfg, ctx) => {
+      const data = ctx.globals[cfg.globalVar];
+      if (!data) {
+        ctx.logger.warn(`Global variable '${cfg.globalVar}' not found`);
+        return {};
+      }
+      const dir = require('path').dirname(cfg.outFile);
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+      }
+      fs.writeFileSync(cfg.outFile, JSON.stringify(data, null, 2));
+      ctx.logger.debug(`Wrote ${cfg.globalVar} to ${cfg.outFile}`);
+      return {};
+    }
+  };
+}
 
 exports.tasks = [
   // Clean & Create output directory (new built-in)
@@ -51,7 +76,7 @@ exports.tasks = [
       return { latestVersion };
     }
   }),
-  // Generate thoughts
+  // Generate individual thought article pages
   generateItemsTask({
     itemsDir: './items',
     partialsDir: './partials',
@@ -62,6 +87,11 @@ exports.tasks = [
       subpage: '| ' + title,
       description: excerpt,
     }),
+  }),
+  // Write thoughtsList to JSON for pagination
+  writeGlobalToJsonTask({
+    globalVar: 'thoughtsList',
+    outFile: './items/thoughts.json',
   }),
   // Generate RSS/Atom/JSON feeds for thoughts
   generateFeedTask({
@@ -86,11 +116,64 @@ exports.tasks = [
       },
     },
   }),
-  // Generate HTML pages
+  // Generate paginated thoughts listing
+  generatePaginatedItemsTask({
+    dataFile: './items/thoughts.json',
+    itemsPerPage: 5,
+    template: './templates/thoughts.html',
+    partialsDir: './partials',
+    outDir: './public',
+    basePath: '/thoughts',
+    outputVar: 'thoughts',
+    paginationVar: 'pagination',
+    additionalVarsFn: () => ({
+      page: 'thoughts',
+      description: 'A peak inside my brain you ask? Reader, beware...',
+    }),
+  }),
+  // Generate paginated life-fitness pages
+  generatePaginatedItemsTask({
+    dataFile: './items/life/fitness.json',
+    dataKey: 'timeline',
+    itemsPerPage: 10,
+    template: './templates/life-fitness.html',
+    partialsDir: './partials',
+    outDir: './public',
+    basePath: '/life-fitness',
+    outputVar: 'activities',
+    paginationVar: 'pagination',
+    additionalVarsFn: () => {
+      // Load events from the same JSON file for display on all pages
+      const fitnessData = JSON.parse(fs.readFileSync('./items/life/fitness.json', 'utf8'));
+      return {
+        page: 'life',
+        description: 'Running, walking, and generally trying to stay active.',
+        events: fitnessData.events,
+      };
+    },
+  }),
+  // Generate paginated life-media pages
+  generatePaginatedItemsTask({
+    dataFile: './items/life/media.json',
+    dataKey: 'timeline',
+    itemsPerPage: 10,
+    template: './templates/life-media.html',
+    partialsDir: './partials',
+    outDir: './public',
+    basePath: '/life-media',
+    outputVar: 'items',
+    paginationVar: 'pagination',
+    additionalVarsFn: () => ({
+      page: 'life',
+      description: 'What I\'m watching, reading, listening to, and playing.',
+    }),
+  }),
+  // Generate HTML pages (excluding paginated pages)
   generatePagesTask({
     pagesDir: './pages',
     partialsDir: './partials',
     outDir: './public',
+
     additionalVarsFn: ({ currentPage, ...vars }) => ({
       page: currentPage === 'index' ? 'home' : currentPage,
       description: (() => {

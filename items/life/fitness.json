@@ -1,0 +1,223 @@
+{
+  "events": [
+    {
+      "date": "2026-04-15",
+      "day": "15",
+      "month": "Apr 2026",
+      "type": "event",
+      "emoji": "🏃",
+      "title": "Nottingham Marathon",
+      "tag": "Race • 42.2km",
+      "description": "Full marathon through the city centre. Target time: sub-4 hours."
+    },
+    {
+      "date": "2026-02-08",
+      "day": "8",
+      "month": "Feb 2026",
+      "type": "event",
+      "emoji": "🏃",
+      "title": "Parkrun 5K",
+      "tag": "Race • 5km",
+      "description": "Weekly parkrun at Colwick Park. Going for a PB!"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-01-12",
+      "day": "12",
+      "month": "Jan 2026",
+      "type": "strength",
+      "emoji": "🏋️",
+      "title": "Upper Body Strength",
+      "tag": "Strength Training • 52 min",
+      "description": "Push day focusing on chest and shoulders.",
+      "details": [
+        {
+          "label": "Exercises",
+          "value": "6"
+        },
+        {
+          "label": "Sets",
+          "value": "18"
+        },
+        {
+          "label": "Volume",
+          "value": "4,250 kg"
+        },
+        {
+          "label": "Calories",
+          "value": "320"
+        }
+      ],
+      "exercises": [
+        "Bench Press: 4×8 @ 70kg",
+        "Overhead Press: 3×10 @ 40kg",
+        "Incline Dumbbell Press: 3×12 @ 22.5kg",
+        "Lateral Raises: 3×15 @ 10kg",
+        "Tricep Pushdowns: 3×12 @ 25kg",
+        "Face Pulls: 2×15 @ 15kg"
+      ]
+    },
+    {
+      "date": "2026-01-11",
+      "day": "11",
+      "month": "Jan 2026",
+      "type": "run",
+      "emoji": "🏃",
+      "title": "Morning 10K",
+      "tag": "Running • 58:32",
+      "description": "Easy recovery run along the canal. Felt good despite the cold!",
+      "details": [
+        {
+          "label": "Distance",
+          "value": "10.2 km"
+        },
+        {
+          "label": "Pace",
+          "value": "5:44 /km"
+        },
+        {
+          "label": "Avg HR",
+          "value": "142 bpm"
+        },
+        {
+          "label": "Max HR",
+          "value": "168 bpm"
+        },
+        {
+          "label": "Elevation",
+          "value": "+85m"
+        },
+        {
+          "label": "Calories",
+          "value": "680"
+        }
+      ],
+      "hasMap": true
+    },
+    {
+      "date": "2026-01-10",
+      "day": "10",
+      "month": "Jan 2026",
+      "type": "cycle",
+      "emoji": "🚴",
+      "title": "Commute to Office",
+      "tag": "Cycling • 28:15",
+      "description": "Quick commute through town. Bit of traffic but made good time.",
+      "details": [
+        {
+          "label": "Distance",
+          "value": "8.4 km"
+        },
+        {
+          "label": "Avg Speed",
+          "value": "17.8 km/h"
+        },
+        {
+          "label": "Avg HR",
+          "value": "128 bpm"
+        },
+        {
+          "label": "Calories",
+          "value": "210"
+        }
+      ]
+    },
+    {
+      "date": "2026-01-09",
+      "day": "9",
+      "month": "Jan 2026",
+      "type": "strength",
+      "emoji": "🏋️",
+      "title": "Leg Day",
+      "tag": "Strength Training • 65 min",
+      "description": "Heavy squats day. New PB on back squat!",
+      "details": [
+        {
+          "label": "Exercises",
+          "value": "5"
+        },
+        {
+          "label": "Sets",
+          "value": "16"
+        },
+        {
+          "label": "Volume",
+          "value": "6,800 kg"
+        },
+        {
+          "label": "Calories",
+          "value": "420"
+        }
+      ],
+      "exercises": [
+        "Back Squat: 5×5 @ 100kg 🏆",
+        "Romanian Deadlift: 3×10 @ 80kg",
+        "Leg Press: 3×12 @ 150kg",
+        "Leg Curl: 3×12 @ 40kg",
+        "Calf Raises: 2×20 @ 60kg"
+      ]
+    },
+    {
+      "date": "2026-01-07",
+      "day": "7",
+      "month": "Jan 2026",
+      "type": "run",
+      "emoji": "🏃",
+      "title": "Sunday Long Run",
+      "tag": "Running • 1:42:18",
+      "description": "Marathon training long run. Kept it easy and conversational pace.",
+      "details": [
+        {
+          "label": "Distance",
+          "value": "18.5 km"
+        },
+        {
+          "label": "Pace",
+          "value": "5:32 /km"
+        },
+        {
+          "label": "Avg HR",
+          "value": "148 bpm"
+        },
+        {
+          "label": "Max HR",
+          "value": "172 bpm"
+        },
+        {
+          "label": "Elevation",
+          "value": "+210m"
+        },
+        {
+          "label": "Calories",
+          "value": "1,250"
+        }
+      ],
+      "hasMap": true
+    },
+    {
+      "date": "2026-01-06",
+      "day": "6",
+      "month": "Jan 2026",
+      "type": "walk",
+      "emoji": "🚶",
+      "title": "Lunchtime Walk",
+      "tag": "Walking • 35:00",
+      "description": "Quick walk around the park to clear my head.",
+      "details": [
+        {
+          "label": "Distance",
+          "value": "2.8 km"
+        },
+        {
+          "label": "Steps",
+          "value": "3,850"
+        },
+        {
+          "label": "Calories",
+          "value": "145"
+        }
+      ]
+    }
+  ]
+}

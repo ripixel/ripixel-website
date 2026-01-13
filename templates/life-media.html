@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  {{> head}}
+
+  <body>
+    {{> nav}}
+
+    {{> darkmode}}
+
+    <main class="life">
+      <p>
+        What I'm watching, reading, listening to, and playing.
+      </p>
+
+      <section class="area disclaimer">
+        <p>
+          ⚠️ <strong>Data is dummy while I build the actual data ingest.</strong> Bloody brain is being slowwww 🐌
+        </p>
+      </section>
+
+      <section class="area">
+        <div class="header-details">
+          <h3>Media Timeline</h3>
+        </div>
+        <div class="timeline">
+          {{#each items}}
+            <div class="timeline-item {{type}}">
+              <div class="timeline-date">
+                <span class="day">{{day}}</span>
+                <span class="month">{{month}}</span>
+              </div>
+              <div class="timeline-content">
+                <h4>{{emoji}} {{title}}</h4>
+                <p class="tag">{{tag}}</p>
+                <p>{{description}}</p>
+                {{#if details}}
+                  <div class="details">
+                    {{#each details}}
+                      <div class="item">
+                        <h4>{{label}}</h4>
+                        <p>{{value}}</p>
+                      </div>
+                    {{/each}}
+                  </div>
+                {{/if}}
+              </div>
+            </div>
+          {{/each}}
+        </div>
+        {{> pagination}}
+      </section>
+    </main>
+
+    {{> footer}}
+  </body>
+
+</html>
