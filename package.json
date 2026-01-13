@@ -1,6 +1,6 @@
 {
     "name": "ripixel",
-    "version": "6.2.1",
+    "version": "7.0.0",
     "description": "I'm James King, and I make things for the web",
     "scripts": {
         "dev": "skier --debug",

@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.0.0](https://github.com/ripixel/ripixel-website/compare/v6.2.1...v7.0.0) (2026-01-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* Templates for paginated pages moved from pages/ to templates/
+
+### Features
+
+* upgrade Skier to v3.0.0 and implement pagination ([a93e30a](https://github.com/ripixel/ripixel-website/commit/a93e30ac306aa6e772ae355ba9ce6db05176a7e0))
+
 ### [6.2.1](https://github.com/ripixel/ripixel-website/compare/v6.2.0...v6.2.1) (2026-01-13)
 
 ## [6.2.0](https://github.com/ripixel/ripixel-website/compare/v6.1.0...v6.2.0) (2026-01-13)
