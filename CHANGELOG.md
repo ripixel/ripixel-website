@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.1.0](https://github.com/ripixel/ripixel-website/compare/v7.0.1...v7.1.0) (2026-01-13)
+
+
+### Features
+
+* improve life timeline styling and upgrade to Skier 3.0.1 ([5cc8e7f](https://github.com/ripixel/ripixel-website/commit/5cc8e7f2c9fc067ac5a8b09436ee85a5bdf94fc1))
+
 ### [7.0.1](https://github.com/ripixel/ripixel-website/compare/v7.0.0...v7.0.1) (2026-01-13)
 
 ## [7.0.0](https://github.com/ripixel/ripixel-website/compare/v6.2.1...v7.0.0) (2026-01-13)
