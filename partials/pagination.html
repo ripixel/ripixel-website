@@ -11,30 +11,18 @@
       Page {{pagination.currentPage}} of {{pagination.totalPages}}
     </span>
 
-    {{#if pagination.hasNext}}
-      <a href="{{pagination.nextUrl}}" class="next" rel="next">Older →</a>
-    {{else}}
-      <span class="next disabled">Older →</span>
-    {{/if}}
+    <a href="{{pagination.nextUrl}}" class="next" rel="next">Older →</a>
   </nav>
 {{else}}
   {{#if pagination.hasPrev}}
     <nav class="pagination" aria-label="Page navigation">
-      {{#if pagination.hasPrev}}
-        <a href="{{pagination.prevUrl}}" class="prev" rel="prev">← Newer</a>
-      {{else}}
-        <span class="prev disabled">← Newer</span>
-      {{/if}}
+      <a href="{{pagination.prevUrl}}" class="prev" rel="prev">← Newer</a>
 
       <span class="page-info">
         Page {{pagination.currentPage}} of {{pagination.totalPages}}
       </span>
 
-      {{#if pagination.hasNext}}
-        <a href="{{pagination.nextUrl}}" class="next" rel="next">Older →</a>
-      {{else}}
-        <span class="next disabled">Older →</span>
-      {{/if}}
+      <span class="next disabled">Older →</span>
     </nav>
   {{/if}}
 {{/if}}

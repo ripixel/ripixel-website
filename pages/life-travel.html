@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  {{> head}}
+
+  <body>
+    {{> nav}}
+
+    {{> darkmode}}
+
+    <main class="life dashboard">
+      <section class="area">
+        <p>
+          Places I've been. Life's too short to stay in one place.
+        </p>
+      </section>
+
+      <section class="area disclaimer">
+        <p>
+          ⚠️ <strong>Data is dummy while I build the actual data ingest.</strong> Bloody brain is being slowwww 🐌
+        </p>
+      </section>
+    </main>
+
+    <main class="area life dashboard">
+      <!-- Travel Stats -->
+      <section class="dashboard-hero">
+        <h2>Travel Stats</h2>
+        <div class="stat-grid">
+          <div class="stat-card">
+            <span class="stat-value">{{life.travel.summary.countriesVisited}}</span>
+            <span class="stat-label">Countries</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">{{life.travel.summary.totalTrips}}</span>
+            <span class="stat-label">Trips</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">{{life.travel.summary.totalFlights}}</span>
+            <span class="stat-label">Flights</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Travel Highlights -->
+      <section class="dashboard-grid">
+        <div class="dashboard-widget widget-travel">
+          <div class="widget-header">
+            <h3>⭐ Favourites</h3>
+          </div>
+          <div class="widget-content">
+            <p class="hero-stat">{{life.travel.summary.favouriteDestination}}</p>
+            <p>Favourite Destination</p>
+            <div class="details">
+              <div class="item">
+                <h4>Longest Trip</h4>
+                <p>{{life.travel.summary.longestTrip}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Trip Timeline -->
+      <section class="upcoming-section">
+        <h2>Trip History</h2>
+        <div class="timeline" style="max-width: 700px; margin: 0 auto;">
+          {{#each life.travel.entries}}
+            <div class="timeline-item event">
+              <div class="timeline-date">
+                <span class="day">{{year}}</span>
+              </div>
+              <div class="timeline-content">
+                <h4>✈️ {{destination}}</h4>
+                <p class="tag">{{country}} • {{duration}}</p>
+                {{#if notes}}
+                  <p>{{notes}}</p>
+                {{/if}}
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      </section>
+    </main>
+
+    {{> footer}}
+  </body>
+
+</html>

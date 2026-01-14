@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  {{> head}}
+
+  <body>
+    {{> nav}}
+
+    {{> darkmode}}
+
+    <main class="life dashboard">
+      <section class="area">
+        <p>
+          Salary progression over time. From junior dev to wherever I am now. 📈
+        </p>
+      </section>
+
+      <section class="area disclaimer">
+        <p>
+          ⚠️ <strong>Data is dummy while I build the actual data ingest.</strong> Bloody brain is being slowwww 🐌
+        </p>
+      </section>
+    </main>
+
+    <main class="area life dashboard">
+      <!-- Career Stats -->
+      <section class="dashboard-hero">
+        <h2>Career Stats</h2>
+        <div class="stat-grid">
+          <div class="stat-card">
+            <span class="stat-value">£{{life.career.salary.current.amount}}</span>
+            <span class="stat-label">Current Salary</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">{{life.career.salary.stats.percentageGrowth}}</span>
+            <span class="stat-label">Growth</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">{{life.career.salary.stats.yearsWorking}}</span>
+            <span class="stat-label">Years</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">{{life.career.salary.stats.promotions}}</span>
+            <span class="stat-label">Promotions</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Current Role -->
+      <section class="dashboard-grid">
+        <div class="dashboard-widget widget-career">
+          <div class="widget-header">
+            <h3>💼 Current Role</h3>
+          </div>
+          <div class="widget-content">
+            <p class="hero-stat">{{life.career.salary.current.role}}</p>
+            <p>@ {{life.career.salary.current.company}}</p>
+            <div class="details">
+              <div class="item">
+                <h4>Since</h4>
+                <p>{{life.career.salary.current.startDate}}</p>
+              </div>
+              <div class="item">
+                <h4>Companies</h4>
+                <p>{{life.career.salary.stats.companiesWorked}}</p>
+              </div>
+              <div class="item">
+                <h4>Total Increase</h4>
+                <p>{{life.career.salary.stats.totalIncrease}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Salary Timeline -->
+      <section class="upcoming-section">
+        <h2>Salary History</h2>
+        <div class="timeline" style="max-width: 700px; margin: 0 auto;">
+          {{#each life.career.salary.history}}
+            <div class="timeline-item event">
+              <div class="timeline-date">
+                <span class="day">{{date}}</span>
+              </div>
+              <div class="timeline-content">
+                <h4>💰 £{{amount}}</h4>
+                <p class="tag">{{role}} @ {{company}}</p>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      </section>
+    </main>
+
+    {{> footer}}
+  </body>
+
+</html>

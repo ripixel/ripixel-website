@@ -1,0 +1,13 @@
+<div class="event-card event-{{type}}">
+  <div class="event-date">
+    <span class="event-day">{{day}}</span>
+    <span class="event-month">{{month}}</span>
+  </div>
+  <div class="event-details">
+    <h4>{{title}}</h4>
+    {{#if distance}}<span class="event-distance">{{distance}}km</span>{{/if}}
+    {{#if notes}}
+      <p class="event-notes">{{notes}}</p>
+    {{/if}}
+  </div>
+</div>

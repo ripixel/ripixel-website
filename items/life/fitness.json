@@ -218,6 +218,151 @@
           "value": "145"
         }
       ]
+    },
+    {
+      "date": "2026-01-05",
+      "day": "5",
+      "month": "Jan 2026",
+      "type": "run",
+      "emoji": "🏃",
+      "title": "Easy 5K",
+      "tag": "Running • 28:45",
+      "description": "Quick recovery run before work.",
+      "details": [
+        {
+          "label": "Distance",
+          "value": "5.1 km"
+        },
+        {
+          "label": "Pace",
+          "value": "5:38 /km"
+        },
+        {
+          "label": "Calories",
+          "value": "340"
+        }
+      ]
+    },
+    {
+      "date": "2026-01-04",
+      "day": "4",
+      "month": "Jan 2026",
+      "type": "strength",
+      "emoji": "🏋️",
+      "title": "Push Day",
+      "tag": "Strength Training • 48 min",
+      "description": "Chest and shoulders focus.",
+      "details": [
+        {
+          "label": "Exercises",
+          "value": "5"
+        },
+        {
+          "label": "Sets",
+          "value": "15"
+        },
+        {
+          "label": "Volume",
+          "value": "3,800 kg"
+        }
+      ]
+    },
+    {
+      "date": "2026-01-03",
+      "day": "3",
+      "month": "Jan 2026",
+      "type": "run",
+      "emoji": "🏃",
+      "title": "New Year Run",
+      "tag": "Running • 1:15:40",
+      "description": "Starting the year strong with a solid 12K.",
+      "details": [
+        {
+          "label": "Distance",
+          "value": "12.3 km"
+        },
+        {
+          "label": "Pace",
+          "value": "6:08 /km"
+        },
+        {
+          "label": "Avg HR",
+          "value": "145 bpm"
+        },
+        {
+          "label": "Calories",
+          "value": "820"
+        }
+      ],
+      "hasMap": true
+    },
+    {
+      "date": "2026-01-02",
+      "day": "2",
+      "month": "Jan 2026",
+      "type": "walk",
+      "emoji": "🚶",
+      "title": "Recovery Walk",
+      "tag": "Walking • 45:00",
+      "description": "Easy New Year's Day stroll.",
+      "details": [
+        {
+          "label": "Distance",
+          "value": "3.5 km"
+        },
+        {
+          "label": "Steps",
+          "value": "4,800"
+        }
+      ]
+    },
+    {
+      "date": "2026-01-01",
+      "day": "1",
+      "month": "Jan 2026",
+      "type": "run",
+      "emoji": "🏃",
+      "title": "Resolution Run",
+      "tag": "Running • 35:20",
+      "description": "Starting 2026 on the right foot!",
+      "details": [
+        {
+          "label": "Distance",
+          "value": "6.0 km"
+        },
+        {
+          "label": "Pace",
+          "value": "5:53 /km"
+        },
+        {
+          "label": "Calories",
+          "value": "420"
+        }
+      ]
+    },
+    {
+      "date": "2025-12-31",
+      "day": "31",
+      "month": "Dec 2025",
+      "type": "strength",
+      "emoji": "🏋️",
+      "title": "End of Year Pump",
+      "tag": "Strength Training • 55 min",
+      "description": "Full body session to end 2025.",
+      "details": [
+        {
+          "label": "Exercises",
+          "value": "7"
+        },
+        {
+          "label": "Sets",
+          "value": "21"
+        },
+        {
+          "label": "Volume",
+          "value": "5,200 kg"
+        }
+      ]
     }
   ]
 }

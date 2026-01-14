@@ -8,37 +8,198 @@
 
     {{> darkmode}}
 
-    <main class="life">
+    <main class="life dashboard">
       <section class="area">
-        <h3>What's going on in my life?</h3>
+        <h3>So what do I do when I'm not coding?</h3>
         <p>
-          A peek behind the curtain at what I'm up to outside of work.
-          From <span class="em">running</span> and fitness stats, to what I'm
-          <span class="em2">watching</span>, reading, and playing.
+          A peek behind the curtain. I'm a bit of a data nerd, so here's my
+          <span class="em">quantified self</span> &mdash; everything from how much I'm running
+          to what I'm watching. <span class="em2">It's a lot.</span>
+        </p>
+      </section>
+
+      <section class="area disclaimer">
+        <p>
+          ⚠️ <strong>Data is dummy while I build the actual data ingest.</strong> Bloody brain is being slowwww 🐌
         </p>
       </section>
     </main>
 
-    <main class="area life">
-      <a href="life-fitness">
-        <section class="area">
-          <h2>Fitness &raquo;</h2>
-          <p>
-            Running, walking, and staying active. Recent activities,
-            upcoming events, and personal records.
-          </p>
-        </section>
-      </a>
-    </main>
-    <main class="area life">
-      <a href="life-media">
-        <section class="area">
-          <h2>Media &raquo;</h2>
-          <p>
-            What I'm currently watching, reading, listening to, and playing.
-          </p>
-        </section>
-      </a>
+    <main class="area life dashboard">
+      <!-- Current Snapshot -->
+      <section class="dashboard-hero">
+        <h2>Right Now</h2>
+        <div class="stat-grid">
+          <div class="stat-card">
+            <span class="stat-value">{{life.body.current.weight.value}}<small>kg</small></span>
+            <span class="stat-label">Weight</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">{{life.body.current.bodyFat.value}}<small>%</small></span>
+            <span class="stat-label">Body Fat</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">{{life.nutrition.summary.avgDailyCalories}}</span>
+            <span class="stat-label">Avg Cals/Day</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">£{{life.career.salary.current.amount}}</span>
+            <span class="stat-label">Salary</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">{{life.travel.summary.countriesVisited}}</span>
+            <span class="stat-label">Countries</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">{{life.body.current.restingHeartRate.value}}<small>bpm</small></span>
+            <span class="stat-label">Resting HR</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Widget Grid -->
+      <section class="dashboard-grid">
+        <!-- Exercise Widget -->
+        <div class="dashboard-widget widget-exercise">
+          <div class="widget-header">
+            <h3>🏃 Exercise</h3>
+          </div>
+          <div class="widget-content">
+            <p class="hero-stat">{{life.exercise.summary.thisMonth.distance}} km this month</p>
+            <p>{{life.exercise.summary.thisMonth.activities}} activities &bull;
+              {{life.exercise.summary.thisMonth.hours}} hours
+            </p>
+            <div class="recent-list">
+              {{#each life.exercise.recent}}
+                <div class="recent-item">{{title}} &bull; {{date}}</div>
+              {{/each}}
+            </div>
+          </div>
+          <a class="button" href="/life-fitness">See all exercise &rarr;</a>
+        </div>
+
+        <!-- Media Widget -->
+        <div class="dashboard-widget widget-media">
+          <div class="widget-header">
+            <h3>🎬 Media</h3>
+          </div>
+          <div class="widget-content">
+            {{#if life.media.current.watching}}
+              <p class="hero-stat">Watching: {{life.media.current.watching.title}}</p>
+              <p>{{life.media.current.watching.progress}}</p>
+            {{/if}}
+            <div class="recent-list">
+              {{#each life.media.films.recent}}
+                <div class="recent-item">🎬 {{title}}</div>
+              {{/each}}
+            </div>
+          </div>
+          <a class="button" href="/life-media">See all media &rarr;</a>
+        </div>
+
+        <!-- Music Widget -->
+        <div class="dashboard-widget widget-music">
+          <div class="widget-header">
+            <h3>🎵 Music</h3>
+          </div>
+          <div class="widget-content">
+            {{#with life.media.music}}
+              {{#if recent.length}}
+                {{#with recent.[0]}}
+                  <p class="hero-stat">{{totalMinutes}} mins this month</p>
+                  <div class="recent-list">
+                    {{#each topArtists}}
+                      <div class="recent-item">{{name}} ({{minutes}} mins)</div>
+                    {{/each}}
+                  </div>
+                {{/with}}
+              {{else}}
+                <p>No music data yet</p>
+              {{/if}}
+            {{/with}}
+          </div>
+          <a class="button" href="/life-music">See all music &rarr;</a>
+        </div>
+
+        <!-- Travel Widget -->
+        <div class="dashboard-widget widget-travel">
+          <div class="widget-header">
+            <h3>✈️ Travel</h3>
+          </div>
+          <div class="widget-content">
+            <p class="hero-stat">{{life.travel.summary.countriesVisited}} countries</p>
+            <p>{{life.travel.summary.totalTrips}} trips &bull; {{life.travel.summary.totalFlights}} flights</p>
+            <div class="recent-list">
+              {{#each life.travel.entries}}
+                <div class="recent-item">{{destination}}, {{country}}</div>
+              {{/each}}
+            </div>
+          </div>
+          <a class="button" href="/life-travel">See all travel &rarr;</a>
+        </div>
+
+        <!-- Body / Weight Widget -->
+        <div class="dashboard-widget widget-body">
+          <div class="widget-header">
+            <h3>⚖️ Body</h3>
+          </div>
+          <div class="widget-content">
+            <p class="hero-stat">{{life.body.current.weight.value}} kg</p>
+            <p>{{life.body.current.bodyFat.value}}% body fat &bull; {{life.body.current.bmi.value}} BMI</p>
+            <div class="recent-list">
+              {{#each life.body.weightHistory}}
+                <div class="recent-item">{{date}}: {{value}}kg {{#if notes}}({{notes}}){{/if}}</div>
+              {{/each}}
+            </div>
+          </div>
+          <a class="button" href="/life-body">See body stats &rarr;</a>
+        </div>
+
+        <!-- Career / Salary Widget -->
+        <div class="dashboard-widget widget-career">
+          <div class="widget-header">
+            <h3>💼 Career</h3>
+          </div>
+          <div class="widget-content">
+            <p class="hero-stat">£{{life.career.salary.current.amount}}</p>
+            <p>{{life.career.salary.current.role}} @ {{life.career.salary.current.company}}</p>
+            <div class="details">
+              <div class="item">
+                <h4>Growth</h4>
+                <p>{{life.career.salary.stats.percentageGrowth}}</p>
+              </div>
+              <div class="item">
+                <h4>Years</h4>
+                <p>{{life.career.salary.stats.yearsWorking}}</p>
+              </div>
+              <div class="item">
+                <h4>Promotions</h4>
+                <p>{{life.career.salary.stats.promotions}}</p>
+              </div>
+            </div>
+          </div>
+          <a class="button" href="/life-career">See salary history &rarr;</a>
+        </div>
+      </section>
+
+      <!-- Upcoming Events -->
+      <section class="upcoming-section">
+        <h2>On The Horizon</h2>
+        <div class="events-grid">
+          {{#each life.events}}
+            <div class="event-card event-{{type}}">
+              <div class="event-date">{{date}}</div>
+              <div class="event-details">
+                <h4>{{title}}</h4>
+                {{#if distance}}<span class="event-distance">{{distance}}km</span>{{/if}}
+                {{#if notes}}
+                  <p class="event-notes">{{notes}}</p>
+                {{/if}}
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      </section>
     </main>
 
     {{> footer}}

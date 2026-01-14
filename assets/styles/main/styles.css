@@ -686,6 +686,8 @@ main.area.life {
   background: rgba(0, 0, 0, 0.15);
   padding: 15px 20px;
   border-radius: 8px;
+  min-width: 0;
+  max-width: 700px;
 }
 
 /* Color-coded top border */
@@ -989,18 +991,18 @@ nav.pagination {
   gap: 20px;
   margin-top: 30px;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.3);
   border-radius: 8px;
 }
 
 nav.pagination a,
 nav.pagination span {
-  padding: 10px 15px;
+  padding: 12px 20px;
   font-family: 'Fredoka One', sans-serif;
   letter-spacing: 0.05em;
   text-decoration: none;
   border-radius: 4px;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 nav.pagination a {
@@ -1010,17 +1012,31 @@ nav.pagination a {
 
 nav.pagination a:hover {
   background: rgba(255, 255, 255, 0.2);
+  color: #fff;
   transform: none;
 }
 
 nav.pagination span.disabled {
-  opacity: 0.4;
+  opacity: 0.3;
   cursor: not-allowed;
+  color: #888;
 }
 
 nav.pagination .page-info {
   background: none;
   padding: 0;
+  color: #fff;
+  font-size: 1em;
+}
+
+/* Life section specific - teal pagination */
+.life nav.pagination a {
+  background: #0a6060;
+  border: 2px solid #0a8080;
+}
+
+.life nav.pagination a:hover {
+  background: #0a8080;
 }
 
 @media only screen and (max-width: 600px) {
@@ -1321,5 +1337,404 @@ em {
   .article section.area {
     margin-left: 10px;
     margin-right: 10px;
+  }
+}
+
+/* ===========================================
+   DASHBOARD STYLES - Quantified Self
+   =========================================== */
+
+/* Dashboard Layout */
+.dashboard {
+  padding: 20px;
+}
+
+.dashboard-hero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.dashboard-hero h2 {
+  margin-bottom: 20px;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: 'Fredoka One', sans-serif;
+  color: #fff;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 35px;
+  max-width: 1200px;
+  margin: 0 auto 50px;
+  padding: 0 30px;
+}
+
+/* Stat Cards - Match profile .details .item style */
+.stat-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.stat-card {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 15px 20px;
+  text-align: center;
+  min-width: 100px;
+}
+
+.stat-value {
+  font-size: 2.2em;
+  font-family: 'Fredoka One', sans-serif;
+  display: block;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.stat-value small {
+  font-size: 0.5em;
+  opacity: 0.7;
+  margin-left: 2px;
+}
+
+.stat-label {
+  font-size: 0.85em;
+  opacity: 0.6;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: block;
+  margin-top: 8px;
+  font-family: 'Lato', sans-serif;
+}
+
+.stat-subtext {
+  font-size: 0.7em;
+  opacity: 0.5;
+  display: block;
+  margin-top: 3px;
+}
+
+/* Dashboard Widgets - Use left border like site sections */
+.dashboard-widget {
+  background: rgba(0, 0, 0, 0.15);
+  padding: 25px;
+  border-left: 3px solid var(--widget-color, #fff);
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-widget .widget-content {
+  flex: 1;
+}
+
+.dashboard-widget .button {
+  margin-top: 15px;
+  align-self: flex-start;
+}
+
+.widget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.widget-header h3 {
+  margin: 0;
+  font-size: 1.1em;
+  letter-spacing: 0.1em;
+}
+
+/* Widget link - match site's a.button style */
+.widget-link {
+  display: inline-block;
+  padding: 8px 15px;
+  background: rgba(0, 0, 0, 0.2);
+  border-left: 2px solid #fff;
+  font-size: 0.85em;
+  text-decoration: none;
+  color: inherit;
+  font-family: 'Lato', sans-serif;
+}
+
+.widget-link:hover {
+  color: #ccc;
+  border-color: #ccc;
+}
+
+.widget-content {
+  font-size: 0.95em;
+}
+
+.widget-content .hero-stat {
+  font-size: 1.3em;
+  font-family: 'Fredoka One', sans-serif;
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+}
+
+.widget-content p {
+  padding-bottom: 0.5em;
+}
+
+/* Widget color themes */
+.widget-exercise {
+  --widget-color: #4CAF50;
+}
+
+.widget-media {
+  --widget-color: #E91E63;
+}
+
+.widget-travel {
+  --widget-color: #2196F3;
+}
+
+.widget-body {
+  --widget-color: #FF9800;
+}
+
+.widget-nutrition {
+  --widget-color: #9C27B0;
+}
+
+.widget-career {
+  --widget-color: #607D8B;
+}
+
+.widget-music {
+  --widget-color: #00BCD4;
+}
+
+/* Recent list in widgets */
+.recent-list {
+  margin-top: 12px;
+}
+
+.recent-item {
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.9em;
+  font-family: 'Lato', sans-serif;
+  font-weight: 200;
+}
+
+.recent-item:last-child {
+  border-bottom: none;
+}
+
+/* Event Cards - Use left border style */
+.events-grid {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.event-card {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 20px 25px;
+  min-width: 140px;
+  text-align: left;
+  border-left: 3px solid var(--event-color, #FFD700);
+}
+
+.event-card.event-race {
+  --event-color: #4CAF50;
+}
+
+.event-card.event-hyrox {
+  --event-color: #E91E63;
+}
+
+.event-card.event-marathon {
+  --event-color: #FF5722;
+}
+
+.event-date {
+  margin-bottom: 8px;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.85em;
+  opacity: 0.7;
+}
+
+.event-details h4 {
+  margin: 0 0 5px;
+  font-size: 1em;
+}
+
+.event-distance {
+  font-size: 0.85em;
+  opacity: 0.7;
+  display: block;
+  margin-top: 5px;
+}
+
+.event-notes {
+  font-size: 0.8em;
+  opacity: 0.6;
+  margin-top: 8px;
+}
+
+/* Exercise Items - Consistent with site style */
+.exercise-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.15);
+  margin-bottom: 8px;
+  border-left: 2px solid var(--exercise-color, #4CAF50);
+}
+
+.exercise-item.exercise-run {
+  --exercise-color: #4CAF50;
+}
+
+.exercise-item.exercise-strength {
+  --exercise-color: #FF9800;
+}
+
+.exercise-item.exercise-class {
+  --exercise-color: #E91E63;
+}
+
+.exercise-item.exercise-cycle {
+  --exercise-color: #2196F3;
+}
+
+.exercise-item.exercise-walk {
+  --exercise-color: #9C27B0;
+}
+
+.exercise-icon {
+  font-size: 1.3em;
+}
+
+.exercise-details h4 {
+  margin: 0 0 4px;
+  font-size: 0.95em;
+}
+
+.exercise-date {
+  font-size: 0.8em;
+  opacity: 0.6;
+  margin-right: 10px;
+}
+
+.exercise-stat {
+  font-size: 0.8em;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  margin-right: 5px;
+}
+
+/* Media Items */
+.media-item {
+  display: flex;
+  gap: 12px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.15);
+  margin-bottom: 6px;
+  border-left: 2px solid var(--media-color, #E91E63);
+}
+
+.media-item.media-film {
+  --media-color: #E91E63;
+}
+
+.media-item.media-tv {
+  --media-color: #9C27B0;
+}
+
+.media-item.media-music {
+  --media-color: #00BCD4;
+}
+
+.media-item.media-youtube {
+  --media-color: #FF0000;
+}
+
+.media-item.media-game {
+  --media-color: #4CAF50;
+}
+
+.media-icon {
+  font-size: 1.2em;
+}
+
+.media-details h4 {
+  margin: 0 0 3px;
+  font-size: 0.9em;
+}
+
+.media-artist,
+.media-platform,
+.media-date {
+  font-size: 0.75em;
+  opacity: 0.6;
+  margin-right: 6px;
+}
+
+.media-rating {
+  font-size: 0.75em;
+}
+
+/* Upcoming Section */
+.upcoming-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.upcoming-section h2 {
+  font-size: 1.2em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: 'Fredoka One', sans-serif;
+  color: #fff;
+}
+
+/* Dashboard Responsive */
+@media only screen and (max-width: 600px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 10px;
+  }
+
+  .stat-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .stat-card {
+    min-width: 80px;
+    padding: 12px 15px;
+  }
+
+  .stat-value {
+    font-size: 1.4em;
+  }
+
+  .events-grid {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .event-card {
+    min-width: auto;
+  }
+
+  .dashboard-widget {
+    padding: 20px;
   }
 }

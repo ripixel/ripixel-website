@@ -37,6 +37,149 @@ function writeGlobalToJsonTask(config) {
   };
 }
 
+// Custom task to aggregate all life data from split JSON files
+function aggregateLifeDataTask() {
+  return {
+    name: 'aggregate-life-data',
+    title: 'Aggregate life data from JSON files',
+    run: async (cfg, ctx) => {
+      const lifeDir = './items/life';
+
+      // Helper to safely load JSON
+      const loadJson = (filepath) => {
+        try {
+          return JSON.parse(fs.readFileSync(filepath, 'utf8'));
+        } catch (e) {
+          ctx.logger.warn(`Could not load ${filepath}`);
+          return null;
+        }
+      };
+
+      // Helper to load and merge monthly/yearly files
+      const loadTimeSeriesFiles = (dir, pattern) => {
+        if (!fs.existsSync(dir)) return [];
+        const files = fs.readdirSync(dir).filter(f => f.match(pattern));
+        return files.sort().reverse().flatMap(f => {
+          const data = loadJson(path.join(dir, f));
+          return data?.entries || [];
+        });
+      };
+
+      // Body data
+      const weightHistory = loadJson(`${lifeDir}/body/weight-history.json`)?.entries || [];
+      const measurementHistory = loadJson(`${lifeDir}/body/measurement-history.json`)?.entries || [];
+
+      // Nutrition data
+      const nutritionHistory = loadJson(`${lifeDir}/nutrition/history.json`)?.entries || [];
+      const nutrition = {
+        summary: loadJson(`${lifeDir}/nutrition/summary.json`) || {},
+        history: nutritionHistory,
+        recent: loadTimeSeriesFiles(`${lifeDir}/nutrition`, /^\d{4}-\d{2}\.json$/).slice(0, 14)
+      };
+
+      // Create unified body timeline - merge weight, measurements, and nutrition
+      // Pre-format each entry with emoji, title, tag, and details for template
+      const bodyTimeline = [
+        ...weightHistory.map(w => ({
+          date: w.date,
+          type: 'weight',
+          emoji: '⚖️',
+          title: `${w.value} kg • ${w.bodyFat}% BF`,
+          tag: w.avgHeartRate ? `Avg HR: ${w.avgHeartRate} bpm` : null,
+          notes: w.notes
+        })),
+        ...measurementHistory.map(m => ({
+          date: m.date,
+          type: 'measurement',
+          emoji: '📏',
+          title: 'Body Measurements',
+          details: [
+            { label: 'Chest', value: `${m.chest} cm` },
+            { label: 'Waist', value: `${m.waist} cm` },
+            { label: 'Hips', value: `${m.hips} cm` },
+            { label: 'L Arm', value: `${m.leftArm} cm` },
+            { label: 'R Arm', value: `${m.rightArm} cm` }
+          ],
+          notes: m.notes
+        })),
+        ...nutritionHistory.map(n => ({
+          date: n.date,
+          type: 'nutrition',
+          emoji: '🍎',
+          title: `${n.calories} calories`,
+          details: [
+            { label: 'Protein', value: `${n.protein}g` },
+            { label: 'Carbs', value: `${n.carbs}g` },
+            { label: 'Fat', value: `${n.fat}g` }
+          ],
+          notes: n.notes
+        }))
+      ].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      const body = {
+        current: loadJson(`${lifeDir}/body/current.json`) || {},
+        weightHistory,
+        measurementHistory,
+        timeline: bodyTimeline
+      };
+
+      // Exercise data - merge monthly files
+      const exerciseEntries = loadTimeSeriesFiles(`${lifeDir}/exercise`, /^\d{4}-\d{2}\.json$/);
+      const exercise = {
+        summary: loadJson(`${lifeDir}/exercise/summary.json`) || {},
+        recent: exerciseEntries.slice(0, 10),
+        all: exerciseEntries
+      };
+
+      // Events
+      const events = loadJson(`${lifeDir}/events/upcoming.json`) || { events: [] };
+
+      // Media - summary and recent from each type
+      const mediaSummary = loadJson(`${lifeDir}/media/summary.json`) || {};
+      const films = loadTimeSeriesFiles(`${lifeDir}/media`, /^films-\d{4}\.json$/);
+      const tv = loadTimeSeriesFiles(`${lifeDir}/media`, /^tv-\d{4}-\d{2}\.json$/);
+
+      // Music files are different - each file IS the monthly summary, not an array of entries
+      const loadMusicFiles = (dir, pattern) => {
+        if (!fs.existsSync(dir)) return [];
+        const files = fs.readdirSync(dir).filter(f => f.match(pattern));
+        return files.sort().reverse().map(f => loadJson(path.join(dir, f))).filter(Boolean);
+      };
+      const musicMonths = loadMusicFiles(`${lifeDir}/media`, /^music-\d{4}-\d{2}\.json$/);
+
+      const media = {
+        summary: mediaSummary,
+        current: mediaSummary.current || {},
+        films: { recent: films.slice(0, 5), all: films },
+        tv: { recent: tv.slice(0, 5), all: tv },
+        music: { recent: musicMonths.slice(0, 3) }
+      };
+
+      // Travel
+      const travel = loadJson(`${lifeDir}/travel/trips.json`) || { summary: {}, entries: [] };
+
+      // Career/Salary
+      const career = {
+        salary: loadJson(`${lifeDir}/career/salary.json`) || { current: {}, history: [] }
+      };
+
+      // Set globals
+      ctx.globals.life = {
+        body,
+        nutrition,
+        exercise,
+        events: events.events || [],
+        media,
+        travel,
+        career
+      };
+
+      ctx.logger.info(`Loaded life data: ${exerciseEntries.length} exercises, ${films.length} films, ${events.events?.length || 0} events`);
+      return {};
+    }
+  };
+}
+
 export const tasks = [
   // Clean & Create output directory (new built-in)
   prepareOutputTask({
@@ -79,6 +222,8 @@ export const tasks = [
       return { latestVersion };
     }
   }),
+  // Aggregate life data from split JSON files
+  aggregateLifeDataTask(),
   // Generate individual thought article pages
   generateItemsTask({
     itemsDir: './items',
@@ -177,27 +322,39 @@ export const tasks = [
     partialsDir: './partials',
     outDir: './public',
 
-    additionalVarsFn: ({ currentPage, ...vars }) => ({
-      page: currentPage === 'index' ? 'home' : currentPage,
-      description: (() => {
-        switch (currentPage === 'index' ? 'home' : currentPage) {
-          case 'thoughts':
-            return 'A peak inside my brain you ask? Reader, beware...';
-          case 'profile':
-            return `So who am I? I'm James King, a Software Engineer from Nottinghamshire. You want some more info?`;
-          case 'coding':
-            return "Shall we take a look at some projects I've done?";
-          case 'changelog':
-            return 'What changes have happened to this site?';
-          case 'home':
-            return "I'm James King, and I make things for the web";
-          case 'life':
-            return "What's going on in my life? Fitness, media, and upcoming events.";
-          default:
-            return vars.description || '';
-        }
-      })(),
-    }),
+    additionalVarsFn: ({ currentPage, ...vars }) => {
+      // Map page names - life sub-pages should use 'life' as the page class
+      const pageMapping = {
+        'index': 'home',
+        'life-body': 'life',
+        'life-career': 'life',
+        'life-travel': 'life',
+        'life-music': 'life',
+      };
+      const page = pageMapping[currentPage] || currentPage;
+
+      return {
+        page,
+        description: (() => {
+          switch (page) {
+            case 'thoughts':
+              return 'A peak inside my brain you ask? Reader, beware...';
+            case 'profile':
+              return `So who am I? I'm James King, a Software Engineer from Nottinghamshire. You want some more info?`;
+            case 'coding':
+              return "Shall we take a look at some projects I've done?";
+            case 'changelog':
+              return 'What changes have happened to this site?';
+            case 'home':
+              return "I'm James King, and I make things for the web";
+            case 'life':
+              return "What's going on in my life? Fitness, media, and upcoming events.";
+            default:
+              return vars.description || '';
+          }
+        })(),
+      };
+    },
   }),
   // Generate sitemap.xml by auto-discovering all .html files in ./public
   generateSitemapTask({

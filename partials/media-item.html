@@ -1,0 +1,20 @@
+<div class="media-item media-{{type}}">
+  <div class="media-icon">
+    {{#if (eq type "film")}}🎬{{/if}}
+      {{#if (eq type "tv")}}📺{{/if}}
+        {{#if (eq type "music")}}🎵{{/if}}
+          {{#if (eq type "youtube")}}▶️{{/if}}
+            {{#if (eq type "game")}}🎮{{/if}}
+  </div>
+  <div class="media-details">
+    <h4>{{title}}</h4>
+    {{#if artist}}<span class="media-artist">{{artist}}</span>{{/if}}
+    {{#if platform}}<span class="media-platform">{{platform}}</span>{{/if}}
+    {{#if rating}}
+      <span class="media-rating">
+        {{#times rating}}⭐{{/times}}
+      </span>
+    {{/if}}
+    {{#if date}}<span class="media-date">{{date}}</span>{{/if}}
+  </div>
+</div>

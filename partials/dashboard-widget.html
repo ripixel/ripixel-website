@@ -1,0 +1,9 @@
+<div class="dashboard-widget widget-{{type}}">
+  <div class="widget-header">
+    <h3>{{icon}} {{title}}</h3>
+    {{#if link}}<a href="{{link}}" class="widget-link">See all &rarr;</a>{{/if}}
+  </div>
+  <div class="widget-content">
+    {{> @partial-block}}
+  </div>
+</div>

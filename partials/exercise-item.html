@@ -1,0 +1,17 @@
+<div class="exercise-item exercise-{{type}}">
+  <div class="exercise-icon">
+    {{#if (eq type "run")}}🏃{{/if}}
+      {{#if (eq type "strength")}}🏋️{{/if}}
+        {{#if (eq type "class")}}💪{{/if}}
+          {{#if (eq type "cycle")}}🚴{{/if}}
+            {{#if (eq type "walk")}}🚶{{/if}}
+  </div>
+  <div class="exercise-details">
+    <h4>{{title}}</h4>
+    <span class="exercise-date">{{date}}</span>
+    {{#if distance}}<span class="exercise-stat">{{distance}}km</span>{{/if}}
+    {{#if duration}}<span class="exercise-stat">{{duration}}</span>{{/if}}
+    {{#if pace}}<span class="exercise-stat">{{pace}}/km</span>{{/if}}
+    {{#if calories}}<span class="exercise-stat">{{calories}} kcal</span>{{/if}}
+  </div>
+</div>
