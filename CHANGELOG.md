@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.2.0](https://github.com/ripixel/ripixel-website/compare/v7.1.1...v7.2.0) (2026-01-14)
+
+
+### Features
+
+* life section updates ([02b7959](https://github.com/ripixel/ripixel-website/commit/02b79593357c7e564d1722938a2654eb0729aa11))
+
 ### [7.1.1](https://github.com/ripixel/ripixel-website/compare/v7.1.0...v7.1.1) (2026-01-14)
 
 ## [7.1.0](https://github.com/ripixel/ripixel-website/compare/v7.0.1...v7.1.0) (2026-01-13)
