@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [7.4.2](https://github.com/ripixel/ripixel-website/compare/v7.4.1...v7.4.2) (2026-01-28)
+
+
+### Bug Fixes
+
+* aria-label for darkmode toggle ([db3dcd5](https://github.com/ripixel/ripixel-website/commit/db3dcd5a4f9e5a807535acf806a788fea09f4839))
+
 ### [7.4.1](https://github.com/ripixel/ripixel-website/compare/v7.4.0...v7.4.1) (2026-01-28)
 
 
