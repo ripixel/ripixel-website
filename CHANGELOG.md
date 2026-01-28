@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.3.0](https://github.com/ripixel/ripixel-website/compare/v7.2.7...v7.3.0) (2026-01-28)
+
+
+### Features
+
+* use robots.txt instead of meta tags ([233d54d](https://github.com/ripixel/ripixel-website/commit/233d54d8aae3b5f749aca694c7bc5d87a6197ffc))
+
 ### [7.2.7](https://github.com/ripixel/ripixel-website/compare/v7.2.6...v7.2.7) (2026-01-26)
 
 ### [7.2.6](https://github.com/ripixel/ripixel-website/compare/v7.2.5...v7.2.6) (2026-01-23)
