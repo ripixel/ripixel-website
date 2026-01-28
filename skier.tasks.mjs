@@ -213,7 +213,6 @@ export const tasks = [
   setGlobalsTask({
     values: {
       year: (new Date()).getFullYear(),
-      noindex: process.env.NODE_ENV === 'production' ? '' : '<meta name="robots" content="noindex">',
     },
     valuesFn: globals => {
       // Extract first vX.Y.Z version from changelogHtml
@@ -362,4 +361,12 @@ export const tasks = [
     scanDir: './public',
     siteUrl: 'https://www.ripixel.co.uk',
   }),
+  {
+    name: 'Copy robots.txt',
+    run: async () => {
+      const robotsPath = './assets/robots.txt';
+      const copyToPath = './public/robots.txt';
+      fs.copyFileSync(robotsPath, copyToPath);
+    }
+  }
 ];

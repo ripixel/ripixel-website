@@ -1,0 +1,7 @@
+# robots.txt for ripixel.co.uk
+
+User-agent: *
+Allow: /
+Disallow: /surprise.html
+
+Sitemap: https://www.ripixel.co.uk/sitemap.xml
