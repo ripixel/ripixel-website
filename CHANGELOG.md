@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [7.4.1](https://github.com/ripixel/ripixel-website/compare/v7.4.0...v7.4.1) (2026-01-28)
+
+
+### Bug Fixes
+
+* add card_life png and remove unused css link from head ([8caa845](https://github.com/ripixel/ripixel-website/commit/8caa84541da93b134e6cf640ed5648845b058a0a))
+* **images:** run through pngquant ([a0f63bf](https://github.com/ripixel/ripixel-website/commit/a0f63bf93c9b1fd7d761d203dab0a769152ae8f7))
+* pagespeed insights solves ([cb115eb](https://github.com/ripixel/ripixel-website/commit/cb115eb7aed83f1fca5ddcb81f448d1ea35e9e57))
+
 ## [7.4.0](https://github.com/ripixel/ripixel-website/compare/v7.3.0...v7.4.0) (2026-01-28)
 
 
