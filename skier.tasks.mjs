@@ -229,6 +229,14 @@ export const tasks = [
     partialsDir: './partials',
     outDir: './public',
     outputVar: 'thoughtsList',
+    // Custom excerpt: strip markdown links and return full first paragraph
+    excerptFn: (rawMarkdown) => {
+      // Get first paragraph (split by double newlines)
+      const firstPara = rawMarkdown.split(/\n\s*\n/)[0] ?? '';
+      // Strip markdown links: [text](url) -> text
+      const stripped = firstPara.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+      return stripped.trim();
+    },
     additionalVarsFn: ({ section, title, excerpt }) => ({
       page: section,
       subpage: '| ' + title,
@@ -266,7 +274,7 @@ export const tasks = [
   // Generate paginated thoughts listing
   generatePaginatedItemsTask({
     dataFile: './items/thoughts.json',
-    itemsPerPage: 5,
+    itemsPerPage: 10,
     template: './templates/thoughts.html',
     partialsDir: './partials',
     outDir: './public',
