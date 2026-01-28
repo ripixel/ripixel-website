@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.4.0](https://github.com/ripixel/ripixel-website/compare/v7.3.0...v7.4.0) (2026-01-28)
+
+
+### Features
+
+* **coding:** Added FitGlue, Skier, and BSRC sections ([a4b4e0c](https://github.com/ripixel/ripixel-website/commit/a4b4e0c3a28c2e72d6d0316ba9f80be1ebac0908))
+
+
+### Bug Fixes
+
+* remove redundant `v` prefix before `latestVersion` text ([3856ec0](https://github.com/ripixel/ripixel-website/commit/3856ec0f04d8fac2567382ab7c6f9acfbca187fd))
+* **thoughts:** excerpts render properly on thoughts page ([b31bed3](https://github.com/ripixel/ripixel-website/commit/b31bed35cb8dc3fe61271ad7025a142944a90061))
+
 ## [7.3.0](https://github.com/ripixel/ripixel-website/compare/v7.2.7...v7.3.0) (2026-01-28)
 
 
