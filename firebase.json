@@ -1,8 +1,56 @@
 {
   "hosting": [
     {
-      "target": "production",
-      "public": "./public",
+      "target": "corporate",
+      "public": "./public/corporate",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "cleanUrls": true,
+      "headers": [
+        {
+          "source": "**/*.@(css|js)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=31536000, immutable"
+            }
+          ]
+        },
+        {
+          "source": "**/*.@(png|jpg|jpeg|gif|webp|svg|ico)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=31536000, immutable"
+            }
+          ]
+        },
+        {
+          "source": "**/*.@(woff|woff2|ttf|eot)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=31536000, immutable"
+            }
+          ]
+        },
+        {
+          "source": "**/*.html",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=3600, stale-while-revalidate=86400"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "target": "personal",
+      "public": "./public/personal",
       "ignore": [
         "firebase.json",
         "**/.*",
@@ -50,7 +98,7 @@
     },
     {
       "target": "staging",
-      "public": "./public",
+      "public": "./public/personal",
       "ignore": [
         "firebase.json",
         "**/.*",

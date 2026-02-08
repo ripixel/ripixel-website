@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en">
+{{> head}}
+
+<body>
+  <main class="hello">
+    <section class="intro">
+      <h1 class="name">James King</h1>
+      <p class="subtitle">Software Engineer & Web Application Creator</p>
+      <p class="tagline">Building digital experiences with code and creativity.</p>
+    </section>
+
+    {{> darkmode}}
+
+    <div class="sections">
+      <section class="welcome">
+        <p>
+          Hi, I'm <span class="em">James King</span>, and I make things for
+          the web. As you can probably tell, I'm a fan of minimalist designs that help you get the information you
+          need, with the minimum of fuss.
+        </p>
+        <p>
+          I also really, <span class="em2">really</span> like big, bold,
+          oh-my-gosh-that's-so-bright colours (unless you have dark-mode on, of course).
+        </p>
+      </section>
+    </div>
+
+    <div class="section-cards">
+      <a href="projects" class="section-card section-card--projects">
+        <span class="section-card__icon">💻</span>
+        <h2>Projects</h2>
+        <p>Things I've built, from automation platforms to static site generators.</p>
+        <span class="section-card__arrow">→</span>
+      </a>
+      <a href="thoughts" class="section-card section-card--thoughts">
+        <span class="section-card__icon">💭</span>
+        <h2>Thoughts</h2>
+        <p>Ramblings, how-to guides, and the occasional hot take.</p>
+        <span class="section-card__arrow">→</span>
+      </a>
+      <a href="profile" class="section-card section-card--profile">
+        <span class="section-card__icon">👤</span>
+        <h2>Profile</h2>
+        <p>Career history, skills, and the technologies I work with.</p>
+        <span class="section-card__arrow">→</span>
+      </a>
+      <a href="life" class="section-card section-card--life">
+        <span class="section-card__icon">🌍</span>
+        <h2>Life</h2>
+        <p>Fitness stats, media I'm consuming, and upcoming events.</p>
+        <span class="section-card__arrow">→</span>
+      </a>
+    </div>
+  </main>
+
+  {{> footer}}
+</body>
+
+</html>
