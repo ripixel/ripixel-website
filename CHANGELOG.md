@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.0.0](https://github.com/ripixel/ripixel-website/compare/v7.4.6...v8.0.0) (2026-02-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* Begin transition to having a root corporate site, with sub-domain personal site
+
+### Features
+
+* build both sites and deploy via CICD ([0be3c5b](https://github.com/ripixel/ripixel-website/commit/0be3c5b08c981896813f6311d95d961e5645371e))
+* start migration to corporate + personal site ([3bf547c](https://github.com/ripixel/ripixel-website/commit/3bf547cdeabc37e05478fafa0ad3901dd5152f58))
+
 ### [7.4.6](https://github.com/ripixel/ripixel-website/compare/v7.4.5...v7.4.6) (2026-02-09)
 
 ### [7.4.5](https://github.com/ripixel/ripixel-website/compare/v7.4.4...v7.4.5) (2026-02-07)
