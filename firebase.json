@@ -1,8 +1,8 @@
 {
   "hosting": [
     {
-      "target": "production",
-      "public": "./public",
+      "target": "corporate",
+      "public": "./public/corporate",
       "ignore": [
         "firebase.json",
         "**/.*",
@@ -49,8 +49,8 @@
       ]
     },
     {
-      "target": "staging",
-      "public": "./public",
+      "target": "personal",
+      "public": "./public/personal",
       "ignore": [
         "firebase.json",
         "**/.*",

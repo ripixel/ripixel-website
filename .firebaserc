@@ -5,11 +5,11 @@
   "targets": {
     "ripixel-f24bf": {
       "hosting": {
-        "production": [
+        "corporate": [
           "ripixel-f24bf"
         ],
-        "staging": [
-          "ripixel-staging"
+        "personal": [
+          "ripixel-personal"
         ]
       }
     }
