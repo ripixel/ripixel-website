@@ -109,37 +109,7 @@ jobs: # a collection of steps
           name: Deploy Personal Site to Firebase Production
           command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting:personal
 
-  deploy_to_firebase_stg: # deploy the project to staging - SHOULD ONLY BE RUN ON STAGING BRANCH
-    executor: node-project
-    steps:
-      - checkout
-      - restore_cache: # special step to restore the dependency cache
-          key: dependency-cache-{{ checksum "package-lock.json" }}
-      - restore_cache: # restore the /public folder and associated deploy files
-          key: deploy-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
-      - run:
-          name: Deploy to Firebase Staging Hosting
-          command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting:staging
-      - run:
-          name: Post Github PR Comment
-          command: |
-            sudo apt-get install jq
 
-            pr_response=$(curl --location --request GET "https://api.github.com/repos/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/pulls?head=$CIRCLE_PROJECT_USERNAME:$CIRCLE_BRANCH&state=open" \
-            -u $GH_USER:$GH_TOKEN)
-
-            if [ $(echo $pr_response | jq length) -eq 0 ]; then
-              echo "No PR found to update"
-            else
-              pr_comment_url=$(echo $pr_response | jq -r ".[]._links.comments.href")
-            fi
-
-            curl --location --request POST "$pr_comment_url" \
-            -u $GH_USER:$GH_TOKEN \
-            --header 'Content-Type: application/json' \
-            --data-raw '{
-            "body": "Successfully deployed to Firebase! Go to https://staging.ripixel.co.uk"
-            }'
 
   deploy_to_firebase_preview: # deploy the project to preview channel - SHOULD ONLY BE RUN ON PR BRANCHES
     executor: node-project
@@ -150,35 +120,30 @@ jobs: # a collection of steps
       - restore_cache: # restore the /public folder and associated deploy files
           key: deploy-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
       - run:
-          name: Deploy to Firebase Preview Channel
-          command: ./node_modules/.bin/firebase hosting:channel:deploy $CIRCLE_BRANCH --token "$FIREBASE_TOKEN"
+          name: Deploy Corporate Site to Firebase Preview Channel
+          command: ./node_modules/.bin/firebase hosting:channel:deploy $CIRCLE_BRANCH --token "$FIREBASE_TOKEN" --only corporate
+      - run:
+          name: Deploy Personal Site to Firebase Preview Channel
+          command: ./node_modules/.bin/firebase hosting:channel:deploy $CIRCLE_BRANCH --token "$FIREBASE_TOKEN" --only personal
       - run:
           name: Post Github PR Comment
           command: |
             sudo apt-get install jq
-
-            channels=$(./node_modules/.bin/firebase hosting:channel:list)
-            circle_branch_replaced=$(echo $CIRCLE_BRANCH | sed "s/\//-/")
-            regex='(https:\/\/[a-z0-9-]*--'"${circle_branch_replaced:0:39}"'-[a-z0-9-]*.web.app)'
-            [[ $channels =~ $regex ]] && url=${BASH_REMATCH[0]}
-
-            if [ $(echo $url | jq length) -eq 0]; then
-              url="Unable to get URL - check Firebase console"
-            fi
 
             pr_response=$(curl --location --request GET "https://api.github.com/repos/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/pulls?head=$CIRCLE_PROJECT_USERNAME:$CIRCLE_BRANCH&state=open" \
             -u $GH_USER:$GH_TOKEN)
 
             if [ $(echo $pr_response | jq length) -eq 0 ]; then
               echo "No PR found to update"
-            else
-              pr_comment_url=$(echo $pr_response | jq -r ".[]._links.comments.href")
+              exit 0
             fi
+
+            pr_comment_url=$(echo $pr_response | jq -r ".[]._links.comments.href")
 
             curl --location --request POST "$pr_comment_url" \
             -u $GH_USER:$GH_TOKEN \
             --header 'Content-Type: application/json' \
-            --data-raw '{"body": "Successfully deployed to Firebase preview channel! Available at: '"$url"'"}'
+            --data-raw '{"body": "Successfully deployed both sites to Firebase preview channels! Check the Firebase console for preview URLs."}'
 
 workflows:
   build_and_deploy:
@@ -205,17 +170,10 @@ workflows:
       - deploy_to_firebase_preview:
           filters:
             branches:
-              ignore:
-                - master
-                - staging
+              ignore: master
           requires:
             - build_dev
-      - deploy_to_firebase_stg:
-          filters:
-            branches:
-              only: staging
-          requires:
-            - build_dev
+
   daily:
     triggers:
       - schedule:

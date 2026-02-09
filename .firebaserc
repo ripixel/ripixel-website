@@ -10,9 +10,6 @@
         ],
         "personal": [
           "ripixel-personal"
-        ],
-        "staging": [
-          "ripixel-staging"
         ]
       }
     }
