@@ -31,8 +31,8 @@ jobs: # a collection of steps
       - restore_cache:
           key: changelog-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
       - run: # run build
-          name: Build
-          command: npm run build:dev
+          name: Build Both Sites
+          command: npm run build
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: public
       - save_cache: # special step to save the public cache and deploy files
@@ -103,8 +103,11 @@ jobs: # a collection of steps
       - restore_cache: # restore the /public folder and associated deploy files
           key: deploy-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
       - run:
-          name: Deploy to Firebase Production Hosting
-          command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting:production
+          name: Deploy Corporate Site to Firebase Production
+          command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting:corporate
+      - run:
+          name: Deploy Personal Site to Firebase Production
+          command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting:personal
 
   deploy_to_firebase_stg: # deploy the project to staging - SHOULD ONLY BE RUN ON STAGING BRANCH
     executor: node-project
