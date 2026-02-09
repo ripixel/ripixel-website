@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [7.4.6](https://github.com/ripixel/ripixel-website/compare/v7.4.5...v7.4.6) (2026-02-09)
+
 ### [7.4.5](https://github.com/ripixel/ripixel-website/compare/v7.4.4...v7.4.5) (2026-02-07)
 
 ### [7.4.4](https://github.com/ripixel/ripixel-website/compare/v7.4.3...v7.4.4) (2026-02-02)
