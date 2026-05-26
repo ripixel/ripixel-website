@@ -2,6 +2,94 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.0.36](https://github.com/ripixel/ripixel-website/compare/v8.0.35...v8.0.36) (2026-05-25)
+
+### [8.0.35](https://github.com/ripixel/ripixel-website/compare/v8.0.34...v8.0.35) (2026-05-21)
+
+### [8.0.34](https://github.com/ripixel/ripixel-website/compare/v8.0.33...v8.0.34) (2026-05-18)
+
+### [8.0.33](https://github.com/ripixel/ripixel-website/compare/v8.0.32...v8.0.33) (2026-05-14)
+
+### [8.0.32](https://github.com/ripixel/ripixel-website/compare/v8.0.31...v8.0.32) (2026-05-11)
+
+### [8.0.31](https://github.com/ripixel/ripixel-website/compare/v8.0.30...v8.0.31) (2026-05-06)
+
+### [8.0.30](https://github.com/ripixel/ripixel-website/compare/v8.0.29...v8.0.30) (2026-05-04)
+
+### [8.0.29](https://github.com/ripixel/ripixel-website/compare/v8.0.28...v8.0.29) (2026-04-30)
+
+### [8.0.28](https://github.com/ripixel/ripixel-website/compare/v8.0.27...v8.0.28) (2026-04-27)
+
+### [8.0.27](https://github.com/ripixel/ripixel-website/compare/v8.0.26...v8.0.27) (2026-04-20)
+
+### [8.0.26](https://github.com/ripixel/ripixel-website/compare/v8.0.25...v8.0.26) (2026-04-16)
+
+### [8.0.25](https://github.com/ripixel/ripixel-website/compare/v8.0.24...v8.0.25) (2026-04-16)
+
+### [8.0.24](https://github.com/ripixel/ripixel-website/compare/v8.0.23...v8.0.24) (2026-04-13)
+
+### [8.0.23](https://github.com/ripixel/ripixel-website/compare/v8.0.22...v8.0.23) (2026-04-09)
+
+### [8.0.22](https://github.com/ripixel/ripixel-website/compare/v8.0.21...v8.0.22) (2026-04-06)
+
+### [8.0.21](https://github.com/ripixel/ripixel-website/compare/v8.0.20...v8.0.21) (2026-04-03)
+
+### [8.0.20](https://github.com/ripixel/ripixel-website/compare/v8.0.19...v8.0.20) (2026-03-30)
+
+### [8.0.19](https://github.com/ripixel/ripixel-website/compare/v8.0.18...v8.0.19) (2026-03-27)
+
+### [8.0.18](https://github.com/ripixel/ripixel-website/compare/v8.0.17...v8.0.18) (2026-03-25)
+
+### [8.0.17](https://github.com/ripixel/ripixel-website/compare/v8.0.16...v8.0.17) (2026-03-23)
+
+### [8.0.16](https://github.com/ripixel/ripixel-website/compare/v8.0.15...v8.0.16) (2026-03-19)
+
+### [8.0.15](https://github.com/ripixel/ripixel-website/compare/v8.0.14...v8.0.15) (2026-03-17)
+
+### [8.0.14](https://github.com/ripixel/ripixel-website/compare/v8.0.13...v8.0.14) (2026-03-16)
+
+### [8.0.13](https://github.com/ripixel/ripixel-website/compare/v8.0.12...v8.0.13) (2026-03-13)
+
+### [8.0.12](https://github.com/ripixel/ripixel-website/compare/v8.0.11...v8.0.12) (2026-03-09)
+
+### [8.0.11](https://github.com/ripixel/ripixel-website/compare/v8.0.10...v8.0.11) (2026-03-09)
+
+### [8.0.10](https://github.com/ripixel/ripixel-website/compare/v8.0.9...v8.0.10) (2026-03-06)
+
+### [8.0.9](https://github.com/ripixel/ripixel-website/compare/v8.0.8...v8.0.9) (2026-03-02)
+
+### [8.0.8](https://github.com/ripixel/ripixel-website/compare/v8.0.7...v8.0.8) (2026-02-26)
+
+### [8.0.7](https://github.com/ripixel/ripixel-website/compare/v8.0.6...v8.0.7) (2026-02-24)
+
+### [8.0.6](https://github.com/ripixel/ripixel-website/compare/v8.0.5...v8.0.6) (2026-02-23)
+
+### [8.0.5](https://github.com/ripixel/ripixel-website/compare/v8.0.4...v8.0.5) (2026-02-21)
+
+### [8.0.4](https://github.com/ripixel/ripixel-website/compare/v8.0.3...v8.0.4) (2026-02-20)
+
+### [8.0.3](https://github.com/ripixel/ripixel-website/compare/v8.0.2...v8.0.3) (2026-02-16)
+
+### [8.0.2](https://github.com/ripixel/ripixel-website/compare/v8.0.1...v8.0.2) (2026-02-12)
+
+### [8.0.1](https://github.com/ripixel/ripixel-website/compare/v8.0.0...v8.0.1) (2026-02-10)
+
+## [8.0.0](https://github.com/ripixel/ripixel-website/compare/v7.4.6...v8.0.0) (2026-02-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* Begin transition to having a root corporate site, with sub-domain personal site
+
+### Features
+
+* build both sites and deploy via CICD ([0be3c5b](https://github.com/ripixel/ripixel-website/commit/0be3c5b08c981896813f6311d95d961e5645371e))
+* start migration to corporate + personal site ([3bf547c](https://github.com/ripixel/ripixel-website/commit/3bf547cdeabc37e05478fafa0ad3901dd5152f58))
+
+### [7.4.6](https://github.com/ripixel/ripixel-website/compare/v7.4.5...v7.4.6) (2026-02-09)
+
+### [7.4.5](https://github.com/ripixel/ripixel-website/compare/v7.4.4...v7.4.5) (2026-02-07)
+
 ### [7.4.4](https://github.com/ripixel/ripixel-website/compare/v7.4.3...v7.4.4) (2026-02-02)
 
 ### [7.4.3](https://github.com/ripixel/ripixel-website/compare/v7.4.2...v7.4.3) (2026-01-30)
