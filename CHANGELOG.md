@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.1.0](https://github.com/ripixel/ripixel-website/compare/v8.0.36...v8.1.0) (2026-05-26)
+
+
+### Features
+
+* apply citrus design to corporate site ([7413154](https://github.com/ripixel/ripixel-website/commit/7413154594e1aa452315ea09eaf5566c23d58745))
+* new blobby styling ([89f6c66](https://github.com/ripixel/ripixel-website/commit/89f6c66af17c6d3507aa9d7018d4cabb082f945b))
+
 ### [8.0.36](https://github.com/ripixel/ripixel-website/compare/v8.0.35...v8.0.36) (2026-05-25)
 
 ### [8.0.35](https://github.com/ripixel/ripixel-website/compare/v8.0.34...v8.0.35) (2026-05-21)
