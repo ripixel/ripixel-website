@@ -1,0 +1,254 @@
+{{>head}}
+
+<body>
+
+<!-- Goo SVG filter — the secret sauce for merging blobs -->
+<svg style="position:absolute; width:0; height:0;" aria-hidden="true">
+  <defs>
+    <filter id="gooey">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"/>
+      <feColorMatrix in="blur" mode="matrix" values="
+        1 0 0 0 0
+        0 1 0 0 0
+        0 0 1 0 0
+        0 0 0 22 -10" result="goo"/>
+      <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+    </filter>
+    <filter id="gooey-bg">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="30"/>
+    </filter>
+  </defs>
+</svg>
+
+<!-- Decorative background haze blobs (fixed, blur-filtered) -->
+<div class="blobs" aria-hidden="true">
+  <span class="bb1"></span>
+  <span class="bb2"></span>
+  <span class="bb3"></span>
+</div>
+
+{{>nav}}
+
+<main>
+
+  <!-- ======================================================
+       HERO
+       ====================================================== -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-pills">
+        <span class="pill"><span class="led" aria-hidden="true"></span> EST. 2026 · NOTTINGHAM</span>
+        <span class="pill">FITGLUE SHIPPED</span>
+        <span class="pill">4 THINGS LIVE</span>
+      </div>
+
+      <!-- Blob cluster (hidden ≤ 1000px) -->
+      <div class="hero-blobs" aria-hidden="true">
+        <span class="hb b1"></span>
+        <span class="hb b2"></span>
+        <span class="hb b3"></span>
+        <span class="hb b4"></span>
+      </div>
+
+      <h1 class="hero-h1">
+        <span class="l">A small</span>
+        <span class="l grad">label</span>
+        <span class="l">for <span class="drip">software</span></span>
+        <span class="l">that's <span class="wob">properly</span></span>
+        <span class="l pu">finished.</span>
+      </h1>
+
+      <div class="hero-sub">
+        <p class="hero-lede">
+          Ripixel is the studio name <b>James King</b> builds under — a friendly, one-human
+          outfit crafting digital clarity through fitness apps, running clubs and dev tools.
+          <span class="hl">Properly finished, every time.</span>
+        </p>
+        <div class="status" aria-label="Live status">
+          <div class="sh"><span>● LIVE STATUS</span><span>26.05.26</span></div>
+          <div class="row"><span>Latest</span><b>FitGlue 2.4</b></div>
+          <div class="row"><span>Workshop</span><b>1 in dev</b></div>
+          <div class="row"><span>Run by</span><b>1 human</b></div>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat s1">
+          <span class="sk">YEARS BUILDING</span>
+          <span class="sv">11</span>
+          <span class="sn">since the first deploy</span>
+        </div>
+        <div class="stat s2">
+          <span class="sk">FTSE 100 COs</span>
+          <span class="sv">3</span>
+          <span class="sn">fintech · food · betting</span>
+        </div>
+        <div class="stat s3">
+          <span class="sk">LIVE PRODUCTS</span>
+          <span class="sv">4</span>
+          <span class="sn">indie · collab · oss</span>
+        </div>
+        <div class="stat s4">
+          <span class="sk">INVESTORS</span>
+          <span class="sv">0</span>
+          <span class="sn">forever and ever</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       CATALOGUE
+       ====================================================== -->
+  <section id="cat" class="catalogue">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-tag">● 01 · CATALOGUE</span>
+        <h2 class="sec-title">Built and<br><span class="grad">shipped.</span></h2>
+      </div>
+
+      <div class="cat-grid">
+
+        <!-- Card 1 — FitGlue -->
+        <article class="card c1">
+          <div class="card-art">
+            <img src="/fitglue.png" alt="FitGlue app screenshot">
+          </div>
+          <div class="card-body">
+            <span class="card-kicker">INDIE · FLAGSHIP</span>
+            <h3>FitGlue.</h3>
+            <p>An automation platform for fitness enthusiasts — connecting Strava, Garmin, Apple Health and more, with AI-generated enrichment thrown in for good measure.</p>
+            <div class="card-tags">
+              <span class="card-tag">fitness</span>
+              <span class="card-tag">automation</span>
+            </div>
+            <a class="card-go" href="https://fitglue.tech" target="_blank" rel="noopener">Visit ↗</a>
+          </div>
+        </article>
+
+        <!-- Card 2 — DMMich -->
+        <article class="card c2">
+          <div class="card-art">
+            <img src="/dmmich.png" alt="DMMich website screenshot">
+          </div>
+          <div class="card-body">
+            <span class="card-kicker">COLLAB · LIVE</span>
+            <h3>DMMich.</h3>
+            <p>Dark-themed branding, CMS-ready content and an integrated community for DMMich the Coach — a personal trainer website built to convert.</p>
+            <div class="card-tags">
+              <span class="card-tag">personal trainer</span>
+              <span class="card-tag">website</span>
+            </div>
+            <a class="card-go" href="https://dmmichthecoach.co.uk" target="_blank" rel="noopener">Visit ↗</a>
+          </div>
+        </article>
+
+        <!-- Card 3 — Bingham SRC -->
+        <article class="card c3">
+          <div class="card-art">
+            <img src="/bsrc.png" alt="Bingham Sunday Running Club website screenshot">
+          </div>
+          <div class="card-body">
+            <span class="card-kicker">COLLAB · OSS</span>
+            <h3>Bingham SRC.</h3>
+            <p>A full race-tracking ecosystem for a small-town running club — live results, personal bests, weather enrichment and probably more engineering than any Sunday jog needed.</p>
+            <div class="card-tags">
+              <span class="card-tag">running club</span>
+              <span class="card-tag">race tracker</span>
+            </div>
+            <a class="card-go" href="https://binghamsundayrunningclub.co.uk" target="_blank" rel="noopener">Visit ↗</a>
+          </div>
+        </article>
+
+        <!-- Card 4 — Skier -->
+        <article class="card c4">
+          <div class="card-art" aria-hidden="true"></div>
+          <div class="card-body">
+            <span class="card-kicker">OPEN SOURCE</span>
+            <h3>Skier.</h3>
+            <p>A task-based static site generator that turns JSON and Markdown into full HTML sites — with pagination, RSS and sitemaps. Powers ripixel.co.uk, FitGlue and BSRC.</p>
+            <div class="card-tags">
+              <span class="card-tag">static site gen</span>
+              <span class="card-tag">MIT</span>
+            </div>
+            <a class="card-go" href="https://skier.ripixel.co.uk" target="_blank" rel="noopener">Docs ↗</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       HOUSE STYLE
+       ====================================================== -->
+  <section id="manifesto" class="manifesto">
+    <div class="wrap">
+      <div class="mani-card">
+        <div class="bg-blobs" aria-hidden="true">
+          <span class="x1"></span>
+          <span class="x2"></span>
+          <span class="x3"></span>
+        </div>
+        <h2>How things <span class="grad">get made</span> here.</h2>
+        <p class="sub">Four principles that apply to everything published under the ripixel name.</p>
+        <div class="rules">
+          <div class="rule">
+            <span class="rn">RULE 01</span>
+            <span class="rt">Clarity over<br>cleverness.</span>
+            <p>Strategic direction, architecture reviews and technical leadership — plain talk, honest trade-offs, no jargon.</p>
+          </div>
+          <div class="rule">
+            <span class="rn">RULE 02</span>
+            <span class="rt">Built to<br>ship.</span>
+            <p>Full-stack products from concept to launch. Modern web and mobile that users genuinely enjoy, not just demos that look good.</p>
+          </div>
+          <div class="rule">
+            <span class="rn">RULE 03</span>
+            <span class="rt">Boring tech,<br>sharp output.</span>
+            <p>Bespoke tooling, CI/CD pipelines and developer experience that makes engineering teams faster. Surprise is a liability in production.</p>
+          </div>
+          <div class="rule">
+            <span class="rn">RULE 04</span>
+            <span class="rt">One name,<br>full accountability.</span>
+            <p>No agency handoffs, no rotating teams. One engineer on the work — which means it ships when it's properly done.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       STUDIO
+       ====================================================== -->
+  <section id="studio" class="studio">
+    <div class="wrap">
+      <div class="studio-card">
+        <div class="studio-grid">
+          <div>
+            <h2>One <span class="grad">human.</span><br>One label.</h2>
+            <p><b>James King.</b> Software engineer from Nottinghamshire — a decade-plus spanning fintech (Monzo), food (Deliveroo) and betting (Sky Betting &amp; Gaming).</p>
+            <p>Ripixel Ltd was founded in 2024 as the umbrella for everything shipped under the ripixel name — fitness apps, running clubs, dev tools and the occasional project that was absolutely overkill and brought him joy anyway.</p>
+            <p>The label is for finished things. The personal site is for everything else.</p>
+            <a class="meet-james" href="https://james.ripixel.co.uk" target="_blank" rel="noopener">
+              <div class="mj-label">Personal site<span class="mj-url">james.ripixel.co.uk</span></div>
+              <span class="mj-arr" aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <div class="portrait">
+            <div class="pframe">
+              <img src="/james.jpg" alt="James King">
+            </div>
+            <div class="meta">
+              <span class="name">James King</span>
+              <span>NTM · UK</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+{{>footer}}

@@ -69,3 +69,6 @@ public/
 
 # Reports output
 reports/
+
+# Claude Design
+claude-design/

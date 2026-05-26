@@ -16,8 +16,8 @@
 }
 
 .dark a.button {
-  background: rgba(0, 0, 0, 0.2);
-  border-left: 2px solid #fff;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .dark a.rss svg path {
@@ -29,7 +29,9 @@
 }
 
 .dark nav {
-  background: #333;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(12px);
+  border-bottom-color: rgba(255, 255, 255, 0.05);
   color: #fff;
 }
 
@@ -38,26 +40,26 @@
 }
 
 .dark nav a:hover {
-  color: #ccc;
+  color: rgba(255, 255, 255, 0.6);
 }
 
-.dark nav.coding {
+.dark nav.projects {
   background: rgb(32, 0, 29);
 }
 
-.dark .coding h2,
-.dark .coding h3,
-.dark .coding h4,
-.dark .coding h5 {
+.dark .projects h2,
+.dark .projects h3,
+.dark .projects h4,
+.dark .projects h5 {
   color: rgb(136, 1, 124);
 }
 
-.dark .coding section.area {
+.dark .projects section.area {
   border-left-color: rgb(136, 1, 124);
 }
 
-.dark nav.coding a.coding {
-  border-left: 2px solid #fff;
+.dark nav.projects a.projects {
+  background: rgba(136, 1, 124, 0.3);
 }
 
 .dark nav.thoughts {
@@ -77,7 +79,7 @@
 }
 
 .dark nav.thoughts a.thoughts {
-  border-left: 2px solid #fff;
+  background: rgba(0, 129, 97, 0.3);
 }
 
 .dark nav.profile {
@@ -96,7 +98,7 @@
 }
 
 .dark nav.profile a.profile {
-  border-left: 2px solid #fff;
+  background: rgba(22, 61, 168, 0.3);
 }
 
 .dark nav.life {
@@ -115,7 +117,7 @@
 }
 
 .dark nav.life a.life {
-  border-left: 2px solid #fff;
+  background: rgba(0, 160, 160, 0.3);
 }
 
 .dark main {
@@ -128,7 +130,7 @@
 }
 
 .dark main.hello {
-  background: rgb(108, 61, 0);
+  background: linear-gradient(135deg, rgb(108, 61, 0) 0%, rgb(85, 48, 0) 100%);
 }
 
 .dark .mentions .item {
@@ -167,11 +169,11 @@
   border-bottom: 1px solid #aaa;
 }
 
-.dark main.coding {
+.dark main.projects {
   background: rgb(41, 0, 37);
 }
 
-.dark main.area.coding {
+.dark main.area.projects {
   color: #fff;
   background: rgb(41, 0, 37);
 }
@@ -232,14 +234,13 @@
   fill: #ccc;
 }
 
-.dark footer .copy a {
+.dark .footer__meta a,
+.dark .footer__meta span {
   color: #777;
-  border-bottom: 1px solid #777;
 }
 
-.dark footer .copy a:hover {
+.dark .footer__meta a:hover {
   color: #ccc;
-  border-bottom: 1px solid #ccc;
 }
 
 .dark section.intro h1 {
@@ -261,7 +262,17 @@
 }
 
 .dark section.area {
-  border-left: 5px solid #fff;
+  border-left: none;
+}
+
+.dark .section-card {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark .section-card:hover {
+  background: rgba(0, 0, 0, 0.55);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .dark .article .header-details {

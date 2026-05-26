@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html lang="en">
+{{> head}}
+
+<body>
+  {{> nav}}
+
+  {{> darkmode}}
+
+  <main class="projects">
+    <p>Shall we take a look at some projects I&apos;ve done?</p>
+
+    <section class="area">
+      <h3>FitGlue</h3>
+      <p>
+        An automation platform for fitness enthusiasts who are tired of
+        manually copying their workouts between apps.
+      </p>
+      <p>
+        Ever finished a killer workout on one app and then had to faff about
+        re-entering it all somewhere else? Yeah, me too. FitGlue connects your
+        fitness services together and automatically syncs activities between
+        them, with some magical enrichment thrown in along the way &ndash;
+        AI-generated descriptions, parkrun result lookups, and more.
+      </p>
+      <p>
+        It&apos;s built on a React frontend with a Go and TypeScript backend, all running on
+        Google Cloud. The &quot;Magician&quot; design system ensures
+        everything looks premium with glassmorphism effects and subtle
+        animations. Because if you&apos;re going to automate your fitness
+        life, it should at least look <span class="em2">fancy</span>.
+      </p>
+      <a class="button" href="https://fitglue.tech">Check out FitGlue</a>
+      <a class="button" href="https://github.com/orgs/FitGlue/repositories">GitHub Repos</a>
+    </section>
+
+    <section class="area">
+      <h3>Skier</h3>
+      <p>
+        A custom static site generator, because the world definitely needed
+        another one of those.
+      </p>
+      <p>
+        I kept finding myself building static sites and getting frustrated
+        with the existing options &ndash; they were either too simple or
+        required me to learn an entire framework just to render some HTML
+        templates. So I did what any sensible developer would do: spent
+        considerably more time building my own solution.
+      </p>
+      <p>
+        Skier is a task-based build system that transforms JSON and Markdown
+        into static HTML. It handles everything from pagination to RSS feeds
+        to SEO sitemaps. It powers this very website, the FitGlue marketing
+        pages, and the Bingham Sunday Running Club site. Is it overkill?
+        Absolutely. Does it bring me joy? <span class="em2">Also yes</span>.
+      </p>
+      <a class="button" href="https://skier.ripixel.co.uk">Check out the docs</a>
+      <a class="button" href="https://github.com/ripixel/skier">GitHub Repo</a>
+    </section>
+
+    <section class="area">
+      <h3>Bingham Sunday Running Club</h3>
+      <p>
+        A full digital ecosystem for a small town running club that
+        probably didn&apos;t need this level of engineering.
+      </p>
+      <p>
+        What started as &quot;can you make us a simple website?&quot; turned
+        into a React-based race tracker app, a Skier-powered club website, and
+        an automated CI/CD pipeline that would make enterprise teams jealous.
+        Every Sunday morning, the race director tracks laps on their phone, and
+        by the time the slowest runner (hi, that&apos;s often me) finishes,
+        the results are already live on the website.
+      </p>
+      <p>
+        Features include automatic personal best tracking, a runners directory
+        with individual profiles, Spotify playlist integration, and even
+        weather data enrichment for historical runs. Because nothing says
+        &quot;casual Sunday jog&quot; like comprehensive data analytics.
+      </p>
+      <a class="button" href="https://binghamsundayrunningclub.co.uk">Visit the club</a>
+      <a class="button" href="https://github.com/ripixel/bingham-sunday-running-club-website">GitHub Repo</a>
+    </section>
+
+    <section class="area">
+      <h3>State Management Examples</h3>
+      <p>
+        As a lover of state management in React (I know, what a weird thing to admit) I often get asked about my
+        thoughts as to the best state management solutions out there.
+      </p>
+      <p>
+        Anyone who's delved into the mysteries and intricacies of managing state in React knows that that's a very
+        naive question, which misses the big point that there are pros and cons to almost every approach, with some
+        being suited to more complex codebases with multiple teams contributing, and others being far more manageable
+        for single teams or solo developers.
+      </p>
+      <p>
+        So, I put together a lil website to showcase how to get started with a number of state management libraries.
+        Take a look!
+      </p>
+      <a class="button" href="https://sme.ripixel.co.uk">See those examples</a>
+      <a class="button" href="https://github.com/ripixel/state-management-examples">GitHub Repo</a>
+    </section>
+
+    <section class="area">
+      <h3>Presentation Timer</h3>
+      <p>
+        A simple presentation countdown timer with music streaming for use
+        on streams/presentations - because every stream could use some
+        suspense and music!
+      </p>
+      <p>
+        When doing presentations, it's nice to have a countdown to the start
+        at the beginning, and it's even nicer to have some music playing in
+        the background. However, combining these two things usually means a
+        lot of messing around with audio inputs/outputs, or you just resort
+        to playing the music out your speakers and detecting it with your
+        microphone, or capturing your entire machine's audio.
+      </p>
+      <p>
+        Having the presentation countdown and the music playing in the same
+        tab means most streaming tools can pick up the audio in a nice way.
+      </p>
+      <a class="button" href="https://pt.ripixel.co.uk">Start that countdown</a>
+      <a class="button" href="https://github.com/ripixel/presentation-timer">GitHub Repo</a>
+    </section>
+
+    <section class="area">
+      <h3>Janky Werewolf</h3>
+      <p>A browser-based version of the Ultimate Werewolf card game</p>
+      <p>
+        Created during the great-lockdown of &apos;20, my friends and I
+        adore the Ultimate Werewolf game, and would play it every evening
+        whenever we met up. However, as meetings turned virtual, there was
+        no way to do this! So what did we do as a bunch of CompSci nerds?
+        Create our own web version of course!
+      </p>
+      <p>
+        The front-end is made in React, utilising Websockets to talk to
+        lambdas that handle the running of the game and tracking of game
+        state (aka who&apos;s dead Jim). The back-end is written by
+        <a href="https://www.mgoddard.net/">Michael Goddard</a>, the big
+        ol&apos; Rust nerd.
+      </p>
+      <a class="button" href="https://github.com/ripixel/janky-werewolf-client">GitHub Repo (FE)</a>
+      <a class="button" href="https://github.com/mcgoddard/janky_werewolf_backend">GitHub Repo (BE)</a>
+    </section>
+
+    <section class="area">
+      <h3>ripixel.co.uk</h3>
+      <p>
+        This website! It&apos;s cool, isn&apos;t it? Why use a static site
+        generator when you can just... y&apos;know... write the HTML yourself?
+      </p>
+      <p>
+        As with all personal sites, I&apos;ve been going back and forth on how
+        to implement it for literally <span class="em2">years</span>. Should I
+        go all swanky and amazing and use the latest tech? Should I show off
+        all my awesome React skills?
+      </p>
+      <p>
+        In the end, I decided to go as simple-as-possible. This site
+        shouldn&apos;t be all-singing-and-dancing, because it&apos;s not
+        what&apos;s needed. What&apos;s needed is something super simple,
+        clean, and most importantly
+        <span class="em2">quick</span>. So, it&apos;s pure HTML and CSS, with
+        a really simple template copy/paste script so I don&apos;t have to
+        write the nav/header/footer out everytime. Neat!
+      </p>
+      <a class="button" href="https://www.ripixel.co.uk">Take me there</a>
+      <a class="button" href="https://github.com/ripixel/ripixel-website">GitHub Repo</a>
+    </section>
+
+  </main>
+
+  {{> footer}}
+</body>
+
+</html>
