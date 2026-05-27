@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.2.0](https://github.com/ripixel/ripixel-website/compare/v8.1.0...v8.2.0) (2026-05-27)
+
+
+### Features
+
+* **personal:** zine redesign — riso aesthetic, fitness section, fixes ([ac7b19f](https://github.com/ripixel/ripixel-website/commit/ac7b19ff31685a4e77eb4d0f6914c8de2c73d933))
+
 ## [8.1.0](https://github.com/ripixel/ripixel-website/compare/v8.0.36...v8.1.0) (2026-05-26)
 
 
