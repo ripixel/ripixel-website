@@ -109,7 +109,7 @@ function computeThoughtsStatsTask() {
                 ctx.globals.latestThoughtDate     = latest.dateDisplay || '';
                 ctx.globals.latestThoughtDateLong = latest.dateDisplay || '';
                 ctx.globals.latestThoughtExcerpt  = latest.excerpt || '';
-                ctx.globals.latestThoughtSlug     = (latest.relativePath || '').replace(/\.html$/, '');
+                ctx.globals.latestThoughtSlug     = latest.relativePath || '';
                 ctx.globals.latestThoughtReadTime = String(estimateReadTime(latest.body || latest.excerpt || ''));
             }
 
@@ -276,6 +276,7 @@ export const tasks = [
             /** @type {Record<string, string>} */
             const pageMapping = {
                 'index': 'home',
+                'coding': 'projects',
             };
             const page = pageMapping[currentPage] || currentPage;
 
