@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.4.0](https://github.com/ripixel/ripixel-website/compare/v8.3.1...v8.4.0) (2026-05-27)
+
+
+### Features
+
+* **build:** add cache-busting hash to CSS filenames ([5ca9c4d](https://github.com/ripixel/ripixel-website/commit/5ca9c4d83c17c74dc5eca7252e7ed2d0926914ab))
+
 ### [8.3.1](https://github.com/ripixel/ripixel-website/compare/v8.3.0...v8.3.1) (2026-05-27)
 
 
