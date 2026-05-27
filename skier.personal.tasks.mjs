@@ -1,6 +1,8 @@
 // @ts-check
 import fs from 'fs';
 import path from 'path';
+
+const cacheHash = Date.now().toString(36);
 import {
     prepareOutputTask,
     bundleCssTask,
@@ -151,7 +153,7 @@ export const tasks = [
     bundleCssTask({
         from: './personal/assets/styles/main',
         to: './public/personal',
-        output: 'styles.min.css',
+        output: `styles.min.${cacheHash}.css`,
         minify: true,
     }),
 
@@ -159,7 +161,7 @@ export const tasks = [
     bundleCssTask({
         from: './personal/assets/styles/jamie',
         to: './public/personal',
-        output: 'styles.jamie.min.css',
+        output: `styles.jamie.min.${cacheHash}.css`,
         minify: true,
     }),
 
@@ -180,6 +182,7 @@ export const tasks = [
         values: {
             year: (new Date()).getFullYear(),
             siteUrl: 'https://james.ripixel.co.uk',
+            cacheHash,
             // Homepage static data
             latestProject:     'FitGlue',
             latestProjectDate: '2024 → present',

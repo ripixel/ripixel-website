@@ -4,9 +4,12 @@ import {
     prepareOutputTask,
     bundleCssTask,
     copyStaticTask,
+    setGlobalsTask,
     generatePagesTask,
     generateSitemapTask,
 } from 'skier';
+
+const cacheHash = Date.now().toString(36);
 
 export const tasks = [
     // Clean & Create output directory
@@ -17,8 +20,13 @@ export const tasks = [
     bundleCssTask({
         from: './corporate/assets/styles',
         to: './public/corporate',
-        output: 'styles.min.css',
+        output: `styles.min.${cacheHash}.css`,
         minify: true,
+    }),
+
+    // Expose cacheHash to templates
+    setGlobalsTask({
+        values: { cacheHash },
     }),
     // Copy images/assets
     copyStaticTask({
