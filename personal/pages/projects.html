@@ -1,180 +1,243 @@
 <!DOCTYPE html>
-
 <html lang="en">
 {{> head}}
 
-<body>
-  {{> nav}}
+<body class="page-projects" data-page="projects">
+  <div class="paper-wash" aria-hidden="true"></div>
+  <div class="paper-dot" aria-hidden="true"></div>
 
-  {{> darkmode}}
+  {{> masthead}}
 
-  <main class="projects">
-    <p>Shall we take a look at some projects I&apos;ve done?</p>
+  <div class="zine-content">
 
-    <section class="area">
-      <h3>FitGlue</h3>
-      <p>
-        An automation platform for fitness enthusiasts who are tired of
-        manually copying their workouts between apps.
-      </p>
-      <p>
-        Ever finished a killer workout on one app and then had to faff about
-        re-entering it all somewhere else? Yeah, me too. FitGlue connects your
-        fitness services together and automatically syncs activities between
-        them, with some magical enrichment thrown in along the way &ndash;
-        AI-generated descriptions, parkrun result lookups, and more.
-      </p>
-      <p>
-        It&apos;s built on a React frontend with a Go and TypeScript backend, all running on
-        Google Cloud. The &quot;Magician&quot; design system ensures
-        everything looks premium with glassmorphism effects and subtle
-        animations. Because if you&apos;re going to automate your fitness
-        life, it should at least look <span class="em2">fancy</span>.
-      </p>
-      <a class="button" href="https://fitglue.tech">Check out FitGlue</a>
-      <a class="button" href="https://github.com/orgs/FitGlue/repositories">GitHub Repos</a>
-    </section>
+    <svg class="reg-mark" style="position:absolute;top:6px;left:6px" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+      <circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="0" y1="9" x2="18" y2="9" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="9" y1="0" x2="9" y2="18" stroke="currentColor" stroke-width="1.2"/>
+    </svg>
 
-    <section class="area">
-      <h3>Skier</h3>
-      <p>
-        A custom static site generator, because the world definitely needed
-        another one of those.
-      </p>
-      <p>
-        I kept finding myself building static sites and getting frustrated
-        with the existing options &ndash; they were either too simple or
-        required me to learn an entire framework just to render some HTML
-        templates. So I did what any sensible developer would do: spent
-        considerably more time building my own solution.
-      </p>
-      <p>
-        Skier is a task-based build system that transforms JSON and Markdown
-        into static HTML. It handles everything from pagination to RSS feeds
-        to SEO sitemaps. It powers this very website, the FitGlue marketing
-        pages, and the Bingham Sunday Running Club site. Is it overkill?
-        Absolutely. Does it bring me joy? <span class="em2">Also yes</span>.
-      </p>
-      <a class="button" href="https://skier.ripixel.co.uk">Check out the docs</a>
-      <a class="button" href="https://github.com/ripixel/skier">GitHub Repo</a>
-    </section>
+    <!-- Page hero -->
+    <div class="page-hero">
+      <div class="page-hero__left">
+        <div class="page-hero__section-label">· CATALOGUE ·</div>
+        <h1 class="page-hero__h1">
+          STUFF<br>
+          <span>I'VE BUILT.</span>
+        </h1>
+      </div>
+      <div class="page-hero__aside">
+        <div class="page-hero__aside-scribble">(mostly in typescript,<br>occasionally in go!)</div>
+        <div class="page-hero__aside-box">
+          <b>READ IF YOU LIKE:</b><br>
+          · over-engineered weekend projects<br>
+          · putting typescript in places it<br>&nbsp;&nbsp;probably didn't need to be<br>
+          · automating yourself into a corner
+        </div>
+      </div>
+    </div>
 
-    <section class="area">
-      <h3>Bingham Sunday Running Club</h3>
-      <p>
-        A full digital ecosystem for a small town running club that
-        probably didn&apos;t need this level of engineering.
-      </p>
-      <p>
-        What started as &quot;can you make us a simple website?&quot; turned
-        into a React-based race tracker app, a Skier-powered club website, and
-        an automated CI/CD pipeline that would make enterprise teams jealous.
-        Every Sunday morning, the race director tracks laps on their phone, and
-        by the time the slowest runner (hi, that&apos;s often me) finishes,
-        the results are already live on the website.
-      </p>
-      <p>
-        Features include automatic personal best tracking, a runners directory
-        with individual profiles, Spotify playlist integration, and even
-        weather data enrichment for historical runs. Because nothing says
-        &quot;casual Sunday jog&quot; like comprehensive data analytics.
-      </p>
-      <a class="button" href="https://binghamsundayrunningclub.co.uk">Visit the club</a>
-      <a class="button" href="https://github.com/ripixel/bingham-sunday-running-club-website">GitHub Repo</a>
-    </section>
+    <!-- Intro -->
+    <div class="projects-intro">
+      <div class="projects-intro__body">
+        Shall we take a look at some projects I've done? This is the bit
+        where I pretend each project was carefully scoped and not built at
+        11pm because I thought it would be fun. Some are still alive, some
+        are quietly retired, and one (waving at Janky Werewolf) was made
+        for a lockdown and then somehow refused to die.
+        <br><br>
+        You can tell roughly how excited I was about a project by how much
+        documentation I wrote for it after the fact. Spoiler: not enough.
+      </div>
+      <div class="projects-toc">
+        <div class="projects-toc__title">+ INSIDE THIS ISSUE</div>
+        <div class="projects-toc__row"><span><span class="projects-toc__num">001</span> · fitglue</span><span class="projects-toc__page">p.01</span></div>
+        <div class="projects-toc__row"><span><span class="projects-toc__num">002</span> · skier</span><span class="projects-toc__page">p.02</span></div>
+        <div class="projects-toc__row"><span><span class="projects-toc__num">003</span> · bingham src</span><span class="projects-toc__page">p.03</span></div>
+        <div class="projects-toc__row"><span><span class="projects-toc__num">004</span> · state examples</span><span class="projects-toc__page">p.04</span></div>
+        <div class="projects-toc__row"><span><span class="projects-toc__num">005</span> · pres. timer</span><span class="projects-toc__page">p.05</span></div>
+        <div class="projects-toc__row"><span><span class="projects-toc__num">006</span> · janky werewolf</span><span class="projects-toc__page">p.06</span></div>
+        <div class="projects-toc__row"><span><span class="projects-toc__num">007</span> · ripixel.co.uk</span><span class="projects-toc__page">p.07</span></div>
+      </div>
+    </div>
 
-    <section class="area">
-      <h3>State Management Examples</h3>
-      <p>
-        As a lover of state management in React (I know, what a weird thing to admit) I often get asked about my
-        thoughts as to the best state management solutions out there.
-      </p>
-      <p>
-        Anyone who's delved into the mysteries and intricacies of managing state in React knows that that's a very
-        naive question, which misses the big point that there are pros and cons to almost every approach, with some
-        being suited to more complex codebases with multiple teams contributing, and others being far more manageable
-        for single teams or solo developers.
-      </p>
-      <p>
-        So, I put together a lil website to showcase how to get started with a number of state management libraries.
-        Take a look!
-      </p>
-      <a class="button" href="https://sme.ripixel.co.uk">See those examples</a>
-      <a class="button" href="https://github.com/ripixel/state-management-examples">GitHub Repo</a>
-    </section>
+    <!-- Featured: FitGlue -->
+    <div class="featured-project" style="position:relative">
+      <div class="featured-project__inner">
+        <div class="featured-project__badge">
+          <span class="featured-project__tag">★ FEATURED · NO. 001</span>
+          <span class="featured-project__meta">built 2024 · still shipping</span>
+        </div>
+        <div class="featured-project__title">
+          FIT<span>GLUE</span>.
+        </div>
+        <div class="featured-project__sub">
+          an automation platform for fitness enthusiasts
+          who are tired of manually copying their workouts between apps.
+        </div>
+        <div class="featured-project__body">
+          Ever finished a killer workout on one app and then had to faff about
+          re-entering it all somewhere else? Yeah, me too. FitGlue connects your
+          fitness services and syncs activities — with some magical enrichment
+          along the way (AI-generated descriptions, parkrun result lookups, weather data
+          enrichment, and more). It's built on a React frontend with a Go and TypeScript backend,
+          all running on Google Cloud.
+        </div>
+        <div class="featured-project__tags">
+          <span class="tag-chip">#go</span>
+          <span class="tag-chip">#typescript</span>
+          <span class="tag-chip">#react</span>
+          <span class="tag-chip">#google cloud</span>
+          <span class="tag-chip">#ai enrichment</span>
+        </div>
+        <div class="featured-project__actions">
+          <a class="btn-ink" href="https://fitglue.tech">check out fitglue →</a>
+          <a class="btn-outline" href="https://github.com/orgs/FitGlue/repositories">github repos</a>
+        </div>
+      </div>
+    </div>
 
-    <section class="area">
-      <h3>Presentation Timer</h3>
-      <p>
-        A simple presentation countdown timer with music streaming for use
-        on streams/presentations - because every stream could use some
-        suspense and music!
-      </p>
-      <p>
-        When doing presentations, it's nice to have a countdown to the start
-        at the beginning, and it's even nicer to have some music playing in
-        the background. However, combining these two things usually means a
-        lot of messing around with audio inputs/outputs, or you just resort
-        to playing the music out your speakers and detecting it with your
-        microphone, or capturing your entire machine's audio.
-      </p>
-      <p>
-        Having the presentation countdown and the music playing in the same
-        tab means most streaming tools can pick up the audio in a nice way.
-      </p>
-      <a class="button" href="https://pt.ripixel.co.uk">Start that countdown</a>
-      <a class="button" href="https://github.com/ripixel/presentation-timer">GitHub Repo</a>
-    </section>
+    <!-- Also in the catalogue -->
+    <div class="also-heading">
+      <div class="also-heading__title">also <span>in the catalogue</span>.</div>
+      <div class="also-heading__sub">↓ smaller, equally chaotic ↓</div>
+    </div>
 
-    <section class="area">
-      <h3>Janky Werewolf</h3>
-      <p>A browser-based version of the Ultimate Werewolf card game</p>
-      <p>
-        Created during the great-lockdown of &apos;20, my friends and I
-        adore the Ultimate Werewolf game, and would play it every evening
-        whenever we met up. However, as meetings turned virtual, there was
-        no way to do this! So what did we do as a bunch of CompSci nerds?
-        Create our own web version of course!
-      </p>
-      <p>
-        The front-end is made in React, utilising Websockets to talk to
-        lambdas that handle the running of the game and tracking of game
-        state (aka who&apos;s dead Jim). The back-end is written by
-        <a href="https://www.mgoddard.net/">Michael Goddard</a>, the big
-        ol&apos; Rust nerd.
-      </p>
-      <a class="button" href="https://github.com/ripixel/janky-werewolf-client">GitHub Repo (FE)</a>
-      <a class="button" href="https://github.com/mcgoddard/janky_werewolf_backend">GitHub Repo (BE)</a>
-    </section>
+    <div class="proj-grid">
+      <article class="proj-card">
+        <div class="proj-card__inner">
+          <div class="proj-card__top">
+            <span class="proj-card__num">NO. 002</span>
+          </div>
+          <div class="proj-card__title">SKIER.</div>
+          <div class="proj-card__blurb">
+            A custom static site generator, because the world definitely needed another one.
+            I kept getting frustrated with existing options — either too simple or requiring
+            me to learn an entire framework. So I did what any sensible developer would do:
+            spent considerably more time building my own. Powers this site, FitGlue marketing,
+            and the Bingham SRC site.
+          </div>
+          <div class="proj-card__footer">
+            <span class="proj-card__tech">tech / node · cli · markdown</span>
+            <span class="proj-card__year">
+              <a href="https://skier.ripixel.co.uk">docs</a> ·
+              <a href="https://github.com/ripixel/skier">github</a>
+            </span>
+          </div>
+        </div>
+      </article>
 
-    <section class="area">
-      <h3>ripixel.co.uk</h3>
-      <p>
-        This website! It&apos;s cool, isn&apos;t it? Why use a static site
-        generator when you can just... y&apos;know... write the HTML yourself?
-      </p>
-      <p>
-        As with all personal sites, I&apos;ve been going back and forth on how
-        to implement it for literally <span class="em2">years</span>. Should I
-        go all swanky and amazing and use the latest tech? Should I show off
-        all my awesome React skills?
-      </p>
-      <p>
-        In the end, I decided to go as simple-as-possible. This site
-        shouldn&apos;t be all-singing-and-dancing, because it&apos;s not
-        what&apos;s needed. What&apos;s needed is something super simple,
-        clean, and most importantly
-        <span class="em2">quick</span>. So, it&apos;s pure HTML and CSS, with
-        a really simple template copy/paste script so I don&apos;t have to
-        write the nav/header/footer out everytime. Neat!
-      </p>
-      <a class="button" href="https://www.ripixel.co.uk">Take me there</a>
-      <a class="button" href="https://github.com/ripixel/ripixel-website">GitHub Repo</a>
-    </section>
+      <article class="proj-card">
+        <div class="proj-card__inner">
+          <div class="proj-card__top">
+            <span class="proj-card__num">NO. 003</span>
+          </div>
+          <div class="proj-card__title">BINGHAM SRC.</div>
+          <div class="proj-card__blurb">
+            A full digital ecosystem for a small Sunday running club. What started as
+            "can you make us a simple website?" turned into a React-based race tracker app,
+            a Skier-powered club site, and a CI/CD pipeline that would make enterprise teams
+            jealous. Every Sunday, results are live before the slowest runner even finishes.
+          </div>
+          <div class="proj-card__footer">
+            <span class="proj-card__tech">tech / react · firebase · spotify</span>
+            <span class="proj-card__year">
+              <a href="https://binghamsundayrunningclub.co.uk">club site</a>
+            </span>
+          </div>
+        </div>
+      </article>
 
-  </main>
+      <article class="proj-card">
+        <div class="proj-card__inner">
+          <div class="proj-card__top">
+            <span class="proj-card__num">NO. 004</span>
+          </div>
+          <div class="proj-card__title">STATE EXAMPLES.</div>
+          <div class="proj-card__blurb">
+            A site demoing Redux, Zustand, Jotai, Context, and more — for the curious developer.
+            With brutally honest pros/cons for each approach. Because "which state manager should
+            I use?" deserves a better answer than "it depends".
+          </div>
+          <div class="proj-card__footer">
+            <span class="proj-card__tech">tech / react · vite</span>
+            <span class="proj-card__year">
+              <a href="https://sme.ripixel.co.uk">live site</a> ·
+              <a href="https://github.com/ripixel/state-management-examples">github</a>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-card__inner">
+          <div class="proj-card__top">
+            <span class="proj-card__num">NO. 005</span>
+          </div>
+          <div class="proj-card__title">PRES. TIMER.</div>
+          <div class="proj-card__blurb">
+            A countdown timer with music streaming for presentations and streams,
+            all in one browser tab. Having the countdown and music in the same tab
+            means your streaming tool can pick up the audio without any fuss.
+          </div>
+          <div class="proj-card__footer">
+            <span class="proj-card__tech">tech / vanilla js · web audio</span>
+            <span class="proj-card__year">
+              <a href="https://pt.ripixel.co.uk">live site</a> ·
+              <a href="https://github.com/ripixel/presentation-timer">github</a>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-card__inner">
+          <div class="proj-card__top">
+            <span class="proj-card__num">NO. 006</span>
+          </div>
+          <div class="proj-card__title">JANKY WEREWOLF.</div>
+          <div class="proj-card__blurb">
+            Browser-based Ultimate Werewolf, born in lockdown 2020. My friends and I
+            adore the card game, and when meetings went virtual there was no way to play.
+            React frontend, WebSockets, AWS Lambdas, and a Rust backend by
+            <a href="https://www.mgoddard.net/" style="color:var(--ink-section);border-bottom:1px solid var(--ink-section)">Michael Goddard</a>.
+            Who's dead, Jim?
+          </div>
+          <div class="proj-card__footer">
+            <span class="proj-card__tech">tech / react · ws · rust</span>
+            <span class="proj-card__year">
+              <a href="https://github.com/ripixel/janky-werewolf-client">fe</a> ·
+              <a href="https://github.com/mcgoddard/janky_werewolf_backend">be</a>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-card__inner">
+          <div class="proj-card__top">
+            <span class="proj-card__num">NO. 007</span>
+          </div>
+          <div class="proj-card__title">RIPIXEL.CO.UK.</div>
+          <div class="proj-card__blurb">
+            This very website. Why use a static site generator when you can just…
+            y'know… write the HTML yourself? (Also it uses Skier, sometimes.)
+            As with all personal sites, I've been going back and forth on how to implement it
+            for literally <em>years</em>.
+          </div>
+          <div class="proj-card__footer">
+            <span class="proj-card__tech">tech / html · css · skier</span>
+            <span class="proj-card__year">
+              <a href="https://www.ripixel.co.uk">corporate site</a>
+            </span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+  </div>
 
   {{> footer}}
-</body>
 
+  <div class="paper-grain" aria-hidden="true"></div>
+</body>
 </html>

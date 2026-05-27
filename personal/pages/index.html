@@ -1,61 +1,238 @@
 <!DOCTYPE html>
-
 <html lang="en">
 {{> head}}
 
-<body>
-  <main class="hello">
-    <section class="intro">
-      <h1 class="name">James King</h1>
-      <p class="subtitle">Software Engineer & Web Application Creator</p>
-      <p class="tagline">Building digital experiences with code and creativity.</p>
-    </section>
+<body class="page-home" data-page="home">
+  <div class="paper-wash" aria-hidden="true"></div>
+  <div class="paper-dot" aria-hidden="true"></div>
 
-    {{> darkmode}}
+  {{> masthead}}
 
-    <div class="sections">
-      <section class="welcome">
-        <p>
-          Hi, I'm <span class="em">James King</span>, and I make things for
-          the web. As you can probably tell, I'm a fan of minimalist designs that help you get the information you
-          need, with the minimum of fuss.
-        </p>
-        <p>
-          I also really, <span class="em2">really</span> like big, bold,
-          oh-my-gosh-that's-so-bright colours (unless you have dark-mode on, of course).
-        </p>
-      </section>
+  <div class="zine-content">
+
+    <!-- Registration marks (decorative) -->
+    <svg class="reg-mark" style="position:absolute;top:4px;left:6px" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+      <circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="0" y1="9" x2="18" y2="9" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="9" y1="0" x2="9" y2="18" stroke="currentColor" stroke-width="1.2"/>
+    </svg>
+
+    <!-- Issue header -->
+    <div class="issue-header">
+      <div>
+        <div class="issue-header__meta">MAY · {{year}} · ENJOY!</div>
+        <div class="issue-header__title">
+          <span class="issue-header__hello">HELLO!</span>
+          <span style="margin-left:14px">— a zine, by james king.</span>
+        </div>
+        <div class="issue-header__byline">software engineer · web app creator · nottinghamshire, uk · est. 2015</div>
+      </div>
+    </div>
+
+    <!-- Hero two-col -->
+    <div class="home-hero">
+      <div>
+        <div class="home-hero__name">
+          JAMES<br>
+          <span>KING!</span>
+        </div>
+
+        <div class="home-intro">
+          <span class="home-intro__hi">HI,</span>
+          i'm james king, and i make things for the web. fan of minimalist
+          designs that get you the info with the minimum of fuss — and big,
+          bold, oh-my-gosh-that's-so-bright colours. you've found my zine.
+          turn the page.
+        </div>
+
+        <div class="home-tags" aria-label="Tags">
+          <span class="home-tag">running</span>
+          <span class="home-tag">code</span>
+          <span class="home-tag">tea</span>
+          <span class="home-tag">typescript</span>
+          <span class="home-tag">overkill</span>
+          <span class="home-tag">a static site generator nobody asked for</span>
+        </div>
+
+        {{#if rightNow}}
+        <div class="right-now" aria-label="What James is up to right now">
+          <div class="right-now__label">RIGHT NOW</div>
+          {{#if rightNow.listening}}
+          <div class="right-now__item">
+            <div class="right-now__key">LISTENING</div>
+            <div class="right-now__val">{{rightNow.listening}}</div>
+          </div>
+          {{/if}}
+          {{#if rightNow.reading}}
+          <div class="right-now__item">
+            <div class="right-now__key">READING</div>
+            <div class="right-now__val">{{rightNow.reading}}</div>
+          </div>
+          {{/if}}
+          {{#if rightNow.building}}
+          <div class="right-now__item">
+            <div class="right-now__key">BUILDING</div>
+            <div class="right-now__val">{{rightNow.building}}</div>
+          </div>
+          {{/if}}
+          {{#if rightNow.training}}
+          <div class="right-now__item">
+            <div class="right-now__key">TRAINING</div>
+            <div class="right-now__val">{{rightNow.training}}</div>
+          </div>
+          {{/if}}
+        </div>
+        {{/if}}
+      </div>
+
+      <div style="position:relative;padding-top:6px">
+        <!-- Postcard -->
+        <div class="postcard">
+          <div class="postcard__label">POSTCARD · TO YOU</div>
+          dear reader — this is the bit where i waffle about minimalism &amp; then build something deeply over-engineered. enjoy.
+          <div class="postcard__sig">— j.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inside this issue -->
+    <div class="inside-header">
+      <div class="inside-header__title">inside <span>this issue</span>.</div>
+      <div class="inside-header__meta">4 sections · 1 incredibly polite zine</div>
     </div>
 
     <div class="section-cards">
-      <a href="projects" class="section-card section-card--projects">
-        <span class="section-card__icon">💻</span>
-        <h2>Projects</h2>
-        <p>Things I've built, from automation platforms to static site generators.</p>
-        <span class="section-card__arrow">→</span>
+      <a class="section-card section-card--projects" href="/projects">
+        <div class="section-card__inner">
+          <div class="section-card__top">
+            <span class="section-card__num">◆ PROJECTS</span>
+            <span class="section-card__glyph">◆</span>
+          </div>
+          <div class="section-card__name">projects.</div>
+          <div class="section-card__blurb">Things I've built — from automation platforms to a static site generator nobody asked for.</div>
+          <div class="section-card__latest">
+            <span><span class="section-card__latest-ink">latest →</span> {{latestProject}}</span>
+            <span class="section-card__latest-date">{{latestProjectDate}}</span>
+          </div>
+        </div>
       </a>
-      <a href="thoughts" class="section-card section-card--thoughts">
-        <span class="section-card__icon">💭</span>
-        <h2>Thoughts</h2>
-        <p>Ramblings, how-to guides, and the occasional hot take.</p>
-        <span class="section-card__arrow">→</span>
+
+      <a class="section-card section-card--thoughts" href="/thoughts">
+        <div class="section-card__inner">
+          <div class="section-card__top">
+            <span class="section-card__num">◇ THOUGHTS</span>
+            <span class="section-card__glyph">◇</span>
+          </div>
+          <div class="section-card__name">thoughts.</div>
+          <div class="section-card__blurb">Ramblings, how-to guides, &amp; the occasional hot take. reader, beware.</div>
+          <div class="section-card__latest">
+            <span><span class="section-card__latest-ink">latest →</span> {{latestThought}}</span>
+            <span class="section-card__latest-date">{{latestThoughtDate}}</span>
+          </div>
+        </div>
       </a>
-      <a href="profile" class="section-card section-card--profile">
-        <span class="section-card__icon">👤</span>
-        <h2>Profile</h2>
-        <p>Career history, skills, and the technologies I work with.</p>
-        <span class="section-card__arrow">→</span>
+
+      <a class="section-card section-card--profile" href="/profile">
+        <div class="section-card__inner">
+          <div class="section-card__top">
+            <span class="section-card__num">◉ PROFILE</span>
+            <span class="section-card__glyph">◉</span>
+          </div>
+          <div class="section-card__name">profile.</div>
+          <div class="section-card__blurb">Career history (Monzo, Deliveroo, Sky, &amp; co.) &amp; a long list of technologies.</div>
+          <div class="section-card__latest">
+            <span><span class="section-card__latest-ink">latest →</span> {{latestRole}}</span>
+            <span class="section-card__latest-date">{{latestRoleDate}}</span>
+          </div>
+        </div>
       </a>
-      <a href="life" class="section-card section-card--life">
-        <span class="section-card__icon">🌍</span>
-        <h2>Life</h2>
-        <p>Fitness stats, media I'm consuming, and upcoming events.</p>
-        <span class="section-card__arrow">→</span>
+
+      <a class="section-card section-card--fitness" href="https://fitglue.tech/showcase/profile/james" rel="external noopener">
+        <div class="section-card__inner">
+          <div class="section-card__top">
+            <span class="section-card__num">△ FITNESS</span>
+            <span class="section-card__glyph">△</span>
+          </div>
+          <div class="section-card__name">fitness.</div>
+          <div class="section-card__blurb">All my runs, rides, and workouts in one place — powered by FitGlue, my own fitness automation platform.</div>
+          <div class="section-card__latest">
+            <span><span class="section-card__latest-ink">view on FitGlue →</span></span>
+          </div>
+        </div>
       </a>
     </div>
-  </main>
+
+    <!-- Fresh off the press -->
+    <div class="press-header">fresh off <span>the press</span>.</div>
+
+    <div class="press-grid">
+      <!-- Featured project: FitGlue -->
+      <article class="press-featured">
+        <div class="press-featured__inner">
+          <div class="press-featured__badge">
+            <span class="press-featured__tag">◆ FEATURED PROJECT</span>
+            <span class="press-featured__meta">built 2024 · still shipping</span>
+          </div>
+          <div class="press-featured__title">
+            FIT<span>GLUE</span>.
+          </div>
+          <div class="press-featured__sub">
+            an automation platform for fitness enthusiasts tired of copying workouts between apps.
+          </div>
+          <div class="press-featured__body">
+            AI-generated descriptions, parkrun result lookups, weather data
+            enrichment, all on a Go + React stack. Because if you're going to
+            automate your fitness life, it might as well look fancy.
+          </div>
+          <div class="press-featured__footer">
+            <span>tech / go · typescript · react · gcp</span>
+            <a href="/projects">read more →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Latest thought -->
+      <article class="press-card press-card--thought">
+        <div class="press-card__inner">
+          <span class="press-card__tag">◇ LATEST THOUGHT</span>
+          <div class="press-card__meta">{{latestThoughtDateLong}} · {{latestThoughtReadTime}} min</div>
+          <div class="press-card__title">{{latestThought}}.</div>
+          <div class="press-card__body">{{latestThoughtExcerpt}}</div>
+          <div class="press-card__link"><a href="/thoughts/{{latestThoughtSlug}}">read it →</a></div>
+        </div>
+      </article>
+
+      <!-- Current role -->
+      <article class="press-card press-card--role">
+        <div class="press-card__inner">
+          <span class="press-card__tag">◉ CURRENT ROLE</span>
+          <div class="press-card__meta">{{latestRoleDate}}</div>
+          <div class="press-card__title">{{latestRole}}<span style="color:var(--ink-blue)">.</span></div>
+          <div class="press-card__role">{{latestRoleTitle}}</div>
+          <div class="press-card__body">{{latestRoleBlurb}}</div>
+          <div class="press-card__link"><a href="/profile">full cv →</a></div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Find me -->
+    <div class="find-me">
+      <div>
+        <div class="find-me__label">· FIND ME ·</div>
+        <div class="find-me__heading">say <span>hello</span> back.</div>
+        <div class="find-me__sub">i answer most emails within a few days.</div>
+      </div>
+      <div class="find-me__links">
+        <a class="find-me__link" href="mailto:hello@ripixel.co.uk">hello@ripixel.co.uk</a>
+        <a class="find-me__link" href="https://github.com/ripixel" rel="me">github / ripixel</a>
+        <a class="find-me__link" href="https://www.linkedin.com/in/jameskingli/" rel="me">linkedin / jameskingli</a>
+      </div>
+    </div>
+
+  </div>
 
   {{> footer}}
-</body>
 
+  <div class="paper-grain" aria-hidden="true"></div>
+</body>
 </html>

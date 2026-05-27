@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-
 <html lang="en">
-  {{> head}}
+{{> head}}
 
-  <body>
-    {{> nav}}
+<body class="page-changelog" data-page="changelog">
+  <div class="paper-wash" aria-hidden="true"></div>
+  <div class="paper-dot" aria-hidden="true"></div>
 
-    {{> darkmode}}
+  {{> masthead}}
 
-    <main class="changelog article">
-      <p>What changes have happened to this site?</p>
-      <section class="area">
-        {{{changelogHtml}}}
-      </section>
-    </main>
+  <div class="zine-content page-simple">
+    <h1>CHANGELOG.</h1>
+    <div style="font-family:var(--f-mono);font-size:13px;color:var(--ink);opacity:.7;margin-bottom:20px">
+      what's changed on this site — {{latestVersion}}
+    </div>
+    {{{changelogHtml}}}
+  </div>
 
-    {{> footer}}
-  </body>
+  {{> footer}}
 
+  <div class="paper-grain" aria-hidden="true"></div>
+</body>
 </html>

@@ -1,78 +1,126 @@
 <!DOCTYPE html>
-
 <html lang="en">
-  {{> head}}
+{{> head}}
 
-  <body>
-    {{> nav}}
+<body class="page-thoughts" data-page="thoughts">
+  <div class="paper-wash" aria-hidden="true"></div>
+  <div class="paper-dot" aria-hidden="true"></div>
 
-    {{> darkmode}}
+  {{> masthead}}
 
-    <main class="thoughts article">
-      <section class="area">
-        <div class="header-details">
-          <h1>{{title}}</h1>
-          <p class="tag">{{dateDisplay}}</p>
+  <div class="zine-content">
+
+    <svg class="reg-mark" style="position:absolute;top:4px;left:6px" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+      <circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="0" y1="9" x2="18" y2="9" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="9" y1="0" x2="9" y2="18" stroke="currentColor" stroke-width="1.2"/>
+    </svg>
+
+    <!-- Breadcrumb -->
+    <div class="thought-breadcrumb">
+      <a href="/thoughts">← back to thoughts</a> · {{readTime}} min read
+    </div>
+
+    <!-- Header -->
+    <div class="thought-header">
+      <div>
+        <div class="thought-header__meta">★ {{dateDisplay}}</div>
+        <h1 class="thought-header__h1">
+          <span>{{title}}.</span>
+        </h1>
+        <div class="thought-header__sub">{{excerpt}}</div>
+        <div class="thought-header__author">
+          <div class="thought-header__author-logo">JK</div>
+          <span><strong>james king</strong> · words &amp; code</span>
+          <span class="thought-header__author-sep">·</span>
+          <span>published in <em>thoughts.zine</em></span>
         </div>
+      </div>
+    </div>
+
+    <!-- Article body + sidebar -->
+    <div class="thought-layout">
+      <article class="thought-article">
         {{{content}}}
-      </section>
-    </main>
 
-    <main class="thoughts mentions">
-      {{#if likes}}
-        <div class="likes">
-          <h4>{{likes.length}} likes</h4>
-          <div class="mention-links">
+        <!-- Webmention reactions -->
+        {{#if likes}}
+        <div class="thought-article__reactions">
+          <h3 style="font-family:var(--f-disp);font-size:28px;margin-bottom:8px">reactions.</h3>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;font-family:var(--f-mono);font-size:13px">
+            <span>♥ {{likes.length}} likes</span>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
             {{#each likes}}
-              <a class="item" href="{{link}}" target="_blank" rel="external noopener noreferrer">
-                <img src="{{avatar}}" loading="lazy" decoding="async" width="28" height="28" />
-                <span>{{name}}</span>
-              </a>
+            <a href="{{link}}" target="_blank" rel="external noopener noreferrer" style="display:flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:12px;color:var(--ink)">
+              <img src="{{avatar}}" loading="lazy" decoding="async" width="24" height="24" alt="{{name}}" style="border:1.5px solid var(--ink)" />
+              {{name}}
+            </a>
             {{/each}}
           </div>
         </div>
-      {{/if}}
+        {{/if}}
 
-      {{#if reposts}}
-        <div class="reposts">
-          <h4>{{reposts.length}} reposts</h4>
-          <div class="mention-links">
-            {{#each reposts}}
-              <a class="item" href="{{link}}" target="_blank" rel="external noopener noreferrer">
-                <img src="{{avatar}}" loading="lazy" decoding="async" width="28" height="28" />
-                <span>{{name}}</span>
-              </a>
-            {{/each}}
+        {{#if comments}}
+        <div style="margin-top:18px">
+          <h3 style="font-family:var(--f-disp);font-size:28px;margin-bottom:8px">webmentions.</h3>
+          {{#each comments}}
+          <div style="border-top:1px dashed rgba(23,19,17,0.33);padding:10px 0;font-family:var(--f-mono);font-size:13px">
+            <a href="{{link}}" target="_blank" rel="external noopener noreferrer" style="display:flex;align-items:center;gap:6px;color:var(--ink-section);margin-bottom:4px">
+              <img src="{{avatar}}" loading="lazy" decoding="async" width="24" height="24" alt="{{name}}" style="border:1.5px solid var(--ink)" />
+              {{name}}
+            </a>
+            <p style="margin:0">{{text}}</p>
+          </div>
+          {{/each}}
+        </div>
+        {{/if}}
+      </article>
+
+      <!-- Sidebar -->
+      <aside class="thoughts-sidebar">
+        <div class="sidebar-card">
+          <div class="sidebar-card__inner">
+            <div class="sidebar-card__title">+ RELATED</div>
+            <div style="font-family:var(--f-mono);font-size:12px;color:var(--ink);margin-top:6px;line-height:1.8">
+              <a href="/thoughts" style="color:var(--ink-section)">← all thoughts</a><br>
+              <a href="/rss.xml" style="color:var(--ink-section)">subscribe via rss</a>
+            </div>
           </div>
         </div>
+      </aside>
+    </div>
+
+    <!-- Prev / next -->
+    {{#if prevThought}}
+    <div class="thought-prevnext">
+      <a class="thought-prevnext__item" href="/{{prevThought.relativePath}}">
+        <div class="thought-prevnext__dir">← previous thought · {{prevThought.dateDisplay}}</div>
+        <div class="thought-prevnext__title">{{prevThought.title}}</div>
+      </a>
+      {{#if nextThought}}
+      <a class="thought-prevnext__item thought-prevnext__item--next" href="/{{nextThought.relativePath}}">
+        <div class="thought-prevnext__dir">next thought · {{nextThought.dateDisplay}} →</div>
+        <div class="thought-prevnext__title">{{nextThought.title}}</div>
+      </a>
       {{/if}}
-
-      {{#if comments}}
-        <div class="comments">
-          <h4>{{comments.length}} comments</h4>
-          <div class="mention-links">
-            {{#each comments}}
-              <div class="comment">
-                <a class="item" href="{{link}}" target="_blank" rel="external noopener noreferrer">
-                  <img src="{{avatar}}" loading="lazy" decoding="async" width="28" height="28" />
-                  <span>{{name}}</span>
-                </a>
-                <p>{{text}}</p>
-                <a class="item comment-link" href="{{comment_link}}" target="_blank"
-                  rel="external noopener noreferrer"><span>View</span></a>
-              </div>
-            {{/each}}
-          </div>
-        </div>
+    </div>
+    {{else}}
+    <div class="thought-prevnext">
+      <div></div>
+      {{#if nextThought}}
+      <a class="thought-prevnext__item thought-prevnext__item--next" href="/{{nextThought.relativePath}}">
+        <div class="thought-prevnext__dir">next thought · {{nextThought.dateDisplay}} →</div>
+        <div class="thought-prevnext__title">{{nextThought.title}}</div>
+      </a>
       {{/if}}
-    </main>
+    </div>
+    {{/if}}
 
-    <main class="thoughts details">
-      <p>Thanks for reading! Fancy sharing...?</p>
-      <a href="/thoughts" class="button">More thoughts</a>
-    </main>
+  </div>
 
-    {{> footer}}
-  </body>
+  {{> footer}}
 
+  <div class="paper-grain" aria-hidden="true"></div>
+</body>
 </html>

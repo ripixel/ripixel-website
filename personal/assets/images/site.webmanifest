@@ -1,21 +1,21 @@
 {
-  "name": "ripixel",
-  "short_name": "ripixel",
+  "name": "James King",
+  "short_name": "jamesking",
+  "description": "James King — software engineer, zine.",
   "icons": [
     {
-      "src": "/favicon.ico/web-app-manifest-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
+      "src": "/favicon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
     },
     {
-      "src": "/favicon.ico/web-app-manifest-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
     }
   ],
-  "theme_color": "#ff9100",
-  "background_color": "#ff9100",
-  "display": "standalone"
+  "theme_color": "#F5EFDF",
+  "background_color": "#F5EFDF",
+  "display": "standalone",
+  "start_url": "/"
 }

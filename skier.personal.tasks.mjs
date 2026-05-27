@@ -14,13 +14,22 @@ import {
     generateSitemapTask
 } from 'skier';
 
-// Custom task to write a global variable to a JSON file
+/** Estimate read time in minutes from raw text (200 wpm)
+ * @param {string} text */
+function estimateReadTime(text) {
+    if (!text) return 1;
+    const words = text.trim().split(/\s+/).length;
+    return Math.max(1, Math.ceil(words / 200));
+}
+
+/** Custom task to write a global variable to a JSON file
+ * @param {{ globalVar: string, outFile: string }} config */
 function writeGlobalToJsonTask(config) {
     return {
         name: 'write-global-to-json',
         title: `Write ${config.globalVar} to ${config.outFile}`,
         config,
-        run: async (cfg, ctx) => {
+        run: async (/** @type {any} */ cfg, /** @type {any} */ ctx) => {
             const data = ctx.globals[cfg.globalVar];
             if (!data) {
                 ctx.logger.warn(`Global variable '${cfg.globalVar}' not found`);
@@ -37,86 +46,107 @@ function writeGlobalToJsonTask(config) {
     };
 }
 
-// Custom task to aggregate all life data from split JSON files
-function aggregateLifeDataTask() {
+
+/** Task to compute thoughts statistics and expose them as globals */
+function computeThoughtsStatsTask() {
     return {
-        name: 'aggregate-life-data',
-        title: 'Aggregate life data from JSON files',
-        run: async (cfg, ctx) => {
-            const lifeDir = './personal/items/life';
+        name: 'compute-thoughts-stats',
+        title: 'Compute thoughts statistics',
+        run: async (/** @type {any} */ _cfg, /** @type {any} */ ctx) => {
+            const thoughtsList = ctx.globals.thoughtsList;
+            if (!Array.isArray(thoughtsList) || thoughtsList.length === 0) {
+                ctx.globals.totalThoughts    = 0;
+                ctx.globals.firstThoughtYear = new Date().getFullYear();
+                ctx.globals.avgReadTime      = 1;
+                ctx.globals.thoughtsPace     = '–';
+                ctx.globals.latestThought         = '';
+                ctx.globals.latestThoughtDate     = '';
+                ctx.globals.latestThoughtDateLong = '';
+                ctx.globals.latestThoughtExcerpt  = '';
+                ctx.globals.latestThoughtSlug     = '';
+                ctx.globals.latestThoughtReadTime = '1';
+                return {};
+            }
 
-            // Helper to safely load JSON
-            const loadJson = (filepath) => {
-                try {
-                    return JSON.parse(fs.readFileSync(filepath, 'utf8'));
-                } catch (e) {
-                    ctx.logger.warn(`Could not load ${filepath}`);
-                    return null;
-                }
-            };
+            // Total posts
+            const total = thoughtsList.length;
 
-            // Helper to load and merge monthly/yearly files
-            const loadTimeSeriesFiles = (dir, pattern) => {
-                if (!fs.existsSync(dir)) return [];
-                try {
-                    const files = fs.readdirSync(dir)
-                        .filter(f => f.endsWith('.json'))
-                        .sort();
-                    const allEntries = [];
-                    for (const file of files) {
-                        const data = loadJson(path.join(dir, file));
-                        if (Array.isArray(data)) {
-                            allEntries.push(...data);
-                        }
-                    }
-                    return allEntries;
-                } catch (e) {
-                    ctx.logger.warn(`Could not read directory ${dir}`);
-                    return [];
-                }
-            };
+            // Earliest year
+            const dates = thoughtsList
+                .map(t => t.date ? new Date(t.date) : null)
+                .filter(d => d !== null);
+            const firstYear = dates.length
+                ? Math.min(...dates.map(d => d.getFullYear()))
+                : new Date().getFullYear();
 
-            // Load each category
-            const body = loadJson(path.join(lifeDir, 'body.json')) || {};
-            const nutrition = loadJson(path.join(lifeDir, 'nutrition.json')) || {};
-            const exercise = loadJson(path.join(lifeDir, 'fitness.json')) || {};
-            const events = loadJson(path.join(lifeDir, 'events.json')) || {};
-            const media = loadJson(path.join(lifeDir, 'media.json')) || {};
-            const travel = loadJson(path.join(lifeDir, 'travel.json')) || {};
-            const career = loadJson(path.join(lifeDir, 'career.json')) || {};
+            // Average read time
+            const avgRead = Math.round(
+                thoughtsList.reduce((sum, t) => {
+                    const wc = (t.body || t.excerpt || '').split(/\s+/).length;
+                    return sum + Math.max(1, Math.ceil(wc / 200));
+                }, 0) / total
+            );
 
-            // Merge time-series data if directories exist
-            const weightHistory = loadTimeSeriesFiles(path.join(lifeDir, 'body', 'weight'));
-            const exerciseHistory = loadTimeSeriesFiles(path.join(lifeDir, 'fitness', 'history'));
+            // Approximate pace (posts per year since first post)
+            const yearsActive = new Date().getFullYear() - firstYear + 1;
+            const perYear = Math.round(total / yearsActive);
+            const pace = perYear >= 12
+                ? `${Math.round(perYear / 12)}/mo`
+                : perYear >= 1
+                ? `${perYear}/yr`
+                : '< 1/yr';
 
-            // Combine into single life object
-            ctx.globals.life = {
-                body: {
-                    ...body,
-                    weightHistory,
-                },
-                nutrition,
-                exercise: {
-                    ...exercise,
-                    history: exerciseHistory,
-                },
-                events: events.events || [],
-                media,
-                travel,
-                career
-            };
+            // Set stats as direct globals so Skier auto-spreads them into all templates
+            ctx.globals.totalThoughts    = total;
+            ctx.globals.firstThoughtYear = firstYear;
+            ctx.globals.avgReadTime      = avgRead;
+            ctx.globals.thoughtsPace     = pace;
 
-            ctx.logger.debug('Life data aggregated successfully');
+            // Latest thought — also set as direct globals
+            const latest = thoughtsList[0];
+            if (latest) {
+                ctx.globals.latestThought         = latest.title || '';
+                ctx.globals.latestThoughtDate     = latest.dateDisplay || '';
+                ctx.globals.latestThoughtDateLong = latest.dateDisplay || '';
+                ctx.globals.latestThoughtExcerpt  = latest.excerpt || '';
+                ctx.globals.latestThoughtSlug     = (latest.relativePath || '').replace(/\.html$/, '');
+                ctx.globals.latestThoughtReadTime = String(estimateReadTime(latest.body || latest.excerpt || ''));
+            }
+
+            ctx.logger.debug('Thoughts stats computed');
+            return {};
+        }
+    };
+}
+
+/** Load the right-now JSON file if it exists */
+function loadRightNowTask() {
+    return {
+        name: 'load-right-now',
+        title: 'Load right-now panel data',
+        run: async (/** @type {any} */ _cfg, /** @type {any} */ ctx) => {
+            const filePath = './personal/items/right-now.json';
+            if (!fs.existsSync(filePath)) {
+                ctx.logger.debug('No right-now.json found — panel will be hidden');
+                ctx.globals.rightNow = null;
+                return {};
+            }
+            try {
+                ctx.globals.rightNow = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+                ctx.logger.debug('Loaded right-now.json');
+            } catch (e) {
+                ctx.logger.warn('Could not parse right-now.json');
+                ctx.globals.rightNow = null;
+            }
             return {};
         }
     };
 }
 
 export const tasks = [
-    // Clean & Create output directory
-    prepareOutputTask({
-        outDir: './public/personal',
-    }),
+    // Clean & create output directory
+    prepareOutputTask({ outDir: './public/personal' }),
+
     // Process main CSS (includes shared tokens)
     bundleCssTask({
         from: './personal/assets/styles/main',
@@ -124,6 +154,7 @@ export const tasks = [
         output: 'styles.min.css',
         minify: true,
     }),
+
     // Process Jamie CSS
     bundleCssTask({
         from: './personal/assets/styles/jamie',
@@ -131,58 +162,73 @@ export const tasks = [
         output: 'styles.jamie.min.css',
         minify: true,
     }),
+
     // Copy images/assets
     copyStaticTask({
         from: './personal/assets/images',
         to: './public/personal',
     }),
+
     // Read and convert CHANGELOG.md to HTML for downstream use
     setGlobalFromMarkdownTask({
         mdPath: './CHANGELOG.md',
         outputVar: 'changelogHtml',
     }),
-    // Set some globals
+
+    // Set core globals
     setGlobalsTask({
         values: {
             year: (new Date()).getFullYear(),
             siteUrl: 'https://james.ripixel.co.uk',
+            // Homepage static data
+            latestProject:     'FitGlue',
+            latestProjectDate: '2024 → present',
+            latestRole:        'Monzo',
+            latestRoleDate:    'may 2023 → now',
+            latestRoleTitle:   'senior staff engineer (director)',
+            latestRoleBlurb:   'In the Borrowing collective, looking after the Flex team. Fast growth, brilliant people, ambitious targets.',
         },
-        valuesFn: globals => {
-            // Extract first vX.Y.Z version from changelogHtml
-            const match = globals.changelogHtml && globals.changelogHtml.match(/v(\d+\.\d+\.\d+)/i);
+        valuesFn: (/** @type {any} */ globals) => {
+            const match = globals.changelogHtml && /** @type {string} */ (globals.changelogHtml).match(/v(\d+\.\d+\.\d+)/i);
             const latestVersion = match ? match[0] : undefined;
             return { latestVersion };
         }
     }),
-    // Aggregate life data from split JSON files
-    aggregateLifeDataTask(),
-    // Generate individual thought article pages
+
+    // Load right-now panel data (optional — create right-now.json to enable)
+    loadRightNowTask(),
+
+    // Generate individual thought article pages (adds readTime to each item)
     generateItemsTask({
         itemsDir: './personal/items',
         partialsDir: './personal/partials',
         outDir: './public/personal',
         outputVar: 'thoughtsList',
-        // Custom excerpt: strip markdown links and return full first paragraph
         excerptFn: (rawMarkdown) => {
-            // Get first paragraph (split by double newlines)
             const firstPara = rawMarkdown.split(/\n\s*\n/)[0] ?? '';
-            // Strip markdown links: [text](url) -> text
             const stripped = firstPara.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
             return stripped.trim();
         },
-        additionalVarsFn: ({ section, title, excerpt }) => ({
+        additionalVarsFn: ({ section, title, excerpt, body }) => ({
             page: section,
             subpage: '| ' + title,
             description: excerpt,
+            readTime: String(estimateReadTime(body || excerpt || '')),
         }),
     }),
+
     // Write thoughtsList to JSON for pagination
     writeGlobalToJsonTask({
         globalVar: 'thoughtsList',
         outFile: './personal/items/thoughts.json',
     }),
+
+    // Compute thoughts stats (must run after thoughtsList is populated)
+    computeThoughtsStatsTask(),
+
     // Generate RSS/Atom/JSON feeds for thoughts
     generateFeedTask({
+        // @ts-ignore — Skier resolves this glob-style string reference at runtime
         articles: '${thoughtsList}',
         outDir: './public/personal',
         site: {
@@ -204,6 +250,7 @@ export const tasks = [
             },
         },
     }),
+
     // Generate paginated thoughts listing
     generatePaginatedItemsTask({
         dataFile: './personal/items/thoughts.json',
@@ -219,55 +266,16 @@ export const tasks = [
             description: 'A peak inside my brain you ask? Reader, beware...',
         }),
     }),
-    // Generate paginated life-fitness pages
-    generatePaginatedItemsTask({
-        dataFile: './personal/items/life/fitness.json',
-        dataKey: 'timeline',
-        itemsPerPage: 10,
-        template: './personal/templates/life-fitness.html',
-        partialsDir: './personal/partials',
-        outDir: './public/personal',
-        basePath: '/life-fitness',
-        outputVar: 'activities',
-        paginationVar: 'pagination',
-        additionalVarsFn: () => {
-            const fitnessData = JSON.parse(fs.readFileSync('./personal/items/life/fitness.json', 'utf8'));
-            return {
-                page: 'life',
-                description: 'Running, walking, and generally trying to stay active.',
-                events: fitnessData.events,
-            };
-        },
-    }),
-    // Generate paginated life-media pages
-    generatePaginatedItemsTask({
-        dataFile: './personal/items/life/media.json',
-        dataKey: 'timeline',
-        itemsPerPage: 10,
-        template: './personal/templates/life-media.html',
-        partialsDir: './personal/partials',
-        outDir: './public/personal',
-        basePath: '/life-media',
-        outputVar: 'items',
-        paginationVar: 'pagination',
-        additionalVarsFn: () => ({
-            page: 'life',
-            description: 'What I\'m watching, reading, listening to, and playing.',
-        }),
-    }),
+
     // Generate HTML pages
     generatePagesTask({
         pagesDir: './personal/pages',
         partialsDir: './personal/partials',
         outDir: './public/personal',
-
-        additionalVarsFn: ({ currentPage, ...vars }) => {
+        additionalVarsFn: ({ currentPage, rightNow, ...vars }) => {
+            /** @type {Record<string, string>} */
             const pageMapping = {
                 'index': 'home',
-                'life-body': 'life',
-                'life-career': 'life',
-                'life-travel': 'life',
-                'life-music': 'life',
             };
             const page = pageMapping[currentPage] || currentPage;
 
@@ -275,31 +283,27 @@ export const tasks = [
                 page,
                 description: (() => {
                     switch (page) {
-                        case 'thoughts':
-                            return 'A peak inside my brain you ask? Reader, beware...';
-                        case 'profile':
-                            return `So who am I? I'm James King, a Software Engineer from Nottinghamshire. You want some more info?`;
-                        case 'projects':
-                            return "Shall we take a look at some projects I've done?";
-                        case 'changelog':
-                            return 'What changes have happened to this site?';
-                        case 'home':
-                            return "I'm James King, and I make things for the web";
-                        case 'life':
-                            return "What's going on in my life? Fitness, media, and upcoming events.";
-                        default:
-                            return vars.description || '';
+                        case 'thoughts':  return 'A peak inside my brain you ask? Reader, beware...';
+                        case 'profile':   return `So who am I? I'm James King, a Software Engineer from Nottinghamshire.`;
+                        case 'projects':  return "Shall we take a look at some projects I've done?";
+                        case 'changelog': return 'What changes have happened to this site?';
+                        case 'home':      return "I'm James King, and I make things for the web";
+                        case 'life':      return "What's going on in my life? Fitness, media, and upcoming events.";
+                        default:          return vars.description || '';
                     }
                 })(),
+                rightNow: rightNow || null,
             };
         },
     }),
+
     // Generate sitemap.xml
     generateSitemapTask({
         outDir: './public/personal',
         scanDir: './public/personal',
         siteUrl: 'https://james.ripixel.co.uk',
     }),
+
     {
         name: 'Copy robots.txt',
         run: async () => {

@@ -1,31 +1,24 @@
 <!DOCTYPE html>
-
 <html lang="en">
-  {{> head}}
+{{> head}}
 
-  <body>
-    {{> nav}}
+<body class="page-404" data-page="404">
+  <div class="paper-wash" aria-hidden="true"></div>
+  <div class="paper-dot" aria-hidden="true"></div>
 
-    {{> darkmode}}
+  {{> masthead}}
 
-    <main class="error">
-      <section class="intro">
-        <h1 class="name">404... <span class="em2">shit</span></h1>
-      </section>
+  <div class="zine-content page-simple">
+    <h1>404.</h1>
+    <div style="font-family:var(--f-scrib);font-size:36px;color:var(--ink-section);margin-bottom:14px;transform:rotate(-1deg);display:inline-block">
+      (oh bollocks.)
+    </div>
+    <p>Something's gone very wrong. Best go back and try again.</p>
+    <p><a href="/" style="color:var(--ink-section);border-bottom:1px solid var(--ink-section)">← back home</a></p>
+  </div>
 
-      <div class="sections">
-        <section class="welcome error">
-          <p>
-            Oh bollocks. Something's gone <span class="em">very wrong</span>.
-          </p>
-          <p>
-            Best go back and try again.
-          </p>
-        </section>
-      </div>
-    </main>
+  {{> footer}}
 
-    {{> footer}}
-  </body>
-
+  <div class="paper-grain" aria-hidden="true"></div>
+</body>
 </html>
