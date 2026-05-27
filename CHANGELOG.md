@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.3.1](https://github.com/ripixel/ripixel-website/compare/v8.3.0...v8.3.1) (2026-05-27)
+
+
+### Bug Fixes
+
+* **personal:** correct latestThought link and coding page OG card ([c6067b3](https://github.com/ripixel/ripixel-website/commit/c6067b370c43adf6b6320827ff7d9814744ec8bf))
+
 ## [8.3.0](https://github.com/ripixel/ripixel-website/compare/v8.2.0...v8.3.0) (2026-05-27)
 
 
