@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.4.9](https://github.com/ripixel/ripixel-website/compare/v8.4.8...v8.4.9) (2026-06-20)
+
+
+### Bug Fixes
+
+* update FitGlue James profile URL ([983d76f](https://github.com/ripixel/ripixel-website/commit/983d76f29b4cf4593e4d764bec4b3455be5ae201))
+
 ### [8.4.8](https://github.com/ripixel/ripixel-website/compare/v8.4.7...v8.4.8) (2026-06-19)
 
 ### [8.4.7](https://github.com/ripixel/ripixel-website/compare/v8.4.6...v8.4.7) (2026-06-18)
